@@ -1,0 +1,80 @@
+/* Google Fonts import */
+/* @import url('https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap'); */
+
+/* CSS variables */
+:root {
+    --primary-font: "Zalando Sans Expanded", sans-serif;
+    --secondary-font: "Manrope", sans-serif;
+    --accent-font: "Anton", sans-serif;
+    --primary-background: #F8FAFC;
+    --secondary-background: #FFFFFF;
+    --accent-color: #2563EB;
+    --secondary-accent: #0F766E;
+    --primary-text-color: #0F172A;
+    --secondary-text-color: #475569;
+    --primary-hover: #1555E0;
+    --secondary-hover: #0E6C64;
+}
+
+
+body {
+    background-color: var(--primary-background);
+    /* font-family: var(--secondary-font); */
+    color: var(--primary-text-color);
+   
+}
+
+/* Navbar */
+.navbar{
+    background-color: var(--secondary-background);
+}
+
+.nav-link{
+    color: var(--primary-text-color) 
+}
+
+.btn-outline-dark {
+    --bs-btn-hover-bg: var(--primary-hover);
+    --bs-btn-hover-border-color: var(--primary-hover);
+}
+
+/* Sidebar */
+.sidebar {
+    color: var(--secondary-text-color);
+    background-color: var(--secondary-background);
+    min-height: 100vh;
+    padding-left: 10px;
+    border-right: 1px solid var(--secondary-text-color);
+}
+
+aside {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    height: 100vh;
+    width: 250px; 
+    overflow-y: auto;
+    font-weight: lighter;
+}
+
+#aside-list{
+    padding-top: 50px;
+}
+
+aside .nav-link{
+    color: var(--secondary-text-color);
+}
+
+/* Footer */
+#footer{
+    background-color: var(--secondary-background);
+    color: var(--primary-text-color);
+    font-weight: lighter;
+}
+/* Media queries */
+@media screen and (max-width: 576px) {
+ #magni-glass{
+   position: relative;
+   right: 70px;
+ }
+}
