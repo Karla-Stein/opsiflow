@@ -18,6 +18,10 @@
     <!--  Base CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
+
+    {% block extra_css %}
+    {% endblock %}
+
     {% block corejs %}
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/75c27a2f98.js" crossorigin="anonymous"></script>
@@ -27,7 +31,6 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <header>
         <nav class="navbar navbar-expand-sm sticky-top">
             <div class="container-fluid">
                 <div class="d-flex">
@@ -84,16 +87,16 @@
             </div>
         </nav>
         {% include 'includes/desktop_side_panel.html' %}
-    </header>
+
     <main>
         {% block content %}
 
         {% endblock%}
     </main>
-    <footer id="footer" class="fixed-bottom">
+    <footer id="footer">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 text-center my-3">
+                <div class="col-12 text-center mt-3">
                     <p> © 2026 OpsiFlow. All rights reserved. Built with
                         Django.<br>
                         GitHub:<br>

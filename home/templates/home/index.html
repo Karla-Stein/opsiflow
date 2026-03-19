@@ -1,1 +1,110 @@
 {% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!-- Hero section -->
+<section id="hero" class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6 pt-5">
+                <h2 class="mb-3 display-5">Automations that run your business in the background
+                </h2>
+                <p class="index-p">Replace repetitive admin with intelligent workflows that save time, reduce mistakes
+                    and
+                    help you scale your business.</p>
+            </div>
+            <div class="col-12 col-md-6 pt-5">
+                <img src="{% static 'images/landing-page-1.jpeg' %}" alt="hero-image" class="img-fluid">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col offset-5">
+                <button class="btn btn-outline-primary" type="submit">Browse Workflows</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="benefits">
+    <div class="container">
+        <!-- Quick wins -->
+        <div class="row gap-4 justify-content-evenly text-center">
+            <div class="col-6 col-md-4 col-lg-2 benefit">
+                <div class="card benefit-card">
+                    <div class="card-body">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        <p>Save Hours Every Week</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 benefit ">
+                <div class="card benefit-card">
+                    <div class="card-body">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        <p>Never Miss A Lead Again</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 benefit ">
+                <div class="card benefit-card ">
+                    <div class="card-body">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        <p>Scale Without New Hire</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 benefit">
+                <div class="card benefit-card">
+                    <div class="card-body">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        <p>Connect All Your Tools</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Primary and secondary benefit -->
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6 pt-5">
+                <img src="{% static 'images/landing-page-2.jpeg' %}" alt="workflow-image" class="img-fluid">
+            </div>
+            <div class="col-12 col-md-6 pt-5">
+                <h2 class="mb-3 display-5">Put Your Business on Autopilot
+                </h2>
+                <p class="index-p">Instead of spending hours every week on repetitive admin, automated workflows run
+                    your
+                    processes in the background.
+
+                    From capturing leads to sending invoices, updating spreadsheets, and notifying your team -
+                    everything happens automatically.
+
+                    Your systems work for you 24/7 so you can focus on growth, strategy and serving your clients.
+                </p>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6 pt-5">
+                <h2 class="mb-3 display-5">Turn Every Lead Into a Process
+                </h2>
+                <p class="index-p">Turn new leads into paying clients automatically. Capture enquiries,
+                    get notified instantly, create a customer in Stripe, generate invoices and send them directly to
+                    your client. Bill and convert without lifting a finger.</p>
+            </div>
+            <div class="col-12 col-md-6 pt-5">
+                <img src="{% static 'images/landing-page-3.jpeg' %}" alt="workflow-image" class="img-fluid">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col offset-5 my-5">
+                <button class="btn btn-outline-primary" type="submit">Browse Workflows</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+</section>
+{% endblock%}

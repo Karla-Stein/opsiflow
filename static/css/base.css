@@ -1,11 +1,9 @@
 /* Google Fonts import */
-/* @import url('https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap'); */
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 /* CSS variables */
 :root {
-    --primary-font: "Zalando Sans Expanded", sans-serif;
-    --secondary-font: "Manrope", sans-serif;
-    --accent-font: "Anton", sans-serif;
+    --primary-font: "Inter", sans-serif;
+    --secondary-font: "DM Sans", sans-serif;
     --primary-background: #F8FAFC;
     --secondary-background: #FFFFFF;
     --accent-color: #2563EB;
@@ -19,11 +17,15 @@
 
 body {
     background-color: var(--primary-background);
-    /* font-family: var(--secondary-font); */
+    font-family: var(--primary-font);
     color: var(--primary-text-color);
+    /* padding: 20px 0px; */
    
 }
 
+.section{
+    margin: 75px 0px
+}
 /* Navbar */
 .navbar{
     background-color: var(--secondary-background);
@@ -65,6 +67,31 @@ aside .nav-link{
     color: var(--secondary-text-color);
 }
 
+/* Hero */
+
+.index-p{
+    color: var(--secondary-text-color);
+    font-family: var(--secondary-font);
+    font-weight: 300;
+    font-size: larger;
+}
+
+.btn-outline-primary{
+    --bs-btn-color: var(--secondary-accent);
+    --bs-btn-border-color: var(--secondary-accent);
+    --bs-btn-hover-color:  var(--secondary-background);
+    --bs-btn-hover-bg: var(--secondary-hover);
+    --bs-btn-hover-border-color: var(--secondary-hover);
+}
+
+/* Benefits */
+
+.benefit-card{
+    width: 183px;
+    height: 120px; 
+    border-radius: 20px;
+} 
+
 /* Footer */
 #footer{
     background-color: var(--secondary-background);
@@ -77,4 +104,24 @@ aside .nav-link{
    position: relative;
    right: 70px;
  }
+}
+
+@media screen and (min-width: 992px) {
+ #benefits{
+      margin-left: 200px;
+}
+
+#hero{
+    margin-left: 200px
+}
+}
+
+@media screen and (min-width: 1210px) {
+ #benefits{
+      margin-left: 250px;
+}
+
+#hero{
+    margin-left: 250px
+}
 }
