@@ -107,3 +107,26 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | Checkout | ![screenshot](documentation/wireframes/checkout-mobile.jpeg) | ![screenshot](documentation/wireframes/checkout-tablet.jpeg) | ![screenshot](documentation/wireframes/checkout-desktop.jpeg) |
 | Success page | ![screenshot](documentation/wireframes/success-mobile.jpeg) | ![screenshot](documentation/wireframes/success-tablet.jpeg) | ![screenshot](documentation/wireframes/success-desktop.jpeg) |
 | 404 | ![screenshot](documentation/wireframes/mobile-404.png) | ![screenshot](documentation/wireframes/tablet-404.png) | ![screenshot](documentation/wireframes/desktop-404.png) |
+
+
+## User Stories
+
+| Target | Expectation | Outcome |
+| --- | --- | --- |
+| As an anonymous user | I want to land on a clear homepage | so that I understand what the platform offers.|
+| As an anonymous user | I want to browse available workflows | so that I can explore solutions before committing. |
+| As an anonymous user|  I want to view workflow details | so that I understand what each automation does. |
+| As an anonymous user| I want to create an account | so that I can use the websites features. |
+| As a user | I want to log in securely | so that I can view my profile and purchases. |
+| As a logged in user| I want to log out | so that my account remains secure. |
+| As a logged in user | I want to add workflows to my bag | so that I can review before purchasing. |
+| As a logged in user | I want to update or remove items from my bag | so that I stay in control of my purchase. |
+| As a logged in user | I want to checkout securely | so that I can complete my purchase with confidence. |
+| As a logged in user | I want to choose between workflow only, workflow & setup or custom service | so that I can decide my level of support. |
+| As a logged in user | I want to download my purchased workflow | so that I can use it immediately. |
+| As a logged in user | I receive a confirmation email after purchase | so that I have a backup on instructions on how to proceed. |
+| As a logged in user | I can navigate to my purchase history | so that I can view all my previous purchases in one place. |
+| As a logged in user | I can see a checkout confirmation | so that I can trust that the checkout process was successful. |
+| As a logged in user | I can update my profile | so that my profile is always accurate. |
+| As a logged in user | I want to delete my account | so that I can stay in control of my data. |
+
