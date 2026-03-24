@@ -1,1 +1,32 @@
-{% extends 'base.html %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-7 offset-5 mt-5">
+        <h2 display="5">Browse All Workflows</h2>
+        </div>
+        {% for product in products %}
+        <div class="col-12 col-md-6 col-lg-4 product-card mx-5 d-flex flex-column">
+            <div class="text-center">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
+            {% endif %}
+            <div class="card-body text-center">
+               <p> {{ product.name }}</p>
+               <hr>
+                <p>{{ product.excerpt }}</p>
+                <a href="" type="button">see details</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
