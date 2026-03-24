@@ -60,11 +60,11 @@
                                 Categories
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Lead Generation</a>
-                                <a class="dropdown-item" href="#">Email Automation</a>
-                                <a class="dropdown-item" href="#">Billing Systems</a>
+                                <a class="dropdown-item" href="{% url 'products' %}">Lead Generation</a>
+                                <a class="dropdown-item" href="{% url 'products' %}">Email Automation</a>
+                                <a class="dropdown-item" href="{% url 'products' %}">Billing Systems</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Custom Workflows</a>
+                                <a class="dropdown-item" href="">Custom Workflows</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -73,7 +73,7 @@
                     </ul>
                     <!-- Right side placement -->
                     <div class="d-flex align-items-center ms-auto justify-content-end gap-2">
-                        <form class="d-flex align-items-center my-lg-0">
+                        <form class="d-flex align-items-center my-lg-0" method="GET" action="{% url 'products' %}">
                             <input id="searchbar" class="form-control d-sm-none d-lg-flex" type="search"
                                 placeholder="Search" aria-label="Search">
                             <button id="magni-glass" class="btn" type="submit"><i

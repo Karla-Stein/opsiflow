@@ -55,7 +55,6 @@ aside {
     left: 0;
     height: 100vh;
     width: 250px; 
-    overflow-y: auto;
     font-weight: lighter;
 }
 
@@ -97,6 +96,8 @@ aside .nav-link{
     background-color: var(--secondary-background);
     color: var(--primary-text-color);
     font-weight: lighter;
+    position: relative;
+    z-index: 100;
 }
 /* Media queries */
 @media screen and (max-width: 576px) {
