@@ -22,7 +22,7 @@
                <p> {{ product.name }}</p>
                <hr>
                 <p>{{ product.excerpt }}</p>
-                <a href="" type="button">see details</a>
+                <a href="{% url 'product_detail' product.pk %}" type="button">see details</a>
             </div>
         </div>
         {% endfor %}

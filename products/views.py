@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product, Category
+from .models import Product, Category, ProductOption
 
 
 # Create your views here.
@@ -40,4 +40,22 @@ def all_products(request):
          'search_term': query,
          'current_categories': categories
          }
+    )
+
+
+def product_detail(request, pk):
+    """
+    A view to display product deatils and their options.
+    """
+
+    queryset = Product.objects.all()
+    product = get_object_or_404(queryset, pk=pk)
+    product_option = product.options.all()
+
+    return render(
+        request,
+        'products/product_detail.html',
+        {'product': product,
+         'product_option': product_option}
+
     )
