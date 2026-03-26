@@ -12,23 +12,57 @@
             {% if current_categories %}
             {% for category in current_categories %}
             <h2 display="5">{{ category.friendly_name }}</h2>
+            {% if category.friendly_name == "Email Automation" %}
+            <p class="index-p">Capture and organise interest in your business automatically.
+                <br>
+                These workflows are designed to turn
+                inbound activity — from forms, comments, or interactions — into structured data and immediate follow-up
+                actions. Instead of manually tracking enquiries, you’ll have a system that ensures every opportunity is
+                captured, processed, and moved forward consistently.
+            </p>
+            {% elif category.friendly_name == "Lead Generation" %}
+            <p class="index-p">Streamline your communication with automated email workflows that respond instantly and
+                consistently.
+                <br>
+                Whether it’s confirmations, follow-ups, onboarding messages, or re-engagement sequences, these systems
+                ensure the right message is sent at the right time — without manual effort. This helps you stay
+                responsive, professional, and scalable as your business grows.
+            </p>
+            {% elif category.friendly_name == "Billing Systems" %}
+            <p class="index-p">Simplify your payment processes and ensure nothing gets missed.
+                <br>
+                These workflows automate invoicing, payment tracking, follow-ups, and access management — creating a
+                structured flow from request to payment completion. Instead of chasing payments or managing billing
+                manually, you’ll have a reliable system that keeps your cash flow organised and predictable.</p>
+            {% elif category.friendly_name == "Custom Workflows" %}
+            <p class="index-p">Get a fully tailored automation system built around your business.
+                <br>
+                Instead of adapting your process to fit a template, we design and implement a workflow that matches your
+                exact needs — connecting your tools, removing manual tasks, and creating a system that runs reliably in
+                the background. Ideal for businesses ready to move beyond basic automation and build something scalable.
+            </p>
+            {% endif %}
             {% endfor %}
             {% else %}
             <h2 display="5">Browse All Workflows</h2>
+            <p class="index-p">Simplify your business processes and ensure nothing gets missed.
+                <br>
+                These workflows automate invoicing, payment tracking, follow-ups and access management — creating a
+                structured flow from request to payment completion. Instead of chasing payments or managing billing
+                manually, you’ll have a reliable system that keeps your cash flow organised and predictable.</p>
             {% endif %}
         </div>
         {% for product in products %}
-        <div class="col-12 col-md-6 col-lg-4 product-card mx-5 d-flex flex-column">
+        <div class="col-12 col-md-6 col-lg-4 product-card mx-5 d-flex flex-column justify-content-center">
             <div class="text-center">
                 {% if product.image %}
                 <img src="{{ product.image.url }}" alt="{{ product.name }}">
             </div>
             {% endif %}
-            <div class="card-body text-center">
+            <div class="card-body text-center d-flex flex-column h-100">
                <p> {{ product.name }}</p>
-               <hr>
-                <p>{{ product.excerpt }}</p>
-                <a href="{% url 'product_detail' product.pk %}" type="button">see details</a>
+                <p class="index-p">{{ product.excerpt }}</p>
+                <a href="{% url 'product_detail' product.pk %}" type="button" class="mt-auto btn btn-outline-primary">see details</a>
             </div>
         </div>
         {% endfor %}

@@ -5,10 +5,3 @@ img{
     object-fit: contain;
 
 }
-
-.index-p{
-    color: var(--secondary-text-color);
-    font-family: var(--secondary-font);
-    font-weight: 300;
-    font-size: larger;
-}

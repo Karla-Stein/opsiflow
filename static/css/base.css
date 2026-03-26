@@ -26,6 +26,14 @@ body {
 .section{
     margin: 75px 0px
 }
+
+.index-p{
+    color: var(--secondary-text-color);
+    font-family: var(--secondary-font);
+    font-weight: 300;
+    font-size: larger;
+}
+
 /* Navbar */
 .navbar{
     background-color: var(--secondary-background);
@@ -90,6 +98,10 @@ aside .nav-link{
     height: 120px; 
     border-radius: 20px;
 } 
+
+.benefit p{
+    color: var(--secondary-text-color);
+}
 
 /* Footer */
 #footer{
