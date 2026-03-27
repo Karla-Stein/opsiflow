@@ -8,35 +8,53 @@
 
 {% block content %}
 
-<section id="detail">
+<section id="detail" class="mt-2">
     <div class="container">
         <div class="row align-items-center justify-content-center">
-             <div class="col-8 offset-lg-2 pt-5">
+             <div class="col-8 offset-lg-2 pt-5 my-2">
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
             </div>
-            <div class="col-8 offset-lg-2 pt-5 text-center">
-                <h2 class="mb-3 display-5">{{ product.name }}
+            <div class="col-8 offset-lg-2 pt-2 text-center">
+                <h2 class="mb-3 display-7">{{ product.name }}
                 </h2>
                 <p class="index-p">{{ product.description }}</p>
-            </div>
-            
+                <!-- Product option -->
+                 <div class="col-6 offset-lg-3" >
+                    <p id="option-name" class="display-7"></p>
+                    <p id="option-description" class="index-p"></p>
+                    <p id="delivery-days" class="index-p d-none"></p>
+                </div>
+            </div>  
         </div>
         <div class="row justify-content-center mt-5">
             <div class="col-2 offset-lg-3">
                  <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Options
                 </button>
                 <ul class="dropdown-menu">
-                     {% for option in product_option %}
-                    <li><a class="dropdown-item" href="#">{{ option.name }}</a></li>
+                    {% for option in product_option %}
+                   <li><a class="dropdown-item option" href="#" data-name="{{option.name}}" 
+                    data-description="{{option.description}}" data-price="{{option.unit_price}}" 
+                    data-delivery="{{option.delivery_days}}">{{ option.name }}</a></li>
                     {% endfor %}
                 </ul>
+                 </div>
             </div>
+        </div>
+        <div class="row justify-content-center justify-content-lg-end mt-5">
+            <div class="col-3 offset-lg-3 text-center">
+                <p class="index-p" id="option-price">Price: $</p>
+                <a class="btn btn-primary my-3" href="#" role="button">Back</a>
+                <a class="btn btn-primary my-3" href="#" role="button">Add To Basket</a>
             </div>
         </div>
     </div>
 </section>
 
+{% endblock %}
+{% block postloadjs %}
+{{ block.super}}
+     <script type="text/javascript" src="{% static 'products/js/product_details.js' %}"></script>
 {% endblock %}
