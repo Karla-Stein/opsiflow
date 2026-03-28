@@ -94,7 +94,7 @@
                     <!-- shopping bag  -->
                     <div class="d-flex flex-column">
                         <a id='bag-icon' class="nav-link icon" href=""> <i class="fa-solid fa-bag-shopping"></i></a>
-                        <span class="text-muted">$0.00</span>
+                        <span class="text-muted"><small>$0.00</small></span>
                     </div>                
                     {% endif%}
                     <form class="d-flex align-items-center my-lg-0" method="GET" action="{% url 'products' %}">
@@ -107,7 +107,7 @@
                     {% if not user.is_authenticated %}
                     <a href="{% url 'account_login' %}" class="btn  d-sm-flex btn-outline-dark mx-2" type="submit">Sign
                         in</a>
-                    <a href="{% url 'account_signup' %}" class="btn  d-sm-flex btn-outline-dark mx-2" type="submit">Sign
+                    <a href="{% url 'account_signup' %}" class="btn  d-sm-flex btn-outline-dark me-2" type="submit">Sign
                         up</a>
                     {% endif %}
                 </div>
