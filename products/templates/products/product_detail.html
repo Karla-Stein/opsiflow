@@ -47,11 +47,33 @@
             <div class="col-3 offset-lg-3 text-center">
                 <p class="index-p" id="option-price">Price: $</p>
                 <a class="btn btn-primary my-3" href="{% url 'products' %}" role="button">Back</a>
+                {% if user.is_authenticated %}
                 <a class="btn btn-primary my-3" href="#" role="button">Add To Basket</a>
+                {% else %}
+                <button id="add-basket" class="btn btn-primary my-3" role="button">Add To Basket</button>
+                {% endif %}
             </div>
         </div>
     </div>
 </section>
+<!-- log in prompt modal -->
+<div class="modal" tabindex="-1" id="login-prompt">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Not authenticated</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Please log in or sign up to purchase<p>
+      </div>
+      <div class="modal-footer">
+        <a href="{% url 'account_login' %}" type="button" class="btn btn-primary">Log In</a>
+        <a href="{% url 'account_signup' %}" type="button" class="btn btn-primary">Sign up</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
 {% block postloadjs %}

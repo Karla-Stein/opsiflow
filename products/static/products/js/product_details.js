@@ -29,6 +29,15 @@ for (let option of options) {
 });
 }
 
+const button = document.getElementById("add-basket")
+const loginPrompt = document.getElementById("login-prompt")
+const loginPromptModal = new bootstrap.Modal(loginPrompt);
+
+button.addEventListener("click", (e) => {
+    e.preventDefault();
+    loginPromptModal.show();
+});
+
 
 
 

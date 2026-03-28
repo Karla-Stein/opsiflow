@@ -8,10 +8,11 @@
 {% block content %}
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-6 offset-lg-3">
+    <div class="col-6 offset-lg-2 text-center">
       <h1>{% trans "Sign Out" %}</h1>
+      <hr>
 
-      <p>{% trans 'Are you sure you want to sign out?' %}</p>
+      <p class="text-muted">{% trans 'Are you sure you want to sign out?' %}</p>
 
       <form method="post" action="{% url 'account_logout' %}">
         {% csrf_token %}
@@ -19,6 +20,7 @@
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
         <button type="submit" class="rounded">{% trans 'Sign Out' %}</button>
+        <button type="submit" href="{% url 'home' %}" class="rounded ms-2">{% trans 'Stay' %}</button>
       </form>
     </div>
   </div>
