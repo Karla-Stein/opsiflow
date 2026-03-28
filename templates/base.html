@@ -1,4 +1,7 @@
 {% load static %}
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,62 +34,88 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-        <nav class="navbar navbar-expand-sm sticky-top">
-            <div class="container-fluid">
-                <div class="d-flex">
-                    <a class="navbar-brand" href="#"><strong><svg xmlns="http://www.w3.org/2000/svg" height="48px"
-                                class="mx-4" viewBox="0 -960 960 960" width="48px" fill="#1f1f1f">
-                                <path
-                                    d="M283-272q-40 34-83.5 30.5T124-272q-32-27-42.5-69.5T98-429l82-137q-27-21-43-52.63-16-31.64-16-68.37 0-63.53 45-108.76Q211-841 275-841t109 45q45 45 45 109t-45.24 109Q338.52-533 275-533q-10.8 0-21.6-1.5T233-539l-84 141q-14 23-8.82 45.11 5.17 22.1 22 36Q179-303 201.5-301.5T244-317l433-372q40-34 84-31t76 30q32 27 42.5 70T863-532l-81 137q27 21 43 52.63 16 31.64 16 68.37 0 63.52-45.54 108.76Q749.91-120 685.96-120 622-120 577.5-165.24 533-210.48 533-274t44.5-108.76Q622-428 686-428q10.73 0 20.87 1 10.13 1 20.13 4l84-140q14-23 8.82-45.11-5.17-22.1-22-36Q781-658 758.5-659.5T716-644L283-272Zm58.5-348.66q27.5-27.66 27.5-66.5t-27.66-66.34q-27.66-27.5-66.5-27.5t-66.34 27.66q-27.5 27.66-27.5 66.5t27.66 66.34q27.66 27.5 66.5 27.5t66.34-27.66Zm411.63 413Q781-235.32 781-274.16t-27.87-66.34q-27.86-27.5-67-27.5Q647-368 620-340.34q-27 27.66-27 66.5t27 66.34q27 27.5 66.13 27.5 39.14 0 67-27.66ZM275-687Zm412 413Z" />
-                            </svg>
-                    </a>
-                    <button class="navbar-toggler d-sm-none mt-3" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <div class="mb-2 collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
-                    <ul class="navbar-nav flex-row gap-3 mb-lg-0 d-block d-sm-flex d-lg-none text-end">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'home' %}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'products' %}">Workflows</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Categories
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{% url 'products' %}?category=lead_generation">Lead Generation</a>
-                                <a class="dropdown-item" href="{% url 'products' %}?category=email_automation">Email Automation</a>
-                                <a class="dropdown-item" href="{% url 'products' %}?category=billing_sytems">Billing Systems</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="">Custom Workflows</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Contact</a>
-                        </li>
-                    </ul>
-                    <!-- Right side placement -->
-                    <div class="d-flex align-items-center ms-auto justify-content-end gap-2">
-                        <form class="d-flex align-items-center my-lg-0" method="GET" action="{% url 'products' %}">
-                            <input id="searchbar" class="form-control d-sm-none d-lg-flex" type="search"
-                                placeholder="Search" aria-label="Search" name="q">
-                            <button id="magni-glass" class="btn" type="submit"><i
-                                    class="fa-solid fa-magnifying-glass d-sm-flex"></i>
-                            </button>
-                        </form>
-                        <button class="btn  d-sm-flex btn-outline-dark" type="submit">Sign in</button>
-                        <button class="btn  d-sm-flex btn-outline-dark" type="submit">Sign up</button>
+    <nav class="navbar navbar-expand-sm sticky-top">
+        <div class="container-fluid">
+            <div class="d-flex">
+                <a class="navbar-brand" href="#"><strong><svg xmlns="http://www.w3.org/2000/svg" height="48px"
+                            class="mx-4" viewBox="0 -960 960 960" width="48px" fill="#1f1f1f">
+                            <path
+                                d="M283-272q-40 34-83.5 30.5T124-272q-32-27-42.5-69.5T98-429l82-137q-27-21-43-52.63-16-31.64-16-68.37 0-63.53 45-108.76Q211-841 275-841t109 45q45 45 45 109t-45.24 109Q338.52-533 275-533q-10.8 0-21.6-1.5T233-539l-84 141q-14 23-8.82 45.11 5.17 22.1 22 36Q179-303 201.5-301.5T244-317l433-372q40-34 84-31t76 30q32 27 42.5 70T863-532l-81 137q27 21 43 52.63 16 31.64 16 68.37 0 63.52-45.54 108.76Q749.91-120 685.96-120 622-120 577.5-165.24 533-210.48 533-274t44.5-108.76Q622-428 686-428q10.73 0 20.87 1 10.13 1 20.13 4l84-140q14-23 8.82-45.11-5.17-22.1-22-36Q781-658 758.5-659.5T716-644L283-272Zm58.5-348.66q27.5-27.66 27.5-66.5t-27.66-66.34q-27.66-27.5-66.5-27.5t-66.34 27.66q-27.5 27.66-27.5 66.5t27.66 66.34q27.66 27.5 66.5 27.5t66.34-27.66Zm411.63 413Q781-235.32 781-274.16t-27.87-66.34q-27.86-27.5-67-27.5Q647-368 620-340.34q-27 27.66-27 66.5t27 66.34q27 27.5 66.13 27.5 39.14 0 67-27.66ZM275-687Zm412 413Z" />
+                        </svg>
+                </a>
+                <button class="navbar-toggler d-sm-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class=" collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
+                <ul class="navbar-nav flex-row gap-3 mb-lg-0 d-block d-sm-flex d-lg-none text-end">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'products' %}">Workflows</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Categories
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{% url 'products' %}?category=lead_generation">Lead
+                                Generation</a>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=email_automation">Email
+                                Automation</a>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=billing_sytems">Billing
+                                Systems</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="">Custom Workflows</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                <!-- Right side placement -->
+                <div class="d-flex align-items-center gap-3">
+                    {% if user.is_authenticated %}
+                    <!-- profile -->
+                    <div class="nav-item dropdown">
+                        <a class="nav-link icon" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-circle-user"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="">My Purchases</a>
+                            <a class="dropdown-item" href="">Edit Profile</a>
+                            <a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
+                        </div>
                     </div>
+                    <!-- shopping bag  -->
+                    <div class="d-flex flex-column">
+                        <a id='bag-icon' class="nav-link icon" href=""> <i class="fa-solid fa-bag-shopping"></i></a>
+                        <span class="text-muted">$0.00</span>
+                    </div>                
+                    {% endif%}
+                    <form class="d-flex align-items-center my-lg-0" method="GET" action="{% url 'products' %}">
+                        <input id="searchbar" class="form-control d-sm-none d-lg-flex justify-content-start"
+                            type="search" placeholder="Search" aria-label="Search" name="q">
+                        <button id="magni-glass" class="btn" type="submit"><i
+                                class="fa-solid fa-magnifying-glass d-sm-flex"></i>
+                        </button>
+                    </form>
+                    {% if not user.is_authenticated %}
+                    <a href="{% url 'account_login' %}" class="btn  d-sm-flex btn-outline-dark mx-2" type="submit">Sign
+                        in</a>
+                    <a href="{% url 'account_signup' %}" class="btn  d-sm-flex btn-outline-dark mx-2" type="submit">Sign
+                        up</a>
+                    {% endif %}
                 </div>
             </div>
-        </nav>
-        {% include 'includes/desktop_side_panel.html' %}
+        </div>
+        </div>
+    </nav>
+    {% include 'includes/desktop_side_panel.html' %}
 
     <main class="min-vh-100">
         {% block content %}
@@ -116,7 +145,7 @@
     </script>
 
     {% block postloadjs %}
-    
+
     {% endblock %}
 </body>
 

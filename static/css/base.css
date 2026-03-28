@@ -40,12 +40,25 @@ body {
 }
 
 .nav-link{
-    color: var(--primary-text-color) 
+    color: var(--secondary-text-color) 
+}
+
+.nav-link:hover{
+    color: var(--primary-text-color);
+    font-weight: bolder;
 }
 
 .btn-outline-dark {
     --bs-btn-hover-bg: var(--primary-hover);
     --bs-btn-hover-border-color: var(--primary-hover);
+}
+
+.icon{
+    font-size: x-large;
+}
+
+#bag-icon{
+    padding-top: 20px;
 }
 
 /* Sidebar */
