@@ -68,8 +68,8 @@
         <p>Please log in or sign up to purchase<p>
       </div>
       <div class="modal-footer">
-        <a href="{% url 'account_login' %}" type="button" class="btn btn-primary">Log In</a>
-        <a href="{% url 'account_signup' %}" type="button" class="btn btn-primary">Sign up</a>
+        <a href="{% url 'account_login' %}?next={{ request.path }}" type="button" class="btn btn-primary">Log In</a>
+        <a href="{% url 'account_signup' %}?next={{ request.path }}" type="button" class="btn btn-primary">Sign up</a>
       </div>
     </div>
   </div>
