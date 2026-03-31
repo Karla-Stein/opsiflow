@@ -37,7 +37,7 @@
                     {% for option in product_option %}
                    <li><a class="dropdown-item option" href="#" data-name="{{option.name}}" 
                     data-description="{{option.description}}" data-price="{{option.unit_price}}" 
-                    data-delivery="{{option.delivery_days}}">{{ option.name }}</a></li>
+                    data-delivery="{{option.delivery_days}}" data-pk="{{option.pk}}">{{ option.name }}</a></li>
                     {% endfor %}
                 </ul>
                  </div>
@@ -48,7 +48,14 @@
                 <p class="index-p" id="option-price">Price: $</p>
                 <a class="btn btn-primary my-3" href="{% url 'products' %}" role="button">Back</a>
                 {% if user.is_authenticated %}
-                <a class="btn btn-primary my-3" href="#" role="button">Add To Basket</a>
+                 <form action="{% url 'add_to_bag' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="selected_option_pk" id="selected-option-pk" value="{{ selected_option.pk }}">
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    <button id="add-to-basket" class="btn btn-primary my-3" type="submit">
+                    Add To Basket
+                    </button>
+                </form>
                 {% else %}
                 <button id="add-basket" class="btn btn-primary my-3" role="button">Add To Basket</button>
                 {% endif %}

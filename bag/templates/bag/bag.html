@@ -4,24 +4,61 @@
 {% block content %}
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-8 offset-lg-2 text-center mt-5">
-            <h2>Your bag</h2>
+        <div class="col-12 col-md-10 col-lg-8 offset-lg-2 text-center mt-5">
+             <h2>Your bag</h2>
             <hr>
-        </div>
-        <div class="col-8 offset-lg-2 text-center">
              {% if bag_items %}
-                    <div class="table-responsive rounded"></div>
-                {% else %}
-                    <p class="mb-5">Your bag is empty.</p>
-                    <a href="{% url 'products' %}" class="btn btn-outline-dark rounded">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="text-uppercase">Keep Shopping</span>
-                    </a>
-                {% endif %}
-        </div>
-    </div>
-</div>
+             {% for item in bag_items %}
+            <div class="card my-4 w-100 ">
+                <div class="card-body container checkout-card">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <img class="w-100" src="{{ item.product_option.product.image.url }}" alt="{{ item.product_option.product.name }}">
+                        </div>
+                        <div class="col-12 col-md-8 col-lg-7">
+                            <p class="card-title"><strong>{{item.product_option.product.name}}</strong></p><hr>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">{{item.product_option.name}}</h6>
+                            <p>{{item.product_option.unit_price}}</p>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-2">
+                            <a href="#" class="card-link"><i class="fa-solid fa-trash-can"></i>
+                            </a>
+                            <a href="#" class="card-link">Change
+                            </a>
+                        </div>
+                 </div>
+                 </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <div class="mt-5">
+                 <h2>Order Summary</h2>
+            <hr>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <th>Total</th>
+                        <th>Discount</th>
+                        <th>Grand Total</th>
+                    </thead>
+                    <tr>
+                        <td>{{total}}</td>
+                        <td>
+                            {% if bundle_discount %}
+                            - {{ bundle_discount|floatformat:2 }}
+                            {% endif %}
+                        </td>
+                        <td>{{ grand_total|floatformat:2}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="mb-5">
+                <a href="" class="btn btn-outline-dark mt-2 mx-2" type="button"><i class="fa-solid fa-angle-left"></i>  Keep Browsing</a>
+                <a href="" class="btn btn-outline-dark mt-2 mx-2" type="button">Go To Checkout</a>
+            </div>
 
+        </div>   
+    </div> 
+</div>                 
 {% endblock %}

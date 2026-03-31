@@ -19,6 +19,9 @@ for (let option of options) {
         let optionPrice = document.getElementById("option-price");
         optionPrice.innerText = `Price: $${unit_price}`;
 
+        let optionPk = document.getElementById("selected-option-pk");
+        optionPk.value = option.dataset.pk;
+
         let deliveryDays = document.getElementById("delivery-days");
          deliveryDays.innerText = `Once access is arranged, your system is set up and delivered within ${delivery} working days.`
         if(userOption === "Set Up Service"){
@@ -39,7 +42,11 @@ button.addEventListener("click", (e) => {
 });
 
 
-
+const addToBasket = document.getElementById("add-to-basket")
+let optionPk = document.getElementById("selected-option-pk");
+addToBasket.addEventListener("click", (e) => {
+    optionPk.value = option.dataset.pk;
+});
 
 
 

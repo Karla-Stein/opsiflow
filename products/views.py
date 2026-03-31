@@ -51,11 +51,13 @@ def product_detail(request, pk):
     queryset = Product.objects.all()
     product = get_object_or_404(queryset, pk=pk)
     product_option = product.options.all()
+    selected_option = product_option.first()
 
     return render(
         request,
         'products/product_detail.html',
         {'product': product,
-         'product_option': product_option}
+         'product_option': product_option,
+         'selected_option': selected_option}
 
     )

@@ -34,6 +34,15 @@ body {
     font-size: larger;
 }
 
+.card{
+    border-radius: 20px;
+}
+
+.checkout-card{
+    background-color: var(--primary-background);
+    border-radius: 20px;
+}
+
 /* Navbar */
 .navbar{
     background-color: var(--secondary-background);

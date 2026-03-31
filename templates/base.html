@@ -58,8 +58,7 @@
                         <a class="nav-link" href="{% url 'products' %}">Workflows</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Categories
                         </a>
                         <div class="dropdown-menu">
@@ -93,9 +92,16 @@
                     </div>
                     <!-- shopping bag  -->
                     <div class="d-flex flex-column">
-                        <a id='bag-icon' class="nav-link icon" href="{% url 'bag' %}"> <i class="fa-solid fa-bag-shopping"></i></a>
-                        <span class="text-muted"><small>$0.00</small></span>
-                    </div>                
+                        <a id='bag-icon' class="nav-link icon" href="{% url 'bag' %}"> <i
+                                class="fa-solid fa-bag-shopping"></i></a>
+                        <span class="text-muted"><small>
+                            {% if total %}
+                                ${{ grand_total|floatformat:2 }}
+                            {% else %} 
+                                $0.00
+                            {% endif %}
+                        </small></span>
+                    </div>
                     {% endif%}
                     <form class="d-flex align-items-center my-lg-0" method="GET" action="{% url 'products' %}">
                         <input id="searchbar" class="form-control d-sm-none d-lg-flex justify-content-start"
