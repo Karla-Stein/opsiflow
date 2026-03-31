@@ -70,6 +70,14 @@ body {
     padding-top: 20px;
 }
 
+.discount-banner{
+    background-color: var(--primary-text-color);
+    color: var(--secondary-background);
+    position: relative;
+    z-index: 1010;
+    height: 22px;
+}
+
 /* Sidebar */
 .sidebar {
     color: var(--secondary-text-color);
@@ -166,4 +174,3 @@ aside .nav-link{
    padding: 30px;
  }
 }
-
