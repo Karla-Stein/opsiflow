@@ -21,9 +21,9 @@
                             <p>{{item.product_option.unit_price}}</p>
                         </div>
                         <div class="col-12 col-md-6 col-lg-2">
-                            <a href="#" class="card-link"><i class="fa-solid fa-trash-can"></i>
+                            <a id="cancel-item" href="#" class="btn btn-outline-dark btn-sm" type="button"><i class="fa-regular fa-trash-can"></i>
                             </a>
-                            <a href="#" class="card-link">Change
+                            <a id="change-option" href="#" class="btn btn-outline-dark btn-sm" type="button">Change
                             </a>
                         </div>
                  </div>
@@ -61,4 +61,8 @@
         </div>   
     </div> 
 </div>                 
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
+    <script type="text/javascript" src="{% static 'bag/js/bag.js' %}"></script>
 {% endblock %}

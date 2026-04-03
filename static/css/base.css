@@ -48,6 +48,12 @@ body {
     background-color: var(--secondary-background);
 }
 
+#brand-name{
+    font-size: xx-large;
+    font-weight: bold;
+    font-style: italic;
+}
+
 .nav-link{
     color: var(--secondary-text-color) 
 }
@@ -140,6 +146,7 @@ aside .nav-link{
     font-weight: lighter;
     position: relative;
     z-index: 100;
+    margin-top: 100px;
 }
 /* Media queries */
 @media screen and (max-width: 576px) {
