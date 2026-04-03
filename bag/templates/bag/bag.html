@@ -21,7 +21,7 @@
                             <p>{{item.product_option.unit_price}}</p>
                         </div>
                         <div class="col-12 col-md-6 col-lg-2">
-                            <a id="cancel-item" href="#" class="btn btn-outline-dark btn-sm" type="button"><i class="fa-regular fa-trash-can"></i>
+                            <a id="cancel-item" href="{% url 'remove_from_bag' item.product_option.pk %}" class="btn btn-outline-dark btn-sm" type="button"><i class="fa-regular fa-trash-can"></i>
                             </a>
                             <a id="change-option" href="#" class="btn btn-outline-dark btn-sm" type="button">Change
                             </a>
