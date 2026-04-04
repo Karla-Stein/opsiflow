@@ -34,6 +34,12 @@ body {
     font-size: larger;
 }
 
+.custom-tooltip {
+  --bs-tooltip-bg: var(--primary-text-color);
+  --bs-tooltip-color: var(--secondary-background);
+}
+
+
 .card{
     border-radius: 20px;
 }

@@ -93,7 +93,7 @@
                     </div>
                     <!-- shopping bag  -->
                     <div class="d-flex flex-column">
-                        <a id='bag-icon' class="nav-link icon" href="{% url 'bag' %}"> <i
+                        <a id='bag-icon' class="nav-link icon" href="{% url 'bag' %}?next={{ request.get_full_path }}"> <i
                                 class="fa-solid fa-bag-shopping"></i></a>
                         <span class="text-muted"><small>
                             {% if total %}

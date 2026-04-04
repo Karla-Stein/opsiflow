@@ -64,3 +64,42 @@ def remove_from_bag(request, pk):
 
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
+
+def change_option(request, pk):
+    """
+    View to change product option in bag.
+
+    **Context**:
+    ``user_choice``:
+        An instance of :model: `products.ProductOption`.
+
+    ``new_item``:
+        An instance of :model: `products.ProductOption`.
+    """
+    user_choice = get_object_or_404(ProductOption, pk=pk)
+    bag = request.session.get('bag', {})
+    pk = str(user_choice.pk)
+    try:
+        if user_choice.fulfilment_choice == 1:
+            bag.pop(pk)
+            new_choice = 0
+
+        else:
+            bag.pop(pk)
+            new_choice = 1
+
+        new_item = get_object_or_404(ProductOption,
+                                     product=user_choice.product,
+                                     fulfilment_choice=new_choice)
+        new_pk = str(new_item.pk)
+        bag[new_pk] = 1
+        request.session['bag'] = bag
+        messages.success(request,
+                         f'{user_choice.product.name} was changed to '
+                         f'{new_item.name} from your bag')
+        return redirect('bag')
+
+    except Exception as e:
+        messages.error(request, f'Error changing item: {e}')
+        return HttpResponse(status=500)
