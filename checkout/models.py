@@ -1,6 +1,9 @@
+import uuid
 from django.db import models
-from profiles.models import UserProfile
 from django_countries.fields import CountryField
+
+from profiles.models import UserProfile
+from products.models import ProductOption
 
 # Create your models here.
 
@@ -8,6 +11,10 @@ STATUS = ((0, "pending"), (1, "confirmed"), (2, "cancelled"), (3, "failed"))
 
 
 class Order(models.Model):
+    """
+    An order model to store all checkout related user information as well as
+    the payment ID and order status.
+    """
     order_number = models.CharField(max_length=32, null=False,
                                     editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
@@ -31,3 +38,24 @@ class Order(models.Model):
                                   default='')
     status = models.IntegerField(choices=STATUS)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def _generate_order_number(self):
+        """
+        Generate a random, unique order number using UUID
+        """
+        return uuid.uuid4().hex.upper()
+
+
+class OrderLineItem(models.Model):
+    """
+    A model to store line item information, with product option,
+    related orders and the total.
+    """
+    item_option = models.ForeignKey(ProductOption, on_delete=models.SET_NULL,
+                                    null=True, blank=True,
+                                    related_name='order_line_items')
+    order = models.ForeignKey(Order, on_delete=models.CASCADE,
+                              related_name='lineitems')
+    quantity = models.PositiveIntegerField(default=1)
+    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2,
+                                         editable=False)
