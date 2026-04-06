@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django_countries.fields import CountryField
+from django.db.models import Sum
 
 from profiles.models import UserProfile
 from products.models import ProductOption
@@ -36,7 +37,7 @@ class Order(models.Model):
                                       null=False, default=0)
     payment_id = models.CharField(max_length=254, null=False, blank=False,
                                   default='')
-    status = models.IntegerField(choices=STATUS)
+    status = models.IntegerField(choices=STATUS, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def _generate_order_number(self):
@@ -44,6 +45,24 @@ class Order(models.Model):
         Generate a random, unique order number using UUID
         """
         return uuid.uuid4().hex.upper()
+
+    def save(self, *args, **kwargs):
+        """
+        Override the original save method to set the order number
+        if it hasn't been set already.
+        """
+        if not self.order_number:
+            self.order_number = self._generate_order_number()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'Order number: {self.order_number}. Status: {self.status}'
+
+    def update_total(self):
+        self.order_total = (self.lineitems.aggregate
+                            (Sum('lineitem_total'))
+                            ['lineitem_total__sum']) or 0
+        self.save()
 
 
 class OrderLineItem(models.Model):
@@ -59,3 +78,8 @@ class OrderLineItem(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2,
                                          editable=False)
+
+    def save(self, *args, **kwargs):
+        self.lineitem_total = self.item_option.unit_price * self.quantity
+        super().save(*args, **kwargs)
+        self.order.update_total()
