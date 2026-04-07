@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 
 {% block extra_css %}
@@ -61,7 +62,14 @@
                 Your Details
             </h3>
             <hr>
+              <form method="post">
+            {% csrf_token %}
+            {{ order_form|crispy }}
+            <button type="submit" class="btn btn-signup btn-outline-dark">Submit</button>
+            </form>
+
            </div>
+           
         </div>
     </div>
 </section>
