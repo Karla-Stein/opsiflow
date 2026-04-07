@@ -18,58 +18,68 @@
                 <hr>
             </div>
             <!-- left column -->
-           <div class="col-12 col-lg-5 offset-lg-2">
-            <h3>Order Summary</h3>
-            <hr>
-            <!-- order summary row -->
-             <div class="row">
-                <div class="col-2">
-                   <p> product images</p>
+            <div class="col-12 col-lg-5 offset-lg-2">
+                <h3>Order Summary</h3>
+                <hr>
+                <!-- order summary row -->
+                {% if bag_items %}
+                {% for item in bag_items %}
+                <div class="row">
+                    <div class="col-4 d-flex align-items-center">
+                        <img class="w-100" src="{{ item.product_option.product.image.url }}"
+                            alt="{{ item.product_option.product.name }}">
+                    </div>
+                    <div class="col-4">
+                        <p><small>{{item.product_option.product.name}}</small></p>
+                        <p><small>{{item.product_option.name|upper}}</small></p>
+                    </div>
+                    <div class="col-2 text-muted">
+                        Price:
+                    </div>
+                    <div class="col-2">
+                        <p><small>${{item.product_option.unit_price}}</small></p>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <p>item name</p>
-                    <p>qnt</p>
+                <hr>
+                {% endfor %}
+                {% endif %}
+                <hr>
+                <!-- order total row -->
+                <div class="row justify-content-end">
+                    <div class="col-12">
+                        <table class="table text-center">
+                            <tbody>
+                                <tr>
+                                    <th>Order Total:</th>
+                                    <th>Discount:</th>
+                                    <th>Grand Total:</th>
+                                </tr>
+                                <tr>
+                                    <td>${{total}}</td>
+                                    <td> {% if bundle_discount %}
+                                        - {{ bundle_discount|floatformat:2 }}
+                                        {% endif %}</td>
+                                    <td>{{ grand_total|floatformat:2}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="col-2">
-                    item price:
-                </div>
-                  <div class="col-2">
-                    $99
-                </div>
-             </div>
-             <hr>
 
-             <!-- order total row -->
-              <div class="row justify-content-end">
-                <div class="col-6">
-                    empty
-                </div>
-                <div class="col-3">
-                    <p>order total:</p>
-                    <p>discount:</p>
-                    <p>gran total:</p>
-                </div>
-                <div class="col-2">
-                    <p>$200</p>
-                    <p>-$15</p>
-                    <p>$185</p>
-                </div>
-              </div>
+            </div>
+            <div class="col-12 col-lg-5">
+                <h3>
+                    Your Details
+                </h3>
+                <hr>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ order_form|crispy }}
+                    <button type="submit" class="btn btn-signup btn-outline-dark">Submit</button>
+                </form>
 
-           </div>
-           <div class="col-12 col-lg-5">
-            <h3>
-                Your Details
-            </h3>
-            <hr>
-              <form method="post">
-            {% csrf_token %}
-            {{ order_form|crispy }}
-            <button type="submit" class="btn btn-signup btn-outline-dark">Submit</button>
-            </form>
+            </div>
 
-           </div>
-           
         </div>
     </div>
 </section>
