@@ -26,9 +26,13 @@
                 {% for item in bag_items %}
                 <div class="row">
                     <div class="col-4 d-flex align-items-center">
+                        {% if item.product.image %}
                         <img class="w-100" src="{{ item.product_option.product.image.url }}"
                             alt="{{ item.product_option.product.name }}">
+                        {% else %}
+                         <img src="{% static 'images/placeholder-image.jpg%}" alt="Placeholder image">
                     </div>
+                    {% endif %}
                     <div class="col-4">
                         <p><small>{{item.product_option.product.name}}</small></p>
                         <p><small>{{item.product_option.name|upper}}</small></p>
