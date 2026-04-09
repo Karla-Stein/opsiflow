@@ -20,6 +20,21 @@ img{
     
 }
 
+.form-check-input{
+    border: 1px solid var(--primary-text-color);
+}
+
 .form-check{
     margin-top: 50px;
+}
+
+#description{
+    height: 150px;
+    overflow-y: scroll;
+}
+
+
+
+#choose-option{
+     scroll-margin-top: 150px;
 }
