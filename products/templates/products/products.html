@@ -58,7 +58,7 @@
                 {% if product.image %}
                 <img src="{{ product.image.url }}" alt="{{ product.name }}">
                 {% else %}
-                <img src="{% static 'images/placeholder-image.jpg%}" alt="Placeholder image">
+                <img src="{% static 'images/placeholder-image.jpg' %}" alt="Placeholder image">
             </div>
             {% endif %}
             <div class="card-body text-center d-flex flex-column h-100">

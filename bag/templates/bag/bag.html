@@ -16,7 +16,7 @@
                             {% if item.product.image %}
                             <img class="w-100" src="{{ item.product_option.product.image.url }}" alt="{{ item.product_option.product.name }}">
                             {% else %}
-                            <img src="{% static 'images/placeholder-image.jpg%}" alt="Placeholder image">
+                            <img src="{% static 'images/placeholder-image.jpg' %}" alt="Placeholder image">
                         </div>
                         {% endif %}
                         <div class="col-12 col-md-8 col-lg-7">
