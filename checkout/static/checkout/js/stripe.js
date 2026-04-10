@@ -10,12 +10,12 @@ const elements = stripe.elements();
 
 const style = {
     base: {
-        color: '#000',
+        color: '#0F172A',
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
         fontSmoothing: 'antialiased',
         fontSize: '16px',
         '::placeholder': {
-            color: '#aab7c4'
+            color: '#475569'
         }
     },
     invalid: {
@@ -26,3 +26,20 @@ const style = {
 
 const card = elements.create('card', { style: style });
 card.mount('#card-element');
+
+// Display error message
+card.addEventListener('change', function (e) {
+    const errorDiv = document.getElementById('card-errors');
+
+    if (e.error) {
+        const html = `
+            <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+            </span>
+            <span>${e.error.message}</span>
+        `;
+        errorDiv.innerHTML = html;
+    } else {
+        errorDiv.textContent = '';
+    }
+});

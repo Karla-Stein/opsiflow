@@ -88,8 +88,13 @@
                         <!-- Stripe card element -->
                         <div id="card-element" class="form-control"></div>
                     </div>
-                    <button type="submit" class="btn btn-signup btn-outline-dark mt-4">Submit</button>
+                    <div class="text-end">
+                        <p>Total: ${{ grand_total }}</p>
+                    <button type="submit" class="btn btn-signup btn-outline-dark me-2 btn-sm"><i class="fa-solid fa-angle-left"></i> Adjust Bag</button>
+                    <button type="submit" class="btn btn-signup btn-outline-dark btn-sm">Charge Card</button>
+                    </div>
                 </form>
+                <div id="card-errors"></div>
 
             </div>
 
