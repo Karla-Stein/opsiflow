@@ -16,8 +16,8 @@
       <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
       {% else %}
       <img src="{% static 'images/placeholder-image.jpg' %}" alt="Placeholder image" class="img-fluid">
+      {% endif %}
     </div>
-    {% endif %}
     <div class="col-6 offset-lg-2 text-center mb-5">
       <hr class="mb-4">
       <a class="btn btn-primary my-3" href="{% url 'products' %}" role="button">Back</a>

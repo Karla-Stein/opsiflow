@@ -11,7 +11,7 @@
 <section id="checkout" class="my-5">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 offset-lg-2 text-center mb-5">
+            <div class="col-12 col-md-8 offset-lg-2 text-center mb-5">
                 <h2>
                     CHECKOUT
                 </h2>
@@ -30,9 +30,9 @@
                         <img class="w-100" src="{{ item.product_option.product.image.url }}"
                             alt="{{ item.product_option.product.name }}">
                         {% else %}
-                         <img class="w-100" src="{% static 'images/placeholder-image.jpg' %}" alt="Placeholder image">
+                        <img class="w-100" src="{% static 'images/placeholder-image.jpg' %}" alt="Placeholder image">
+                        {% endif %}
                     </div>
-                    {% endif %}
                     <div class="col-4">
                         <p><small>{{item.product_option.product.name}}</small></p>
                         <p><small>{{item.product_option.name|upper}}</small></p>
@@ -72,7 +72,7 @@
 
             </div>
             <!-- right column -->
-            <div class="col-12 col-lg-5">
+            <div class="col-12 col-md-6 col-lg-5">
                 <h3>
                     Your Details
                 </h3>
@@ -80,7 +80,15 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ order_form|crispy }}
-                    <button type="submit" class="btn btn-signup btn-outline-dark">Submit</button>
+                    <div class="my-3">
+                        <h3>
+                            Card Details
+                        </h3>
+                        <hr>
+                        <!-- Stripe card element -->
+                        <div id="card-element" class="form-control"></div>
+                    </div>
+                    <button type="submit" class="btn btn-signup btn-outline-dark mt-4">Submit</button>
                 </form>
 
             </div>
@@ -90,3 +98,10 @@
 </section>
 
 {% endblock%}
+{% block postloadjs %}
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe.js' %}"></script>
+
+{% endblock %}

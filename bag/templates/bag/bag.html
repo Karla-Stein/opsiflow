@@ -17,8 +17,8 @@
                             <img class="w-100" src="{{ item.product_option.product.image.url }}" alt="{{ item.product_option.product.name }}">
                             {% else %}
                             <img class="w-100" src="{% static 'images/placeholder-image.jpg' %}" alt="Placeholder image">
+                            {% endif %}
                         </div>
-                        {% endif %}
                         <div class="col-12 col-md-8 col-lg-7">
                             <p class="card-title"><strong>{{item.product_option.product.name}}</strong></p><hr>
                             <h6 class="card-subtitle mb-2 text-body-secondary">{{item.product_option.name}}</h6>

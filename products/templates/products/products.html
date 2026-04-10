@@ -44,7 +44,7 @@
             {% endif %}
             {% endfor %}
             {% else %}
-            <h2 display="5">Browse All Workflows</h2>
+            <h2 class="display-5">Browse All Workflows</h2>
             <p class="index-p">Simplify your business processes and ensure nothing gets missed.
                 <br>
                 These workflows automate invoicing, payment tracking, follow-ups and access management — creating a
@@ -59,8 +59,8 @@
                 <img src="{{ product.image.url }}" alt="{{ product.name }}">
                 {% else %}
                 <img src="{% static 'images/placeholder-image.jpg' %}" alt="Placeholder image">
+                {% endif %}
             </div>
-            {% endif %}
             <div class="card-body text-center d-flex flex-column h-100">
                <p> {{ product.name }}</p>
                 <p class="index-p">{{ product.excerpt }}</p>
