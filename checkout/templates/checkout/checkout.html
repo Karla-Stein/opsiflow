@@ -77,7 +77,7 @@
                     Your Details
                 </h3>
                 <hr>
-                <form method="post">
+                <form method="post" action="{% url 'checkout' %}" id="payment-form">
                     {% csrf_token %}
                     {{ order_form|crispy }}
                     <div class="my-3">
@@ -86,14 +86,15 @@
                         </h3>
                         <hr>
                         <!-- Stripe card element -->
-                        <div id="card-element" class="form-control"></div>
+                        <div id="payment-element"></div>
                     </div>
                     <div class="text-end">
                         <p>Total: ${{ grand_total }}</p>
-                    <button type="submit" class="btn btn-signup btn-outline-dark me-2 btn-sm"><i class="fa-solid fa-angle-left"></i> Adjust Bag</button>
-                    <button type="submit" class="btn btn-signup btn-outline-dark btn-sm">Charge Card</button>
+                    <a type="button" class="btn btn-signup btn-outline-dark me-2 btn-sm"><i class="fa-solid fa-angle-left"></i> Adjust Bag</a>
+                    <button id="submit-button" type="submit" class="btn btn-signup btn-outline-dark btn-sm">Charge Card</button>
                     </div>
                 </form>
+                <div id="payment-errors"></div>
                 <div id="card-errors"></div>
 
             </div>
