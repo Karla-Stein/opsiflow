@@ -32,7 +32,6 @@ class OrderForm(forms.ModelForm):
             'billing_county': 'County',
             'billing_city': 'City',
             'billing_postalcode': 'Postal Code',
-            'county': 'County, State or Locality',
         }
 
         self.fields['user_first_name'].widget.attrs['autofocus'] = True

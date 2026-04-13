@@ -162,7 +162,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Stripe
 BUNDLE_DISCOUNT = 15
-STRIPE_CURRENCY = 'usd'
+STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
 
