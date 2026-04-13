@@ -1,5 +1,4 @@
-h1{
-    position: relative;
-    top: 100px;
-    left: 100 px;
+img{
+    max-width: 200px;
+    height: auto;
 }

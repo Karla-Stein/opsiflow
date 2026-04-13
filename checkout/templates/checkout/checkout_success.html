@@ -1,7 +1,48 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
 
-<h1>this is the success page </h1>
+{% block content %}
+<section id="success">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8 col-lg-6 offset-lg-2 text-center mt-5">
+                <h2 class="display-5">Thank You for your purchase!</h2>
+                <hr>
+                <h3 class="text-muted">Email Confirmation was sent</h3>
+            </div>
+            {% for lineitem in order.lineitems.all  %}
+            <div class="row justify-content-center my-5 d-flex align-items-center">
+                <!-- large left side -->
+                <div class="col-12 col-lg-5 offset-lg-2 text-center justify-content-lg-start">  
+                   {% if lineitem.item_option.product.image %}
+                            <img class="image-fluid me-2 ms-auto" src="{{ lineitem.item_option.product.image.url }}" alt="{{ item.product_option.product.name }}">
+                            {% else %}
+                            <img class="image-fluid me-2 ms-auto" src="{% static 'images/placeholder-image.jpg' %}" alt="Placeholder image">
+                    {% endif %}
+                    <p class="d-inline text-nowrap">{{lineitem.item_option.name}}</p>
+                </div>
+                <!-- large right side -->
+                <div class="col-12 col-lg-5  text-center mt-5 text-muted">
+                    {% if lineitem.item_option.fulfilment_choice  == 0 %}
+                    <p>Access Your Download Here</p>
+                    <p><i class="fa-solid fa-download"></i></p>
+                    {% else %}
+                    <p>Please fill out your Onbaording form.</p>
+                    <p>We aim to have your order up and running in {{ lineitem.item_option.delivery_days }} {% if lineitem.item_option.delivery_days == 1 %} day. {% else %} days. {% endif%}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            <div class="row justify-content-center text-center">
+                <div class="col-12 col-lg-5 offset-lg-2">
+                    <a href="{% url 'products' %}" type="button" class="btn btn-outline-dark"><i class="fa-solid fa-chevron-left"></i>  Keep browsing</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
