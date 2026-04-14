@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import HttpResponse
 from django.contrib import messages
 from django.conf import settings
 from django.http import JsonResponse
+from django.http import FileResponse
 
 
 from .forms import OrderForm
@@ -74,7 +76,7 @@ def checkout(request):
 
 def checkout_success(request):
     """
-    A view to handle successful Stripe checkout, retrieve payment and 
+    A view to handle successful Stripe checkout, retrieve payment and
     order data, and associates OrderLineitem.
     Order and OrderLineItem is saved to the database and
     session cleared thereafter.
@@ -83,9 +85,9 @@ def checkout_success(request):
     bag = request.session.get('bag', {})
     checkout_data = request.session.get('form_data')
 
-    if not payment_intent or not bag or not checkout_data:
-        messages.error(request, "Missing checkout data.")
-        return redirect('checkout')
+    # if not payment_intent or not bag or not checkout_data:
+    #     messages.error(request, "Missing checkout data.")
+    #     return redirect('checkout')
 
     order = Order.objects.filter(payment_id=payment_intent).first()
 
@@ -125,3 +127,16 @@ def checkout_success(request):
         'checkout/checkout_success.html',
         {'order': order}
     )
+
+
+def download(request, pk):
+    download = get_object_or_404(OrderLineItem, pk=pk)
+
+    try:
+        file = download.item_option.download_file
+        return FileResponse(file.open(), as_attachment=True)
+    except Exception as e:
+        messages.error(request,
+                       f'An error occured pkease try again or'
+                       f'contact us: {e}')
+        return HttpResponse(status=500)
