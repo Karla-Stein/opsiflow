@@ -144,7 +144,7 @@ def download(request, pk):
             else:
                 messages.error(request,
                                'Your download count has reached its limit')
-                return HttpResponseForbidden(status=403)
+                return redirect('/')
         else:
             messages.error(request,
                            'No permission to download')
