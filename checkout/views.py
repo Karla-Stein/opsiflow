@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.shortcuts import HttpResponse
+from django.http import HttpResponseForbidden
 from django.contrib import messages
 from django.conf import settings
 from django.http import JsonResponse
@@ -103,6 +104,7 @@ def checkout_success(request):
         order = order_form.save(commit=False)
         order.payment_id = payment_intent
         order.status = 1
+        order.user_profile = request.user.userprofile
         order.save()
 
         for product_option_pk, quantity in bag.items():
@@ -133,10 +135,23 @@ def download(request, pk):
     download = get_object_or_404(OrderLineItem, pk=pk)
 
     try:
-        file = download.item_option.download_file
-        return FileResponse(file.open(), as_attachment=True)
+        if request.user.userprofile == download.order.user_profile:
+            if download.download_count > 0:
+                download.download_count -= 1
+                download.save()
+                file = download.item_option.download_file
+                return FileResponse(file.open(), as_attachment=True)
+            else:
+                messages.error(request,
+                               'Your download count has reached its limit')
+                return HttpResponseForbidden(status=403)
+        else:
+            messages.error(request,
+                           'No permission to download')
+            return HttpResponseForbidden(status=403)
+
     except Exception as e:
         messages.error(request,
-                       f'An error occured pkease try again or'
-                       f'contact us: {e}')
+                       f'An error occured please try again or'
+                       f' contact us: {e}')
         return HttpResponse(status=500)

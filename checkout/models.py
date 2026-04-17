@@ -78,6 +78,7 @@ class OrderLineItem(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2,
                                          editable=False)
+    download_count = models.PositiveIntegerField(default=3)
 
     def save(self, *args, **kwargs):
         self.lineitem_total = self.item_option.unit_price * self.quantity
