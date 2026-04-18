@@ -49,7 +49,8 @@ class ProductOption(models.Model):
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
     fulfilment_choice = models.IntegerField(
         choices=FULFILMENT_CHOICE, default=0)
-    download_file = models.FileField(null=True, blank=True)
+    download_file = models.FileField(null=True, blank=True,
+                                     upload_to='downloads/')
     tier = models.IntegerField(
         choices=TIER, null=True, blank=True)
     delivery_days = models.IntegerField(null=True, blank=True)
