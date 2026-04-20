@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profiles/css/purchases.css' %}">
+{% endblock %}
+
+{% block content %}
+ <section id="my-purchases">
+    <div class="container">
+        <div class="row justify-content-ccenter">
+            <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-3 text-center mt-5">
+                <h2>
+                    My Purchase History
+                </h2>
+                <hr>
+            </div>
+            <div class="col-12 col-md-11 col-lg-10 offset-md-1 offset-lg-2 text-center mt-5">
+                <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                        <th>
+                            Date of purchase
+                        </th>
+                        <th>
+                            Order number
+                        </th>
+                        <th>
+                            Product Name
+                        </th>
+                        <th>
+                            Product Option
+                        </th>
+                        <th>
+                            Download
+                        </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        {% for item in order.lineitems.all %}
+                        <tr>
+                            <td class="text-muted"><small>{{ order.created_at|date:'d-m-y' }}</small></td>
+                            <td class="text-muted"><small>{{ order.order_number }}</small></td>
+                            <td class="text-muted"><small>{{ item.item_option.product.name }}</small></td>
+                            <td class="text-muted"><small>{{ item.item_option }}</small></td>
+                            <td>
+                            {% if item.item_option.download_file %}
+                                <a href="{% url 'download' item.pk %}"><i class="fa-solid fa-download"></i></a>
+                            {% else %}
+                                <small class="text-muted">N/A</small>
+                            {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    {% endfor %}
+
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ </section>
+{% endblock %}

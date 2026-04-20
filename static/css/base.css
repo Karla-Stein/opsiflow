@@ -183,11 +183,11 @@ aside .nav-link{
 }
 }
 
-@media screen and (max-width: 576px) {
+/* @media screen and (max-width: 576px) {
  body{
    padding: 30px;
  }
-}
+} */
 
 @media screen and (min-width: 827px) {
  #brand-name{
