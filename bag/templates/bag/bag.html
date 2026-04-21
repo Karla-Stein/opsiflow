@@ -19,12 +19,12 @@
                             <img class="w-100" src="{% static 'images/placeholder-image.jpg' %}" alt="Placeholder image">
                             {% endif %}
                         </div>
-                        <div class="col-12 col-md-8 col-lg-7">
+                        <div class="col-12 col-md-8 col-lg-6">
                             <p class="card-title"><strong>{{item.product_option.product.name}}</strong></p><hr>
                             <h6 class="card-subtitle mb-2 text-body-secondary">{{item.product_option.name}}</h6>
                             <p>{{item.product_option.unit_price}}</p>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-2">
+                        <div class="col-12 col-md-6 col-lg-3">
                             <a id="cancel-item" href="{% url 'remove_from_bag' item.product_option.pk %}" 
                             class="btn btn-outline-dark btn-sm" type="button" data-bs-toggle="tooltip"
                             title="Remove item from basket" data-bs-placement="top" data-bs-custom-class="custom-tooltip" 

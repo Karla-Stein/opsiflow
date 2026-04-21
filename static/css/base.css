@@ -59,6 +59,9 @@ body {
 
 #brand-name{
     margin-top: 10px;
+    font-size: xx-large;
+    font-weight: bold;
+    font-style: italic;
 }
 
 .nav-link{
@@ -89,6 +92,25 @@ body {
     position: relative;
     z-index: 1010;
     height: 22px;
+}
+
+.offcanvas{
+    background-color: var(--primary-text-color);
+    color: var(--secondary-background);
+    opacity: 0.95;
+}
+.offcanvas .nav-link{
+    color: var(--secondary-background);
+}
+
+/* build in dev tools ai assistance */
+.btn-close {
+    filter: invert(1);
+    opacity: 1; /* Makes it fully white and bright */
+}
+
+#searchbar{
+    width: 150px;
 }
 
 /* Sidebar */
@@ -156,12 +178,6 @@ aside .nav-link{
     margin-top: 100px;
 }
 /* Media queries */
-@media screen and (max-width: 576px) {
- #magni-glass{
-   position: relative;
-   right: 70px;
- }
-}
 
 @media screen and (min-width: 992px) {
  #benefits{
@@ -183,12 +199,12 @@ aside .nav-link{
 }
 }
 
-/* @media screen and (max-width: 576px) {
- body{
-   padding: 30px;
- }
-} */
+@media screen and (min-width: 992px) {
+.navbar-brand{
+    pointer-events: none;
+}
 
+}
 @media screen and (min-width: 827px) {
  #brand-name{
     font-size: xx-large;
@@ -196,23 +212,9 @@ aside .nav-link{
     font-style: italic;
 }
 }
-@media screen and (min-width: 740px) and (max-width: 826px) {
- #brand-name{
-    font-size: x-large;
-    font-weight: bold;
-    font-style: italic;
-}
-}
-@media screen and (min-width: 701px) and (max-width: 739px) {
- #brand-name{
-    margin-top: 15px;
-    font-size: large;
-    font-weight: bold;
-    font-style: italic;
-}
-}
+
 @media screen and (max-width: 700px) {
  #brand-name{
     display: none;
 }
-}
+} 
