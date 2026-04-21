@@ -6,10 +6,17 @@
                      <li class="nav-item my-4">
                          <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house"></i>  Home</a>
                      </li>
-                     <li class="nav-item my-4">
-
-                         <a class="nav-link" href="{% url 'products' %}"><i class="fa-solid fa-chart-diagram"></i>  Workflows</a>
-                     </li>
+                     <!-- sort by dropdown  -->
+                    <li class="nav-item dropend my-4">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-chart-diagram"></i>
+                            Sort Workflows</a>
+                        <div id="sorting-dropdown" class="dropdown-menu border-0 shadow-sm" aria-labelledby="all-products-link">
+                            <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item"><i class="fa-solid fa-dollar-sign"></i> By Lowest Price</a>
+                            <a href="{% url 'products' %}?sort=complexity&direction=asc" class="dropdown-item "><i class="fa-solid fa-screwdriver-wrench"></i> By Least Complexity</a>
+                            <a href="{% url 'products' %}?sort=name&direction=asc" class="dropdown-item "><i class="fa-solid fa-arrow-up-a-z"></i> By name A - Z</a>
+                            <a href="{% url 'products' %}" class="dropdown-item">All Workflows</a>
+                        </div>
+                    </li>
                      <li class="nav-item my-4">
                          <a class="nav-link" href="{% url 'products' %}?category=lead_generation"><i class="fa-solid fa-people-group"></i>  Lead Generation</a>
                      </li>

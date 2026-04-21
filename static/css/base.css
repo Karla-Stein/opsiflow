@@ -103,6 +103,16 @@ body {
     color: var(--secondary-background);
 }
 
+#sorting-dropdown{
+    --bs-dropdown-bg: var(--primary-text-color);
+    --bs-dropdown-link-color: var(--secondary-background);
+    font-weight: bolder;
+}
+
+.dropdown-item{
+    font-weight: bold;
+}
+
 /* build in dev tools ai assistance */
 .btn-close {
     filter: invert(1);

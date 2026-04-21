@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models import Min
+from django.db.models.functions import Lower
+
 from .models import Product, Category
 
 
@@ -11,27 +14,55 @@ def all_products(request):
     """
 
     products = Product.objects.all()
+
     query = None
     categories = None
+    sort = None
+    direction = None
 
     # Filter products by category from navbar links
     if request.GET:
-        if 'category' in request.GET:
-            categories = request.GET['category']
-            products = products.filter(category__name=categories)
-            categories = Category.objects.filter(name=categories)
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
 
-        # Filter products by keyword from search bar
-        if 'q' in request.GET:
-            query = request.GET['q']
-            if not query:
-                messages.error(request, "No search criteria entered!")
-                return redirect(reverse('products'))
+            # A - Z sorting
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=Lower('name'))
+            # Complexity Sorting by delivery days 
+            if sortkey == 'complexity':
+                products = products.annotate(
+                    complexity=Min('options__delivery_days'))
+                sortkey = 'complexity'
 
-            # case insensitiv or logic
-            queries = (Q(name__icontains=query) |
-                       Q(description__icontains=query))
-            products = products.filter(queries)
+            if sortkey == 'price':
+                products = products.annotate(
+                    price=Min('options__unit_price'))
+                sortkey = 'price'
+
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'asc':
+                    sortkey = f'{sortkey}'
+            products = products.order_by(sortkey)
+
+            if 'category' in request.GET:
+                categories = request.GET['category']
+                products = products.filter(category__name=categories)
+                categories = Category.objects.filter(name=categories)
+
+            # Filter products by keyword from search bar
+            if 'q' in request.GET:
+                query = request.GET['q']
+                if not query:
+                    messages.error(request, "No search criteria entered!")
+                    return redirect(reverse('products'))
+
+                # case insensitiv or logic
+                queries = (Q(name__icontains=query) |
+                        Q(description__icontains=query))
+                products = products.filter(queries)
 
     return render(
         request,

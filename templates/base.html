@@ -29,7 +29,7 @@
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/75c27a2f98.js" crossorigin="anonymous"></script>
     <!-- Stripe -->
-     <script src="https://js.stripe.com/dahlia/stripe.js"></script>
+    <script src="https://js.stripe.com/dahlia/stripe.js"></script>
     {% endblock%}
 
     <title>OpsiFlow {% block extra_title %}{% endblock %}</title>
@@ -39,8 +39,9 @@
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
             <div class="d-flex">
-                <a class="navbar-brand btn" data-bs-toggle="offcanvas" href="#offcanvas-navbar" role="button" aria-controls="offcanvasExample" ><strong><svg xmlns="http://www.w3.org/2000/svg" height="48px"
-                             viewBox="0 -960 960 960" width="48px" fill="#1f1f1f">
+                <a class="navbar-brand btn" data-bs-toggle="offcanvas" href="#offcanvas-navbar" role="button"
+                    aria-controls="offcanvasExample"><strong><svg xmlns="http://www.w3.org/2000/svg" height="48px"
+                            viewBox="0 -960 960 960" width="48px" fill="#1f1f1f">
                             <path
                                 d="M283-272q-40 34-83.5 30.5T124-272q-32-27-42.5-69.5T98-429l82-137q-27-21-43-52.63-16-31.64-16-68.37 0-63.53 45-108.76Q211-841 275-841t109 45q45 45 45 109t-45.24 109Q338.52-533 275-533q-10.8 0-21.6-1.5T233-539l-84 141q-14 23-8.82 45.11 5.17 22.1 22 36Q179-303 201.5-301.5T244-317l433-372q40-34 84-31t76 30q32 27 42.5 70T863-532l-81 137q27 21 43 52.63 16 31.64 16 68.37 0 63.52-45.54 108.76Q749.91-120 685.96-120 622-120 577.5-165.24 533-210.48 533-274t44.5-108.76Q622-428 686-428q10.73 0 20.87 1 10.13 1 20.13 4l84-140q14-23 8.82-45.11-5.17-22.1-22-36Q781-658 758.5-659.5T716-644L283-272Zm58.5-348.66q27.5-27.66 27.5-66.5t-27.66-66.34q-27.66-27.5-66.5-27.5t-66.34 27.66q-27.5 27.66-27.5 66.5t27.66 66.34q27.66 27.5 66.5 27.5t66.34-27.66Zm411.63 413Q781-235.32 781-274.16t-27.87-66.34q-27.86-27.5-67-27.5Q647-368 620-340.34q-27 27.66-27 66.5t27 66.34q27 27.5 66.13 27.5 39.14 0 67-27.66ZM275-687Zm412 413Z" />
                         </svg>
@@ -48,74 +49,86 @@
                 <p id="brand-name">OpsiFlow</p>
             </div>
             <div class="offcanvas offcanvas-start" id="offcanvas-navbar" aria-labelledby="offcanvas-navigation">
-                 <div class="offcanvas-header">
+                <div class="offcanvas-header">
                     <h5 class="offcanvas-title"> Navigation</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     <hr>
-                 </div>
-                 <ul class="navbar-nav flex-row gap-2 mb-lg-0 d-block d-lg-none text-start ms-3">
-                     <li class="nav-item my-4">
-                         <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house"></i>  Home</a>
-                     </li>
-                     <li class="nav-item my-4">
-
-                         <a class="nav-link" href="{% url 'products' %}"><i class="fa-solid fa-chart-diagram"></i>  Workflows</a>
-                     </li>
-                     <li class="nav-item my-4">
-                         <a class="nav-link" href="{% url 'products' %}?category=lead_generation"><i class="fa-solid fa-people-group"></i>  Lead Generation</a>
-                     </li>
-                     <li class="nav-item my-4">
-                         <a class="nav-link" href="{% url 'products' %}?category=email_automation"><i class="fa-regular fa-envelope"></i>  Email Automation</a>
-                     </li>
-                     <li class="nav-item my-4">
-                         <a class="nav-link" href="{% url 'products' %}?category=billing_systems"><i class="fa-solid fa-sack-dollar"></i>  Billing systems</a>
-                     </li>
-                     <li class="nav-item my-4">
-                         <a class="nav-link" href="{% url 'products' %}?category=custom_workflows"><i class="fa-solid fa-sliders"></i>  Custom Workflows</a>
-                     </li>
+                </div>
+                <ul class="navbar-nav flex-row gap-2 mb-lg-0 d-block d-lg-none text-start ms-3">
                     <li class="nav-item my-4">
-                         <a class="nav-link" href="#"><i class="fa-regular fa-handshake"></i>  Contact</a>
-                     </li>
-                 </ul>
-                   
-                    {% if not user.is_authenticated %}
-                    <a href="{% url 'account_login' %}" class="btn  d-sm-flex btn-outline-dark mx-2" type="submit">Sign
-                        in</a>
-                    <a href="{% url 'account_signup' %}" class="btn  d-sm-flex btn-outline-dark me-2" type="submit">Sign
-                        up</a>
-                    {% endif %}
-             </div>
-                            <!-- Right side placement -->
-                <div class="d-flex align-items-center gap-3 ms-auto">
-                    {% if user.is_authenticated %}
-                    <!-- profile -->
-                    <div class="nav-item dropstart">
-                        <a class="nav-link icon" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-circle-user"></i>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{% url 'purchases' %}">My Purchases</a>
-                            <a class="dropdown-item" href="">Edit Profile</a>
-                            <a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
+                        <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a>
+                    </li>
+                    <!-- sort by dropdown  -->
+                    <li class="nav-item dropdown my-4">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-chart-diagram"></i>
+                            Sort Workflows</a>
+                        <div id="sorting-dropdown" class="dropdown-menu border-0 shadow-sm" aria-labelledby="all-products-link">
+                            <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item"><i class="fa-solid fa-dollar-sign"></i> By Lowest Price</a>
+                            <a href="{% url 'products' %}?sort=complexity&direction=asc" class="dropdown-item "><i class="fa-solid fa-screwdriver-wrench"></i> By Least Complexity</a>
+                            <a href="{% url 'products' %}?sort=name&direction=asc" class="dropdown-item "><i class="fa-solid fa-arrow-up-a-z"></i> By name A - Z</a>
+                            <a href="{% url 'products' %}" class="dropdown-item">All Workflows</a>
                         </div>
+                    </li>
+
+                    <li class="nav-item my-4">
+                        <a class="nav-link" href="{% url 'products' %}?category=lead_generation"><i
+                                class="fa-solid fa-people-group"></i> Lead Generation</a>
+                    </li>
+                    <li class="nav-item my-4">
+                        <a class="nav-link" href="{% url 'products' %}?category=email_automation"><i
+                                class="fa-regular fa-envelope"></i> Email Automation</a>
+                    </li>
+                    <li class="nav-item my-4">
+                        <a class="nav-link" href="{% url 'products' %}?category=billing_systems"><i
+                                class="fa-solid fa-sack-dollar"></i> Billing systems</a>
+                    </li>
+                    <li class="nav-item my-4">
+                        <a class="nav-link" href="{% url 'products' %}?category=custom_workflows"><i
+                                class="fa-solid fa-sliders"></i> Custom Workflows</a>
+                    </li>
+                    <li class="nav-item my-4">
+                        <a class="nav-link" href="#"><i class="fa-regular fa-handshake"></i> Contact</a>
+                    </li>
+                </ul>
+
+                {% if not user.is_authenticated %}
+                <a href="{% url 'account_login' %}" class="btn  d-sm-flex btn-outline-dark mx-2" type="submit">Sign
+                    in</a>
+                <a href="{% url 'account_signup' %}" class="btn  d-sm-flex btn-outline-dark me-2" type="submit">Sign
+                    up</a>
+                {% endif %}
+            </div>
+            <!-- Right side placement -->
+            <div class="d-flex align-items-center gap-3 ms-auto">
+                {% if user.is_authenticated %}
+                <!-- profile -->
+                <div class="nav-item dropstart">
+                    <a class="nav-link icon" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-circle-user"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'purchases' %}">My Purchases</a>
+                        <a class="dropdown-item" href="">Edit Profile</a>
+                        <a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
                     </div>
-                    <!-- shopping bag  -->
-                    <div class="d-flex flex-column me-3">
-                        <a id='bag-icon' class="nav-link icon" href="{% url 'bag' %}?next={{ request.get_full_path }}"> <i
-                                class="fa-solid fa-bag-shopping"></i></a>
-                        <span class="text-muted"><small>
+                </div>
+                <!-- shopping bag  -->
+                <div class="d-flex flex-column me-3">
+                    <a id='bag-icon' class="nav-link icon" href="{% url 'bag' %}?next={{ request.get_full_path }}"> <i
+                            class="fa-solid fa-bag-shopping"></i></a>
+                    <span class="text-muted"><small>
                             {% if total %}
-                                ${{ grand_total|floatformat:2 }}
-                            {% else %} 
-                                $0.00
+                            ${{ grand_total|floatformat:2 }}
+                            {% else %}
+                            $0.00
                             {% endif %}
                         </small></span>
-                    </div>
-                    {% endif%}
-        </div>
+                </div>
+                {% endif%}
+            </div>
     </nav>
     <!-- Discount Banner -->
-     <div class="container-fluid discount-banner">
+    <div class="container-fluid discount-banner">
         <div class="row text-center">
             <div class="col-12">
                 <p><strong>BUNDLE DISCOUNT - GET 3 TEMPLATES GET 15% OFF</strong></p>
@@ -126,32 +139,32 @@
     <div class="container-fluid">
         <div class="row justify-content-center justify-content-lg-end">
             <div class="col-2 mt-2 me-4 ">
-                 <form class="d-flex align-items-center" method="GET" action="{% url 'products' %}">
-                        <input id="searchbar" class="form-control"
-                            type="search" placeholder="Search" aria-label="Search" name="q">
-                        <button id="magni-glass" class="btn" type="submit"><i
-                                class="fa-solid fa-magnifying-glass d-sm-flex"></i>
-                        </button>
-                    </form>
+                <form class="d-flex align-items-center" method="GET" action="{% url 'products' %}">
+                    <input id="searchbar" class="form-control" type="search" placeholder="Search" aria-label="Search"
+                        name="q">
+                    <button id="magni-glass" class="btn" type="submit"><i
+                            class="fa-solid fa-magnifying-glass d-sm-flex"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </div>
-    
-     {% if messages %}
+
+    {% if messages %}
     <div class="message-container">
-    {% for message in messages %}
-     {% with message.level as level %}
+        {% for message in messages %}
+        {% with message.level as level %}
         {% if level == 40 %}
-            {% include 'includes/toasts/toast_error.html' %}
+        {% include 'includes/toasts/toast_error.html' %}
         {% elif level == 30 %}
-            {% include 'includes/toasts/toast_warning.html' %}
+        {% include 'includes/toasts/toast_warning.html' %}
         {% elif level == 25 %}
-            {% include 'includes/toasts/toast_success.html' %}
+        {% include 'includes/toasts/toast_success.html' %}
         {% else %}
-            {% include 'includes/toasts/toast_info.html' %}
+        {% include 'includes/toasts/toast_info.html' %}
         {% endif %}
-     {% endwith %}
-    {% endfor %}
+        {% endwith %}
+        {% endfor %}
     </div>
     {% endif %}
     {% include 'includes/desktop_side_panel.html' %}
