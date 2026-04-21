@@ -62,8 +62,11 @@
                 {% endif %}
             </div>
             <div class="card-body text-center d-flex flex-column h-100">
-               <p> {{ product.name }}</p>
-                <p class="index-p">{{ product.excerpt }}</p>
+                <p class="text-muted"><i class="fa-solid fa-tag"></i><small>{{ product.category.friendly_name }}</small></p>
+                <p><small>{{ product.name }}</small></p>
+                <p class="index-p"><small>{{ product.excerpt }}</small></p>
+                <p class="index-p"><small>Set up service within {{ product.min_delivery }}</small></p>
+                <p class="index-p"><small>from ${{ product.min_price }}</small></p>
                 <a href="{% url 'product_detail' product.pk %}" type="button" class="mt-auto btn btn-outline-primary">see details</a>
             </div>
         </div>

@@ -24,13 +24,13 @@ def all_products(request):
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
-            sort = sortkey
+            sort = sortkey  # noqa
 
             # A - Z sorting
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 products = products.annotate(lower_name=Lower('name'))
-            # Complexity Sorting by delivery days 
+            # Complexity Sorting by delivery days
             if sortkey == 'complexity':
                 products = products.annotate(
                     complexity=Min('options__delivery_days'))
@@ -61,15 +61,18 @@ def all_products(request):
 
                 # case insensitiv or logic
                 queries = (Q(name__icontains=query) |
-                        Q(description__icontains=query))
+                           Q(description__icontains=query))
                 products = products.filter(queries)
+
+    products = products.annotate(min_price=Min('options__unit_price'),
+                                 min_delivery=Min('options__delivery_days'))
 
     return render(
         request,
         'products/products.html',
         {'products': products,
          'search_term': query,
-         'current_categories': categories
+         'current_categories': categories,
          }
     )
 

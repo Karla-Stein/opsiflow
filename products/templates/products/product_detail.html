@@ -19,16 +19,18 @@
       {% endif %}
     </div>
     <div class="col-6 offset-lg-2 text-center mb-5">
-      <hr class="mb-4">
+      
       <a class="btn btn-primary my-3" href="{% url 'products' %}" role="button">Back</a>
       <a href="#choose-option" class="btn btn-primary my-3" type="button" role="button">Select Option</a>
       <br>
       <hr class="mt-4">
     </div>
     <div class="col-8 offset-lg-2 text-center" id="choose-option">
+      <p class="text-muted mb-5"><i class="fa-solid fa-tag"></i><small>{{ product.category.friendly_name }}</small></p>
       <h2 class="display-7 mb-3">{{ product.name }}
       </h2>
-      <p id="description" class="index-p mb-5">{{ product.description }}</p>
+      <p id="description" class="index-p">{{ product.description }}</p> 
+
     </div>
   </div>
   <div class="row justify-content-center d-flex flex-row">
