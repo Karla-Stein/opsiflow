@@ -1,0 +1,5 @@
+#submit-detail:hover,
+#delete-detail:hover{
+    background-color: var(--accent-colour);
+}
+
