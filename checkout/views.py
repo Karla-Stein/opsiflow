@@ -38,6 +38,7 @@ def checkout(request):
             'billing_city': request.POST['billing_city'],
             'billing_postalcode': request.POST['billing_postalcode'],
             'billing_country': request.POST['billing_country'],
+            'save_details': request.POST.get('save-details')
         }
 
         return JsonResponse({'success': True})
@@ -107,15 +108,39 @@ def checkout_success(request):
         order.user_profile = request.user.userprofile
         order.save()
 
-        for product_option_pk, quantity in bag.items():
-            product_option = get_object_or_404(ProductOption,
-                                               pk=product_option_pk)
+        # Save user info
+        save_details = checkout_data.get('save_details')
+        print(checkout_data)
+        if save_details:
+            profile = request.user.userprofile
 
-            order_line_item = OrderLineItem(item_option=product_option,
-                                            order=order,
-                                            quantity=quantity,
-                                            )
-            order_line_item.save()
+            profile.default_first_name = order.user_first_name
+            profile.default_last_name = order.user_last_name
+            profile.default_email = order.user_email
+            profile.default_phone_number = order.user_phone
+            profile.default_street_address1 = order.billing_address_1
+            profile.default_street_address2 = order.billing_address_2
+            profile.default_city = order.billing_city
+            profile.default_county = order.billing_county
+            profile.default_postcode = order.billing_postalcode
+            profile.default_country = order.billing_country
+            profile.save()
+
+        for product_option_pk, quantity in bag.items():
+            try:
+                product_option = get_object_or_404(ProductOption,
+                                                   pk=product_option_pk)
+
+                order_line_item = OrderLineItem(item_option=product_option,
+                                                order=order,
+                                                quantity=quantity,
+                                                )
+                order_line_item.save()
+            except ProductOption.DoesNotExist:
+                messages.error(request, (
+                    "This product option can't be found in our data base."
+                    "Please contact us for assistance."
+                ))
 
         order.update_total()
 

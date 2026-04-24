@@ -80,6 +80,12 @@
                 <form method="post" action="{% url 'checkout' %}" id="payment-form">
                     {% csrf_token %}
                     {{ order_form|crispy }}
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="id-save-details" name="save-details" checked>
+                        <label class="form-check-label" for="checkDefault">
+                            Save details for future checkouts
+                        </label>
+                    </div>
                     <div class="my-3">
                         <h3>
                             Card Details
@@ -90,8 +96,10 @@
                     </div>
                     <div class="text-end">
                         <p>Total: ${{ grand_total }}</p>
-                    <a type="button" class="btn btn-signup btn-outline-dark me-2 btn-sm"><i class="fa-solid fa-angle-left"></i> Adjust Bag</a>
-                    <button id="submit-button" type="submit" class="btn btn-signup btn-outline-dark btn-sm">Charge Card</button>
+                        <a type="button" class="btn btn-signup btn-outline-dark me-2 btn-sm"><i
+                                class="fa-solid fa-angle-left"></i> Adjust Bag</a>
+                        <button id="submit-button" type="submit" class="btn btn-signup btn-outline-dark btn-sm">Charge
+                            Card</button>
                     </div>
                 </form>
                 <div id="payment-errors"></div>
