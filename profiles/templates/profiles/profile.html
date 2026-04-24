@@ -30,10 +30,8 @@
         <div class="col-12 col-md-8 col-lg-6 offset-lg-2 text-center">
                 <form method="post" action="{% url 'my_profile' %}" id="profile-form">
                     {% csrf_token %}
-                    {{ form|crispy }}
-                  
+                    {{ form|crispy }}                 
                     <div class="text-end">
-                    <a id="delete-details" type="submit" class="btn btn-signup btn-outline-dark btn-sm">Delete Details</a>
                     <button id="submit-details" type="submit" class="btn btn-signup btn-outline-dark btn-sm">Update Details</button>
                     </div>
                 </form>

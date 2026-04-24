@@ -37,8 +37,8 @@
 
 <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container-fluid">           
-            <div class="d-flex">   
+        <div class="container-fluid">
+            <div class="d-flex">
                 <a class="navbar-brand btn" data-bs-toggle="offcanvas" href="#offcanvas-navbar" role="button"
                     aria-controls="offcanvasExample"><strong><svg xmlns="http://www.w3.org/2000/svg" height="48px"
                             viewBox="0 -960 960 960" width="48px" fill="#1f1f1f">
@@ -60,12 +60,17 @@
                     </li>
                     <!-- sort by dropdown  -->
                     <li class="nav-item dropdown my-4">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-chart-diagram"></i>
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"><i class="fa-solid fa-chart-diagram"></i>
                             Sort Workflows</a>
-                        <div id="sorting-dropdown" class="dropdown-menu border-0 shadow-sm" aria-labelledby="all-products-link">
-                            <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item"><i class="fa-solid fa-dollar-sign"></i> By Lowest Price</a>
-                            <a href="{% url 'products' %}?sort=complexity&direction=asc" class="dropdown-item "><i class="fa-solid fa-screwdriver-wrench"></i> By Least Complexity</a>
-                            <a href="{% url 'products' %}?sort=name&direction=asc" class="dropdown-item "><i class="fa-solid fa-arrow-up-a-z"></i> By name A - Z</a>
+                        <div id="sorting-dropdown" class="dropdown-menu border-0 shadow-sm"
+                            aria-labelledby="all-products-link">
+                            <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item"><i
+                                    class="fa-solid fa-dollar-sign"></i> By Lowest Price</a>
+                            <a href="{% url 'products' %}?sort=complexity&direction=asc" class="dropdown-item "><i
+                                    class="fa-solid fa-screwdriver-wrench"></i> By Least Complexity</a>
+                            <a href="{% url 'products' %}?sort=name&direction=asc" class="dropdown-item "><i
+                                    class="fa-solid fa-arrow-up-a-z"></i> By name A - Z</a>
                             <a href="{% url 'products' %}" class="dropdown-item">All Workflows</a>
                         </div>
                     </li>
@@ -108,8 +113,14 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{% url 'purchases' %}">My Purchases</a>
-                        <a class="dropdown-item" href="{% url 'my_profile' %}">Edit Profile</a>
+                        <a class="dropdown-item" href="{% url 'my_profile' %}">My Details</a>
                         <a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
+                        <form method="POST" action="{% url 'delete_account' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="dropdown-item text-danger">
+                                <i class="fa-solid fa-trash"></i> Delete Account
+                            </button>
+                        </form>
                     </div>
                 </div>
                 <!-- shopping bag  -->
@@ -136,7 +147,7 @@
         </div>
     </div>
     <!-- search bar -->
-   <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row justify-content-center justify-content-lg-end">
             <div class="col-4 mt-2">
                 <form class="d-flex align-items-center" method="GET" action="{% url 'products' %}">
