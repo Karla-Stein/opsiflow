@@ -11,6 +11,7 @@ from .forms import OrderForm
 from bag.contexts import bag_contents
 from products.models import ProductOption
 from .models import OrderLineItem, Order
+from profiles.models import UserProfile
 
 import stripe
 
@@ -43,6 +44,23 @@ def checkout(request):
 
         return JsonResponse({'success': True})
 
+    try:
+        profile = UserProfile.objects.get(user=request.user)
+        order_form = OrderForm(initial={
+            'user_first_name': profile.default_first_name,
+            'user_last_name': profile.default_last_name,
+            'user_email': profile.default_email,
+            'user_phone': profile.default_phone_number,
+            'billing_address_1': profile.default_street_address1,
+            'billing_address_2': profile.default_street_address2,
+            'billing_city': profile.default_city,
+            'billing_county': profile.default_county,
+            'billing_postalcode': profile.default_postcode,
+            'billing_country': profile.default_country,
+        })
+    except UserProfile.DoesNotExist:
+        order_form = OrderForm()
+
     bag = request.session.get('bag', {})
     if not bag:
         messages.error(request, "Your bag is empty")
@@ -62,8 +80,6 @@ def checkout(request):
 
     if not stripe_public_key:
         messages.warning(request, "Stripe public key is missing.")
-
-    order_form = OrderForm()
 
     return render(
         request,
@@ -110,7 +126,6 @@ def checkout_success(request):
 
         # Save user info
         save_details = checkout_data.get('save_details')
-        print(checkout_data)
         if save_details:
             profile = request.user.userprofile
 
