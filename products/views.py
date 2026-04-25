@@ -20,7 +20,6 @@ def all_products(request):
     sort = None
     direction = None
 
-    # Filter products by category from navbar links
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
@@ -47,22 +46,23 @@ def all_products(request):
                     sortkey = f'{sortkey}'
             products = products.order_by(sortkey)
 
-            if 'category' in request.GET:
-                categories = request.GET['category']
-                products = products.filter(category__name=categories)
-                categories = Category.objects.filter(name=categories)
+        # Filter products by category from navbar links
+        if 'category' in request.GET:
+            categories = request.GET['category']
+            products = products.filter(category__name=categories)
+            categories = Category.objects.filter(name=categories)
 
-            # Filter products by keyword from search bar
-            if 'q' in request.GET:
-                query = request.GET['q']
-                if not query:
-                    messages.error(request, "No search criteria entered!")
-                    return redirect(reverse('products'))
+        # Filter products by keyword from search bar
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, "No search criteria entered!")
+                return redirect(reverse('products'))
 
-                # case insensitiv or logic
-                queries = (Q(name__icontains=query) |
-                           Q(description__icontains=query))
-                products = products.filter(queries)
+            # case insensitiv or logic
+            queries = (Q(name__icontains=query) |
+                       Q(description__icontains=query))
+            products = products.filter(queries)
 
     products = products.annotate(min_price=Min('options__unit_price'),
                                  min_delivery=Min('options__delivery_days'))
