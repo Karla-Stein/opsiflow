@@ -159,16 +159,21 @@ def checkout_success(request):
                 ))
 
         order.update_total()
-        
+
     # Send custom confirmation emails
-    text_content = render_to_string(
-        "checkout/emails/purchase_confirmation.txt",
+    # text_content = render_to_string(
+    #     "checkout/emails/purchase_confirmation.txt",
+    #     context={"order": order},
+    # )
+    html_content = render_to_string(
+        "checkout/emails/purchase_confirmation.html",
         context={"order": order},
     )
 
     send_mail(
         "Thank you for your Purchase",
-        text_content,
+        # text_content,
+        html_content,
         settings.EMAIL_HOST_USER,
         [order.user_email],
         fail_silently=False,
