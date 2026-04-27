@@ -5,7 +5,8 @@ from django.contrib import messages
 from django.conf import settings
 from django.http import JsonResponse
 from django.http import FileResponse
-
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 from .forms import OrderForm
 from bag.contexts import bag_contents
@@ -158,6 +159,20 @@ def checkout_success(request):
                 ))
 
         order.update_total()
+        
+    # Send custom confirmation emails
+    text_content = render_to_string(
+        "checkout/emails/purchase_confirmation.txt",
+        context={"order": order},
+    )
+
+    send_mail(
+        "Thank you for your Purchase",
+        text_content,
+        settings.EMAIL_HOST_USER,
+        [order.user_email],
+        fail_silently=False,
+    )
 
     if 'bag' in request.session:
         del request.session['bag']

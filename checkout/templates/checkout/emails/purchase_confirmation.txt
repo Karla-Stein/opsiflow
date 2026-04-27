@@ -1,0 +1,24 @@
+Thank you for your Purchase, {{ order.user_first_name }}!
+
+
+Order: {{ order.order_number }}
+Total: {{ order.order_total }}
+
+{% for item in order.lineitems.all %}
+{{ item.item_option.product.name }} purchased as {{ item.item_option.name }}
+
+{% if item.item_option.name == 'DIY Template' %}
+Download your template here: {{ item.item_option.download_file }}
+{% else %}
+Please fill out this form. 
+Once we have received all your details we aim to have your 
+automation up and running in {{ item.item_option.delivery_days }}
+{% endif %}
+
+{% endfor %}
+
+Thank you for your custom. Please contact us for any queries. 
+
+Cheers,
+Team OpsiFlow
+{{ order.created_at }}
