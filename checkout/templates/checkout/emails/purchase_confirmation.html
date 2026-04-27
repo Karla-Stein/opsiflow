@@ -11,7 +11,7 @@
 
 
         <p>Order: {{ order.order_number }}</p>
-        <p>Order: {{ order.order_number }}</p>
+        <p>Charge: {{ order.order_total }}</p>
 
         {% for item in order.lineitems.all %}
         <h3>{{ item.item_option.product.name }} purchased as: {{ item.item_option.name }}</h3>
@@ -19,6 +19,7 @@
         {% if item.item_option.download_file %}
         {% for items in download_links %}
         <a href="{{ items.url }}">Download your template here</a>
+        {% endfor %}
         {% else %}
         Please fill out this form.
         Once we have received all your details we aim to have your

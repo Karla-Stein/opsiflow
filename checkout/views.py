@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.http import JsonResponse
 from django.http import FileResponse
-from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 
 from .forms import OrderForm
@@ -172,19 +172,26 @@ def checkout_success(request):
             )
         })
 
+    text_content = render_to_string(
+        "checkout/emails/purchase_confirmation.txt",
+        context={"order": order,
+                 "download_links": download_links},
+    )
+
     html_content = render_to_string(
         "checkout/emails/purchase_confirmation.html",
         context={"order": order,
                  "download_links": download_links},
     )
 
-    send_mail(
-        "Thank you for your Purchase",
-        html_content,
-        settings.EMAIL_HOST_USER,
-        [order.user_email],
-        fail_silently=False,
+    msg = EmailMultiAlternatives(
+        subject="Thank you for your Purchase",
+        body=text_content,
+        from_email=settings.EMAIL_HOST_USER,
+        to=[order.user_email],
     )
+    msg.attach_alternative(html_content, "text/html")
+    msg.send()
 
     if 'bag' in request.session:
         del request.session['bag']
