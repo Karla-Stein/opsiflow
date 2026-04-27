@@ -165,12 +165,13 @@ def checkout_success(request):
     download_links = []
 
     for item in order.lineitems.all():
-        download_links.append({
-            "name": item.item_option.product.name,
-            "url": request.build_absolute_uri(
-                reverse("download", args=[item.pk])
-            )
-        })
+        if item.item_option.download_file:
+            download_links.append({
+                "name": item.item_option.product.name,
+                "url": request.build_absolute_uri(
+                    reverse("download", args=[item.pk])
+                )
+            })
 
     text_content = render_to_string(
         "checkout/emails/purchase_confirmation.txt",
