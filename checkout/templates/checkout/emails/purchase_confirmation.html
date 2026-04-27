@@ -8,7 +8,7 @@
 <h3>{{ item.item_option.product.name }} purchased as: {{ item.item_option.name }}</h3>
 
 {% if item.item_option.download_file %}
-<p>Download your template here: <a href="{% url 'download' item.pk %}"><i class="fa-solid fa-download"></i></a></p>
+<a href="https://opsiflow-952bb478dd9c.herokuapp.com/checkout/download/{{item.pk}}">Download your template here</a>
 {% else %}
 Please fill out this form.
 Once we have received all your details we aim to have your
