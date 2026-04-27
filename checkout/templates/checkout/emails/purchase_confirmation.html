@@ -1,24 +1,39 @@
-<h2>Thank you for your Purchase, {{ order.user_first_name }}!</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h2>Thank you for your Purchase, {{ order.user_first_name }}!</h2>
 
 
-<p>Order: {{ order.order_number }}</p>
-<p>Order: {{ order.order_number }}</p>
+        <p>Order: {{ order.order_number }}</p>
+        <p>Order: {{ order.order_number }}</p>
 
-{% for item in order.lineitems.all %}
-<h3>{{ item.item_option.product.name }} purchased as: {{ item.item_option.name }}</h3>
+        {% for item in order.lineitems.all %}
+        <h3>{{ item.item_option.product.name }} purchased as: {{ item.item_option.name }}</h3>
 
-{% if item.item_option.download_file %}
-<a href="https://opsiflow-952bb478dd9c.herokuapp.com/checkout/download/{{item.pk}}">Download your template here</a>
-{% else %}
-Please fill out this form.
-Once we have received all your details we aim to have your
-automation up and running in {{ item.item_option.delivery_days }}
-{% endif %}
-{% endfor %}
-<hr>
+        {% if item.item_option.download_file %}
+        {% for items in download_links %}
+        <a href="{{ items.url }}">Download your template here</a>
+        {% else %}
+        Please fill out this form.
+        Once we have received all your details we aim to have your
+        automation up and running in {{ item.item_option.delivery_days }}
+        {% endif %}
+        {% endfor %}
+        <hr>
 
-<p>Thank you for your custom. Please contact us for any queries.</p>
+        <p>Thank you for your custom. Please contact us for any queries.</p>
 
-<p>Cheers,</p>
-<p>Team OpsiFlow</p>
-<p>{{ order.created_at }}</p>
+        <p>Cheers,</p>
+        <p>Team OpsiFlow</p>
+        <p>{{ order.created_at }}</p>
+    </main>
+
+    
+</body>
+</html>

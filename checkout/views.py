@@ -162,9 +162,20 @@ def checkout_success(request):
 
     # Send custom confirmation emails
 
+    download_links = []
+
+    for item in order.lineitems.all():
+        download_links.append({
+            "name": item.item_option.product.name,
+            "url": request.build_absolute_uri(
+                reverse("download", args=[item.pk])
+            )
+        })
+
     html_content = render_to_string(
         "checkout/emails/purchase_confirmation.html",
-        context={"order": order},
+        context={"order": order,
+                 "download_links": download_links},
     )
 
     send_mail(
