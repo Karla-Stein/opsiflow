@@ -10,4 +10,6 @@ urlpatterns = [
          name='download'),
     path('wh/', webhook,
          name='webhook'),
+    path('cache_checkout_data/', views.cache_checkout_data,
+         name='cache_checkout_data'),
 ]

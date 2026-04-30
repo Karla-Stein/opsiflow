@@ -1,5 +1,6 @@
 /* Google Fonts import */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 /* CSS variables */
 :root {
     --primary-font: "Inter", sans-serif;
@@ -14,19 +15,18 @@
     --secondary-hover: #0E6C64;
 }
 
-
 body {
     background-color: var(--primary-background);
     font-family: var(--primary-font);
     color: var(--primary-text-color);
-   
+
 }
 
-.section{
+.section {
     margin: 75px 0px
 }
 
-.index-p{
+.index-p {
     color: var(--secondary-text-color);
     font-family: var(--secondary-font);
     font-weight: 300;
@@ -34,41 +34,40 @@ body {
 }
 
 .custom-tooltip {
-  --bs-tooltip-bg: var(--primary-text-color);
-  --bs-tooltip-color: var(--secondary-background);
+    --bs-tooltip-bg: var(--primary-text-color);
+    --bs-tooltip-color: var(--secondary-background);
 }
 
-
-.card{
+.card {
     border-radius: 20px;
 }
 
-.checkout-card{
+.checkout-card {
     background-color: var(--primary-background);
     border-radius: 20px;
 }
 
 /* Navbar */
-.navbar{
+.navbar {
     background-color: var(--secondary-background);
 }
 
-.navbar-brand{
+.navbar-brand {
     margin: 0px;
 }
 
-#brand-name{
+#brand-name {
     margin-top: 10px;
     font-size: xx-large;
     font-weight: bold;
     font-style: italic;
 }
 
-.nav-link{
-    color: var(--secondary-text-color) 
+.nav-link {
+    color: var(--secondary-text-color)
 }
 
-.nav-link:hover{
+.nav-link:hover {
     color: var(--primary-text-color);
     font-weight: bolder;
 }
@@ -78,15 +77,15 @@ body {
     --bs-btn-hover-border-color: var(--primary-hover);
 }
 
-.icon{
+.icon {
     font-size: large;
 }
 
-#bag-icon{
+#bag-icon {
     padding-top: 20px;
 }
 
-.discount-banner{
+.discount-banner {
     background-color: var(--primary-text-color);
     color: var(--secondary-background);
     position: relative;
@@ -94,32 +93,34 @@ body {
     height: 22px;
 }
 
-.offcanvas{
+.offcanvas {
     background-color: var(--primary-text-color);
     color: var(--secondary-background);
     opacity: 0.95;
 }
-.offcanvas .nav-link{
+
+.offcanvas .nav-link {
     color: var(--secondary-background);
 }
 
-#sorting-dropdown{
+#sorting-dropdown {
     --bs-dropdown-bg: var(--primary-text-color);
     --bs-dropdown-link-color: var(--secondary-background);
     font-weight: bolder;
 }
 
-.dropdown-item{
+.dropdown-item {
     font-weight: bold;
 }
 
 /* build in dev tools ai assistance */
 .btn-close {
     filter: invert(1);
-    opacity: 1; /* Makes it fully white and bright */
+    opacity: 1;
+    /* Makes it fully white and bright */
 }
 
-#searchbar{
+#searchbar {
     width: 150px;
 }
 
@@ -137,49 +138,49 @@ aside {
     top: 50px;
     left: 0;
     height: 100vh;
-    width: 250px; 
+    width: 250px;
     font-weight: lighter;
 }
 
-#aside-list{
+#aside-list {
     padding-top: 50px;
 }
 
-aside .nav-link{
+aside .nav-link {
     color: var(--secondary-text-color);
 }
 
 /* Hero */
 
-.index-p{
+.index-p {
     color: var(--secondary-text-color);
     font-family: var(--secondary-font);
     font-weight: 300;
     font-size: larger;
 }
 
-.btn-outline-primary{
+.btn-outline-primary {
     --bs-btn-color: var(--secondary-accent);
     --bs-btn-border-color: var(--secondary-accent);
-    --bs-btn-hover-color:  var(--secondary-background);
+    --bs-btn-hover-color: var(--secondary-background);
     --bs-btn-hover-bg: var(--secondary-hover);
     --bs-btn-hover-border-color: var(--secondary-hover);
 }
 
 /* Benefits */
 
-.benefit-card{
+.benefit-card {
     width: 183px;
-    height: 120px; 
+    height: 120px;
     border-radius: 20px;
-} 
+}
 
-.benefit p{
+.benefit p {
     color: var(--secondary-text-color);
 }
 
 /* Footer */
-#footer{
+#footer {
     background-color: var(--secondary-background);
     color: var(--primary-text-color);
     font-weight: lighter;
@@ -187,44 +188,60 @@ aside .nav-link{
     z-index: 100;
     margin-top: 100px;
 }
+
 /* Media queries */
 
 @media screen and (min-width: 992px) {
- #benefits{
-      margin-left: 200px;
-}
+    #benefits {
+        margin-left: 200px;
+    }
 
-#hero{
-    margin-left: 200px
-}
+    #hero {
+        margin-left: 200px
+    }
 }
 
 @media screen and (min-width: 1210px) {
- #benefits{
-      margin-left: 250px;
-}
+    #benefits {
+        margin-left: 250px;
+    }
 
-#hero{
-    margin-left: 250px
-}
+    #hero {
+        margin-left: 250px
+    }
 }
 
 @media screen and (min-width: 992px) {
-.navbar-brand{
-    pointer-events: none;
-}
+    .navbar-brand {
+        pointer-events: none;
+    }
 
 }
+
 @media screen and (min-width: 827px) {
- #brand-name{
-    font-size: xx-large;
-    font-weight: bold;
-    font-style: italic;
-}
+    #brand-name {
+        font-size: xx-large;
+        font-weight: bold;
+        font-style: italic;
+    }
 }
 
 @media screen and (max-width: 700px) {
- #brand-name{
-    display: none;
+    #brand-name {
+        display: none;
+    }
 }
-} 
+
+@media screen and (min-width: 992px) {
+    .search-wrapper {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .right-group {
+        border-left: 1px solid rgba(15, 23, 42, 0.12);
+        padding-left: 1rem;
+    }
+}

@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from django.http import FileResponse
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
+from django.views.decorators.http import require_POST
 
 from .forms import OrderForm
 from bag.contexts import bag_contents
@@ -15,8 +16,24 @@ from .models import OrderLineItem, Order
 from profiles.models import UserProfile
 
 import stripe
+import json
 
-# Create your views here.
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'bag': json.dumps(request.session.get('bag', {})),
+            'save_details': request.POST.get('save_details'),
+            'username': request.user,
+        })
+        return JsonResponse({'success': True})
+    except Exception as e:
+        messages.error(request, 'Sorry, your payment cannot be \
+            processed right now. Please try again later.')
+        return HttpResponse(content=e, status=400)
 
 
 def checkout(request):
@@ -42,8 +59,6 @@ def checkout(request):
             'billing_country': request.POST['billing_country'],
             'save_details': request.POST.get('save-details')
         }
-
-        return JsonResponse({'success': True})
 
     try:
         profile = UserProfile.objects.get(user=request.user)

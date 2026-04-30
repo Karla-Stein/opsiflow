@@ -23,14 +23,13 @@ paymentElement.mount('#payment-element');
 const form = document.getElementById('payment-form');
 const submitButton = document.getElementById('submit-button');
 
-// CSRF protection for AJAX POST request to django
+// CSRF protection for AJAX POST request to django - copied from Django docs
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -46,8 +45,10 @@ form.addEventListener('submit', async (event) => {
     submitButton.disabled = true;
     // Send form data to Django before payment confirmation
     const formData = new FormData(form);
+    formData.append('save_details', document.getElementById('id-save-details').checked);
+    formData.append('client_secret', clientSecret);
     const csrftoken = getCookie('csrftoken');
-    const response = await fetch('/checkout/', {
+    const response = await fetch('/checkout/cache_checkout_data/', {
         method: 'POST',
         headers: {
             'X-CSRFToken': csrftoken,
@@ -64,7 +65,20 @@ form.addEventListener('submit', async (event) => {
     //`Elements` instance that was used to create the Payment Element
         elements,
         confirmParams: {
-        return_url: window.location.origin + '/checkout/success/'
+        return_url: window.location.origin + '/checkout/success/',
+        payment_method_data: {
+            billing_details : {
+                name: `${formData.get('user_first_name')} ${formData.get('user_last_name')} `,
+                phone: `${formData.get('user_phone')}`,
+                address: {
+                    line1: `${formData.get('billing_address_1')}`,
+                    line2: `${formData.get('billing_address_')}`,
+                    city: `${formData.get('billing_city')}`,
+                    state: `${formData.get('billing_county')}`,
+                    country: `${formData.get('billing_country')}`,
+                }
+            },
+        },  
     },
   });
 
