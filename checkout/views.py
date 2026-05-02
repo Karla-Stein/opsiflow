@@ -21,28 +21,6 @@ import json
 
 @require_POST
 def cache_checkout_data(request):
-    try:
-        pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(pid, metadata={
-            'bag': json.dumps(request.session.get('bag', {})),
-            'save_details': request.POST.get('save_details'),
-            'username': request.user,
-        })
-        return JsonResponse({'success': True})
-    except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be \
-            processed right now. Please try again later.')
-        return HttpResponse(content=e, status=400)
-
-
-def checkout(request):
-    """
-    A view to collect checkout data create the payment intent.
-    Checkout data is saved to the session.
-    """
-    stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
 
@@ -59,6 +37,30 @@ def checkout(request):
             'billing_country': request.POST['billing_country'],
             'save_details': request.POST.get('save-details')
         }
+
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'bag': json.dumps(request.session.get('bag', {})),
+            'save_details': request.POST.get('save_details'),
+            'username': request.user,
+            'user_profile': request.user.userprofile
+        })
+        return JsonResponse({'success': True})
+    except Exception as e:
+        messages.error(request, 'Sorry, your payment cannot be \
+            processed right now. Please try again later.')
+        return HttpResponse(content=e, status=400)
+
+
+def checkout(request):
+    """
+    A view to collect checkout data create the payment intent.
+    Checkout data is saved to the session.
+    """
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     try:
         profile = UserProfile.objects.get(user=request.user)
@@ -129,7 +131,6 @@ def checkout_success(request):
         order_form = OrderForm(checkout_data)
 
         if not order_form.is_valid():
-            print(order_form.errors)
             messages.error(request,
                            "There was a problem with your order data.")
             return redirect('checkout')
@@ -139,6 +140,7 @@ def checkout_success(request):
         order.status = 1
         order.user_profile = request.user.userprofile
         order.save()
+        print(f"SUCCESS VIEW CREATED ORDER: {order.payment_id}")
 
         # Save user info
         save_details = checkout_data.get('save_details')
