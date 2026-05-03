@@ -52,6 +52,28 @@ class StripeWebhookHandler:
             if value == "":
                 billing_details.address[field] = None
 
+        full_name = billing_details.name
+        first_name = full_name.split()[0]
+        last_name = full_name.split()[1]
+
+        if save_details:
+            user_profile.default_first_name = first_name
+            user_profile.default_last_name = last_name
+            user_profile.default_email = billing_details.email
+            user_profile.default_phone_number = billing_details.phone
+            user_profile.default_street_address1 = (
+                billing_details.address.line1)
+            user_profile.default_street_address2 = (
+                    billing_details.address.line2)
+            user_profile.default_city = billing_details.address.city
+            user_profile.default_county = (
+                billing_details.address.state)
+            user_profile.default_postcode = (
+                    billing_details.address.postal_code)
+            user_profile.default_country = (
+                billing_details.address.country)
+            user_profile.save()
+
         #  Check if order exists
         order_exists = False
         attempt = 1
@@ -90,6 +112,7 @@ class StripeWebhookHandler:
                     payment_id=pid,
                     status=1,
                 )
+                print("ORDER CREATED BY WEBHOOK")
                 for product_option_pk, quantity in (json.loads(bag)
                                                     .items()):
                     product_option = get_object_or_404(
