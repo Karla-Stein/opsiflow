@@ -116,7 +116,7 @@ def checkout_success(request):
     Order and OrderLineItem is saved to the database and
     session cleared thereafter.
     """
-    return HttpResponse("Testing webhook")
+
     payment_intent = request.GET.get('payment_intent')
     bag = request.session.get('bag', {})
     checkout_data = request.session.get('form_data')
