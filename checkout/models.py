@@ -36,7 +36,7 @@ class Order(models.Model):
     order_total = models.DecimalField(max_digits=10, decimal_places=2,
                                       null=False, default=0)
     payment_id = models.CharField(max_length=254, null=False, blank=False,
-                                  default='')
+                                  default='', unique=True)
     status = models.IntegerField(choices=STATUS, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 

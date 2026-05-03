@@ -70,6 +70,7 @@ form.addEventListener('submit', async (event) => {
             billing_details : {
                 name: `${formData.get('user_first_name')} ${formData.get('user_last_name')} `,
                 phone: `${formData.get('user_phone')}`,
+                email: `${formData.get('user_email')}`,
                 address: {
                     line1: `${formData.get('billing_address_1')}`,
                     line2: `${formData.get('billing_address_')}`,

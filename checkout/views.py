@@ -44,8 +44,7 @@ def cache_checkout_data(request):
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', {})),
             'save_details': request.POST.get('save_details'),
-            'username': request.user,
-            'user_profile': request.user.userprofile
+            'user_profile': request.user.userprofile,
         })
         return JsonResponse({'success': True})
     except Exception as e:

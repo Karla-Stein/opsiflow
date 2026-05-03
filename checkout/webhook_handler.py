@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 
 from .models import Order, OrderLineItem
 from products.models import ProductOption
+from profiles.models import UserProfile
 
 import stripe
 import json
@@ -35,6 +36,9 @@ class StripeWebhookHandler:
         user_profile = intent.metadata.user_profile
         save_details = intent.metadata.save_details
 
+        user_profile = (UserProfile.objects.filter(
+                        pk=user_profile).first())
+
         # Get the Charge object
         stripe_charge = stripe.Charge.retrieve(
             intent.latest_charge
@@ -63,58 +67,58 @@ class StripeWebhookHandler:
             except Exception as e:
                 return HttpResponse(f'{e}',
                                     status=500)
-            if not order:
-                try:
-                    full_name = billing_details.name
-                    first_name = full_name.split()[0]
-                    last_name = full_name.split()[1]
-                    order = Order.objects.create(
-                        # user_profile=user_profile,
-                        user_first_name=first_name,
-                        user_last_name=last_name,
-                        user_email=billing_details.email or '',
-                        user_phone=billing_details.phone or '',
-                        billing_address_1=billing_details.address.line1 or '',
-                        billing_address_2=(
-                            billing_details.address.line2 or None),
-                        billing_county=billing_details.address.state or None,
-                        billing_city=billing_details.address.city or '',
-                        billing_postalcode=(
-                            billing_details.address.postal_code or ''),
-                        billing_country=billing_details.address.country or '',
-                        order_total=order_total,
-                        payment_id=pid,
-                        status=1,
-                    )
-                    print(f"WEBHOOK CREATED ORDER: {order.payment_id}")
-                    for product_option_pk, quantity in (json.loads(bag)
-                                                        .items()):
-                        product_option = get_object_or_404(
-                            ProductOption,
-                            pk=product_option_pk)
+        if not order_exists:
+            try:
+                full_name = billing_details.name
+                first_name = full_name.split()[0]
+                last_name = full_name.split()[1]
+                order = Order.objects.create(
+                    user_profile=user_profile,
+                    user_first_name=first_name,
+                    user_last_name=last_name,
+                    user_email=billing_details.email or '',
+                    user_phone=billing_details.phone or '',
+                    billing_address_1=billing_details.address.line1 or '',
+                    billing_address_2=(
+                        billing_details.address.line2 or None),
+                    billing_county=billing_details.address.state or None,
+                    billing_city=billing_details.address.city or '',
+                    billing_postalcode=(
+                        billing_details.address.postal_code or ''),
+                    billing_country=billing_details.address.country or '',
+                    order_total=order_total,
+                    payment_id=pid,
+                    status=1,
+                )
+                for product_option_pk, quantity in (json.loads(bag)
+                                                    .items()):
+                    product_option = get_object_or_404(
+                        ProductOption,
+                        pk=product_option_pk)
 
-                        order_line_item = OrderLineItem(
-                            item_option=product_option,
-                            order=order,
-                            quantity=quantity,
-                            )
-                        order_line_item.save()
-                except Exception as e:
-                    return HttpResponse(
-                        content=f'Webhook received:'
-                        f'{event["type"]} | ERROR: {e}',
-                        status=500)
+                    order_line_item = OrderLineItem(
+                        item_option=product_option,
+                        order=order,
+                        quantity=quantity,
+                        )
+                    order_line_item.save()
+                return HttpResponse(
+                        content=f'Webhook received: {event["type"]}'
+                        f'| SUCCESS: WEBHOOK CREATED ORDER',
+                        status=200)
+            except Exception as e:
+                return HttpResponse(
+                    content=f'Webhook received:'
+                    f'{event["type"]} | ERROR: {e}',
+                    status=500)
 
-        if order_exists:
+        else:
+            order.user_profile = user_profile
+            order.save()
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS:'
                 f'Verified order already in database',
                 status=200)
-
-        return HttpResponse(
-            content=f'Webhook received: {event["type"]}'
-            f'SUCCESS Created order in webhook',
-            status=200)
 
     def handle_payment_intent_payment_failed(self, event):
         """
