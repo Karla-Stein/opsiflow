@@ -1,38 +1,148 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Purchase confirmation</title>
 </head>
+
 <body>
     <main>
-        <h2>Thank you for your Purchase, {{ order.user_first_name }}!</h2>
+        <div class="container-fluid position-relative">
+            <div class="d-flex justify-content-center">
+                <p id="brand-name">OpsiFlow</p>
+            </div>
+            <hr>
+            <h2>Thank you for your Purchase, {{ order.user_first_name }}!</h2>
+            {% for lineitem in order.lineitems.all  %}
+            <div class="row justify-content-center d-flex align-items-center">
+                <!-- large left side -->
+                <div class="col-12 col-lg-5 text-center justify-content-lg-start">
+                    {% if lineitem.item_option.product.image %}
+                    <img class="image-fluid ms-auto" src="{{ lineitem.item_option.product.image.url }}"
+                        alt="{{ item.product_option.product.name }}">
+                    {% else %}
+                    <img class="image-fluid ms-auto" src="{% static 'images/placeholder-image.jpg' %}"
+                        alt="Placeholder image">
+                    {% endif %}
+                </div>
+                <div class="col-12 col-lg-3">
+                    <p class="text-center">{{lineitem.item_option.product.name}}</p>
+                    <p class="text-center text-muted">{{lineitem.item_option.name}}</p>
+                </div>
+                <!-- large right side -->
+                <div class="col-12 col-lg-3  text-center text-muted">
+                    {% if download_links %}
+                    {% for link in download_links %}
+                    <p>Access Your Download Here</p>
+                    <a href="{% url 'download' lineitem.pk %}" type="button"><i class="fa-solid fa-download"></i></a>
+                    {% endfor %}
+                    {% else %}
+                    <p>Please fill out your Onbaording form.</p>
+                    <p>We aim to have your order up and running in {{ lineitem.item_option.delivery_days }}
+                        {% if lineitem.item_option.delivery_days == 1 %} day. {% else %} days. {% endif%}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-6 offset-lg-2">
 
+                    <hr>
+                    <h3 class="text-center my-4">Your Details:</h3>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10 offset-lg-2">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td class="text-start">Name:</td>
+                                        <td class="text-end">{{ order.user_first_name }} {{ order.user_last_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-start">Email:</td>
+                                        <td class="text-end">{{ order.user_email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-start">Phone:</td>
+                                        <td class="text-end">{{ order.user_phone }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-start">Address 1:</td>
+                                        <td class="text-end">{{ order.billing_address_1 }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-start">Address 2:</td>
+                                        <td class="text-end">{{ order.billing_address_2|default:"" }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-start">City:</td>
+                                        <td class="text-end">{{ order.billing_city }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-start">Postalcode:</td>
+                                        <td class="text-end">{{ order.billing_postalcode }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-start">Country:</td>
+                                        <td class="text-end">{{ order.billing_country }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </main>
 
-        <p>Order: {{ order.order_number }}</p>
+            <!-- <p>Order: {{ order.order_number }}</p>
         <p>Charge: {{ order.order_total }}</p>
 
         {% for item in order.lineitems.all %}
         <h3>{{ item.item_option.product.name }} purchased as: {{ item.item_option.name }}</h3>
 
         {% if item.item_option.download_file %}
-        <a href="{{ items.url }}">Download your template here</a>
+        <a href="{% url 'download' lineitem.pk %}" type="button"><i class="fa-solid fa-download"></i></a>
         {% else %}
         Please fill out this form.
         Once we have received all your details we aim to have your
         automation up and running in {{ item.item_option.delivery_days }}
         {% endif %}
         {% endfor %}
-        <hr>
+        <hr> -->
 
-        <p>Thank you for your custom. Please contact us for any queries.</p>
+            <footer>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 text-center mt-3">
+                            <p>Thank you for your custom. Please contact us for any queries.</p>
 
-        <p>Cheers,</p>
-        <p>Team OpsiFlow</p>
-        <p>{{ order.created_at }}</p>
-    </main>
+                            <p>Cheers,</p>
+                            <p>Team OpsiFlow</p>
+                            <p>{{ order.created_at }}</p>
 
-    
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 text-center mt-3">
+                            <p> © 2026 OpsiFlow. All rights reserved. Built with
+                                Django.<br>
+                                GitHub:<br>
+                                <!-- social link -->
+                                <a href="https://github.com/Karla-Stein/opsiflow" target="_blank" rel="noopener"
+                                    aria-label="Visit Karla Steinbrink's GitHub (opens in new tab)"><i
+                                        class="fa-brands fa-github"></i></a></p>
+
+                        </div>
+                    </div>
+                </div>
+            </footer>
 </body>
+
 </html>
