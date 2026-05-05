@@ -9,17 +9,18 @@
 
 <body>
     <main>
-        <div style="max-width:600px; margin:0 auto; text-align:center; font-family:Inter, DM Sans, sans-serif; padding:20px;">
+        <div
+            style="max-width:600px; margin:0 auto; text-align:center; font-family:Inter, DM Sans, sans-serif; padding:20px;">
             <div>
-                <h1 style="font-size:28px; margin-bottom:10px;">OpsiFlow</h1>
+                <h1 style="font-size:28px; margin-bottom:10px; font-style: italic;">OpsiFlow</h1>
             </div>
-            
+
             <h2>Thank you for your Purchase, {{ order.user_first_name }}!</h2>
-            <p>Order: {{ order.order_number }}</p>
+            <p style="margin-bottom: 30px;">Order: {{ order.order_number }}</p>
 
             {% for item in order.lineitems.all %}
             {% if item.item_option.name == "Set Up Service" %}
-            <p>{{ item.item_option.product.name }} purchased as: {{ item.item_option.name }}
+            <p><strong>{{ item.item_option.product.name }} purchased as: {{ item.item_option.name }}</strong>
             </p>
             <p>Price: {{ item.item_option.unit_price }}</p>
             <p>Please fill out your onboarding form.</p>
@@ -27,65 +28,66 @@
                 {% if item.item_option.delivery_days == 1 %} day.{% else %}day(s).
                 {% endif %}
             </p>
-            <br>
+            {% endfor %}
             {% endif %}
+            <br>
+            {% for item in order.lineitems.all %}
             {% if item.item_option.name == "DIY Template" %}
-            <p>{{ item.item_option.product.name }} purchased as: {{ item.item_option.name }}</p>
+            <p><strong>{{ item.item_option.product.name }} purchased as: {{ item.item_option.name }}</strong></p>
+            <p>Price: {{ item.item_option.unit_price }}</p>
             {% endif %}
             <br>
-             {% endfor %}
+            {% endfor %}
 
-            <p>Access your downloads here:</p>
-            <a href="{{ my_purchases }}" type="button" style="padding:14px 24px; background-color:#2563EB; color:#ffffff; text-decoration:none; border-radius:20px; font-weight:bold;">My Purchases</a>
+            <p style="margin-bottom: 5px;">Access your downloads here:</p>
+            <a href="{{ my_purchases }}" type="button"
+                style="padding:14px 24px; background-color:#2563EB; color:#ffffff; text-decoration:none; border-radius:10px; font-weight:bold; font-size: larger; margin-bottom:20px;">My
+                Purchases</a>
             <br>
             <div>
                 <div>
                     <h3>Your Details:</h3>
                 </div>
-                <div>
-                    <div>
-                        <div>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td >Name:</td>
-                                        <td >{{ order.user_first_name }} {{ order.user_last_name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td >Email:</td>
-                                        <td >{{ order.user_email }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Phone:</td>
-                                        <td>{{ order.user_phone }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Address 1:</td>
-                                        <td >{{ order.billing_address_1 }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Address 2:</td>
-                                        <td >{{ order.billing_address_2|default:"" }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>City:</td>
-                                        <td >{{ order.billing_city }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Postalcode:</td>
-                                        <td >{{ order.billing_postalcode }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Country:</td>
-                                        <td >{{ order.billing_country }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p>Total: {{ order.order_total }}</p>
+                <table style="margin: 0 auto;">
+                    <tbody>
+                        <tr>
+                            <td style="text-align: left;">Name:</td>
+                            <td style="text-align: right;">{{ order.user_first_name }} {{ order.user_last_name }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Email:</td>
+                            <td style="text-align: right;">{{ order.user_email }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Phone:</td>
+                            <td style="text-align: right;">{{ order.user_phone }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Address 1:</td>
+                            <td style="text-align: right;">{{ order.billing_address_1 }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Address 2:</td>
+                            <td style="text-align: right;">{{ order.billing_address_2|default:"" }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">City:</td>
+                            <td style="text-align: right;">{{ order.billing_city }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Postalcode:</td>
+                            <td style="text-align: right;">{{ order.billing_postalcode }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Country:</td>
+                            <td style="text-align: right;">{{ order.billing_country }}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Total:</td>
+                            <td style="text-align: right;">{{ order.order_total }}</td>
+                        </tr>
+                    </tbody>
+                </table>
     </main>
     <br>
     <br>
@@ -104,7 +106,7 @@
         </div>
         <div>
             <div>
-                <div >
+                <div>
                     <p> © 2026 OpsiFlow. All rights reserved. Built with
                         Django.<br>
                 </div>
