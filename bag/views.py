@@ -80,21 +80,44 @@ def change_option(request, pk):
     user_choice = get_object_or_404(ProductOption, pk=pk)
     bag = request.session.get('bag', {})
     pk = str(user_choice.pk)
+
     try:
-        if user_choice.fulfilment_choice == 1:
-            bag.pop(pk)
-            new_choice = 0
+        if user_choice.product.category.name == "custom_workflows":
+            if user_choice.tier == 0:
+                bag.pop(pk)
+                new_tier_choice = 1
+            elif user_choice.tier == 1:
+                bag.pop(pk)
+                new_tier_choice = 2
+            else:
+                bag.pop(pk)
+                new_tier_choice = 0
+
+            new_item = get_object_or_404(
+                ProductOption,
+                product=user_choice.product,
+                tier=new_tier_choice)
+            new_item_pk = str(new_item.pk)
+            bag[new_item_pk] = 1
+            request.session['bag'] = bag
 
         else:
-            bag.pop(pk)
-            new_choice = 1
+            if user_choice.fulfilment_choice == 1:
+                bag.pop(pk)
+                new_fulfilment_choice = 0
+            elif user_choice.fulfilment_choice == 0:
+                bag.pop(pk)
+                new_fulfilment_choice = 1
 
-        new_item = get_object_or_404(ProductOption,
-                                     product=user_choice.product,
-                                     fulfilment_choice=new_choice)
-        new_pk = str(new_item.pk)
-        bag[new_pk] = 1
-        request.session['bag'] = bag
+            new_item = get_object_or_404(
+                ProductOption,
+                product=user_choice.product,
+                fulfilment_choice=new_fulfilment_choice)
+
+            new_pk = str(new_item.pk)
+            bag[new_pk] = 1
+            request.session['bag'] = bag
+
         messages.success(request,
                          f'{user_choice.product.name} was changed to '
                          f'{new_item.name} from your bag')

@@ -29,7 +29,9 @@
                 {% endif %}
             </p>
             {% endif %}
+            <br>
             {% endfor %}
+            <p><strong>Please note that we will send you a seperate email with your onboarding form.</strong></p>
             <br>
             {% for item in order.lineitems.all %}
             {% if item.item_option.name == "DIY Template" %}
@@ -39,9 +41,9 @@
             <br>
             {% endfor %}
 
-            <p style="margin-bottom: 5px;">Access your downloads here:</p>
+            <p style="margin-bottom: 20px;">Access your downloads here:</p>
             <a href="{{ my_purchases }}" type="button"
-                style="padding:14px 24px; background-color:#2563EB; color:#ffffff; text-decoration:none; border-radius:10px; font-weight:bold; font-size: larger; margin-bottom:20px;">My
+                style="padding:14px 24px; background-color:#2563EB; color:#ffffff; text-decoration:none; border-radius:10px; font-weight:bold; font-size: large; margin-bottom:30px;">My
                 Purchases</a>
             <br>
             <div>
