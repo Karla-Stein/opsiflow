@@ -121,9 +121,18 @@ def checkout_success(request):
     bag = request.session.get('bag', {})
     checkout_data = request.session.get('form_data')
 
-    # if not payment_intent or not bag or not checkout_data:
-    #     messages.error(request, "Missing checkout data.")
-    #     return redirect('checkout')
+    # retrive payment_intent and check if not suceeded
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.retrieve(payment_intent)
+
+    if intent.status != "succeeded":
+        messages.error(request, "Payment failed. Please try again.")
+        return redirect("checkout")
+
+    if not payment_intent or not bag or not checkout_data:
+        messages.error(request, "Missing checkout data.")
+        return redirect('checkout')
 
     order = Order.objects.filter(payment_id=payment_intent).first()
 
@@ -140,7 +149,6 @@ def checkout_success(request):
         order.status = 1
         order.user_profile = request.user.userprofile
         order.save()
-        print(f"SUCCESS VIEW CREATED ORDER: {order.payment_id}")
 
         # Save user info
         save_details = checkout_data.get('save_details')
@@ -178,18 +186,6 @@ def checkout_success(request):
         order.update_total()
 
     # Send custom confirmation emails
-
-    # download_links = []
-
-    # for item in order.lineitems.all():
-    #     if item.item_option.download_file:
-    #         download_links.append({
-    #             "name": item.item_option.product.name,
-    #             "url": request.build_absolute_uri(
-    #                 reverse("download", args=[item.pk])
-    #             )
-    #         })
-
     my_purchases = request.build_absolute_uri(
                 reverse("purchases"))
 
