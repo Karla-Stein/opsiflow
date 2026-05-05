@@ -2,12 +2,14 @@ from django.shortcuts import render, get_object_or_404, redirect
 from checkout.models import Order
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
 
 # Create your views here.
 
 
+@login_required
 def purchases(request):
 
     orders = Order.objects.filter(
