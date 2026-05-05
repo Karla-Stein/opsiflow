@@ -25,11 +25,11 @@
             <p>Price: {{ item.item_option.unit_price }}</p>
             <p>Please fill out your onboarding form.</p>
             <p> We aim to have your order up and running in {{ item.item_option.delivery_days }}
-                {% if item.item_option.delivery_days == 1 %} day.{% else %}day(s).
+                {% if item.item_option.delivery_days == 1 %} day.{% else %}days.
                 {% endif %}
             </p>
-            {% endfor %}
             {% endif %}
+            {% endfor %}
             <br>
             {% for item in order.lineitems.all %}
             {% if item.item_option.name == "DIY Template" %}
