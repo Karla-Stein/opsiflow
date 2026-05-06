@@ -25,10 +25,15 @@ img{
 }
 
 .form-check{
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 #description{
+    height: 350px;
+    overflow-y: scroll;
+}
+
+#option-description{
     height: 150px;
     overflow-y: scroll;
 }
