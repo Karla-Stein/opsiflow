@@ -106,7 +106,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | Shopping bag | ![screenshot](documentation/wireframes/shopping-bag-mobile.jpeg) | ![screenshot](documentation/wireframes/shopping-bag-tablet.jpeg) | ![screenshot](documentation/wireframes/shopping-bag-desktop.jpeg) |
 | Checkout | ![screenshot](documentation/wireframes/checkout-mobile.jpeg) | ![screenshot](documentation/wireframes/checkout-tablet.jpeg) | ![screenshot](documentation/wireframes/checkout-desktop.jpeg) |
 | Success page | ![screenshot](documentation/wireframes/success-mobile.jpeg) | ![screenshot](documentation/wireframes/success-tablet.jpeg) | ![screenshot](documentation/wireframes/success-desktop.jpeg) |
-| 404 | ![screenshot](documentation/wireframes/mobile-404.png) | ![screenshot](documentation/wireframes/tablet-404.png) | ![screenshot](documentation/wireframes/desktop-404.png) |
+| 404 | ![screenshot](documentation/wireframes/404-mobile.jpeg) | ![screenshot](documentation/wireframes/404-tablet.jpeg) | ![screenshot](documentation/wireframes/404-desktop.jpeg) |
 
 
 ## User Stories
