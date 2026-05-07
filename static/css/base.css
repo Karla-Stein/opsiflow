@@ -22,10 +22,6 @@ body {
 
 }
 
-.section {
-    margin: 75px 0px
-}
-
 .index-p {
     color: var(--secondary-text-color);
     font-family: var(--secondary-font);
@@ -170,9 +166,9 @@ aside .nav-link {
 /* Benefits */
 
 .benefit-card {
-    width: 183px;
+    width: 150px;
     height: 120px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .benefit p {
@@ -199,6 +195,9 @@ aside .nav-link {
     #hero {
         margin-left: 200px
     }
+    .section {
+    margin: 50px 0px
+}
 }
 
 @media screen and (min-width: 1210px) {

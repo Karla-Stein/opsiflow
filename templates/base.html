@@ -95,13 +95,6 @@
                         <a class="nav-link" href="#"><i class="fa-regular fa-handshake"></i> Contact</a>
                     </li>
                 </ul>
-
-                {% if not user.is_authenticated %}
-                <a href="{% url 'account_login' %}" class="btn btn-outline-dark d-sm-flex  mx-2" type="submit">Sign
-                    in</a>
-                <a href="{% url 'account_signup' %}" class="btn btn-outline-dark d-sm-flex me-2" type="submit">Sign
-                    up</a>
-                {% endif %}
             </div>
             <!-- Desktop only searchbar -->
             <div class="search-wrapper d-none d-lg-flex justify-content-center">
@@ -141,6 +134,11 @@
                             {% endif %}
                         </small></span>
                 </div>
+                {% else %}
+                <a href="{% url 'account_login' %}" class="btn btn-outline-dark btn-sm my-2" type="submit">Sign
+                    in</a>
+                <a href="{% url 'account_signup' %}" class="btn btn-outline-dark btn-sm" type="submit">Sign
+                    up</a>
                 {% endif%}
             </div>
     </nav>
