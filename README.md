@@ -1,8 +1,23 @@
-# opsiflow
+# [opsiflow](https://opsiflow-952bb478dd9c.herokuapp.com)
+
+Developer: Karla Steinbrink ([Karla-Stein](https://www.github.com/Karla-Stein))
+
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/t/Karla-Stein/opsiflow)](https://www.github.com/Karla-Stein/opsiflow/commits/main)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Karla-Stein/opsiflow)](https://www.github.com/Karla-Stein/opsiflow/commits/main)
+[![GitHub repo size](https://img.shields.io/github/repo-size/Karla-Stein/opsiflow)](https://www.github.com/Karla-Stein/opsiflow)
+[![badge](https://img.shields.io/badge/deployment-Heroku-purple)](https://opsiflow-952bb478dd9c.herokuapp.com)
+
 
 PROJECT INTRODUCTION AND RATIONALE
 
 Many businesses struggle with repetitive administrative tasks that reduce productivity and limit growth. This project is a web-based e-commerce platform designed to help entrepreneurs and small to medium-sized businesses streamline their operations through workflow automation. The platform allows users to explore automation concepts by browsing and purchasing ready-to-use workflow templates, which  serve as an accessible introduction to automation tools and processes. While these templates provide immediate practical value, the primary goal of the platform is to connect businesses with tailored automation solutions offered as a service. Users can therefore either implement templates independently using downloadable setup guides or request customised automation systems designed to meet their specific operational needs.
+
+
+**Site Mockups**
+
+![screenshot](documentation/mockup.jpeg)
+
+source: [opsiflow amiresponsive](https://ui.dev/amiresponsive?url=https://opsiflow-952bb478dd9c.herokuapp.com)
 
 
 ## UX
@@ -34,13 +49,15 @@ Many businesses struggle with repetitive administrative tasks that reduce produc
 
 **Content Requirements**
 
-- Automation product management (create, update, delete and display workflow templates and service offerings).
+- Backend product management (create, update, delete and display workflow templates and service offerings).
+- Public home page.
 - Public product browsing page.
+- Search and sort functionality.
 - Detailed product pages with clear descriptions, benefits and options to choose from.
-- User account functionality (register, log in, view purchase history and manage profile details).
+- User account functionality (register, log in, log out, view purchase history and manage profile details).
+- A log in required purchase process. 
 - Secure checkout system with the ability to add, update, or remove items from a shopping bag.
 - Digital product delivery (downloadable templates with setup instructions and email confirmation).
-- Service request functionality via onboarding form submission for customised solutions (done with external form provider).
 - Download limitation system to restrict distribution of purchased templates.
 - Order confirmation and success pages for both digital downloads and service bookings.
 - 404 error page to handle invalid or broken URLs.
@@ -49,11 +66,24 @@ Many businesses struggle with repetitive administrative tasks that reduce produc
 
 **Information Architecture**
 - **Navigation Menu**:
+    - Links to Home, Workflows, Shopping Bag, My Purchases, My Details, Account deletion and authentication pages (Sign Up, Sign In and Sign Out).
+    - Authenticated users can access their purchase history and secure download area through the profile section.
+    - Superusers have access to product management functionality for creating and managing automation products and workflow options.
 
 - **Hierarchy**:
+    - Prominent workflow categories, filters and searchbar for easy navigation.
+    - Bag and checkout options displayed prominently for convenience.
+
 
 **User Flow**
-
+1. Guest user browse the platform, explore workflow products through category filtering, sorting and detailed product pages.
+2. Guest user adds products or services to the shopping bag and is redirected to required sign up or log in.
+3. User creates an account or signs in to proceed with checkout.
+4. Customer completes payment through Stripe, is redirected to successpage after successfull payment intent and receives an order confirmation email.
+5. Customer can now access their purchases page to download purchased workflow templates securely or view their previous purchases.
+6. Customer can review, update or delete their profile.
+7. Superusers manage platform content through the Django admin panel. Create, update and delete automation products, workflow options and service offerings.
+8. Users attempting to access invalid URLs are redirected to a custom 404 error page to help maintain navigation flow and usability.
 
 #### 4. Skeleton
 
@@ -88,8 +118,12 @@ This palette was chosen to communicate several important qualities:
 
 The combination of these colours ensures that the interface remains minimal, professional and easy to read, while also aligning with the visual language commonly used in modern technology products.
 
+
 ### Typography
 
+- [Inter](https://fonts.google.com/specimen/Inter) was used as the primary font throughout the application, particularly for body text and core interface elements, due to its strong readability and clean modern appearance across desktop and mobile devices.
+- [DM Sans](https://fonts.google.com/specimen/DM+Sans) was used selectively for highlighted paragraphs and supporting content to create visual contrast while maintaining the minimalist aesthetic.
+- [Font Awesome](https://fontawesome.com) icons were used throughout the application for interface elements such as shopping bag actions, downloads, navigation indicators and social media links.
 
 ## Wireframes
 
