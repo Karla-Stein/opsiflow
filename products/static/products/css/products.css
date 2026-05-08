@@ -1,5 +1,5 @@
 .product-card{
-    height: 520px;
+    height: 500px;
     padding: 20px;
     border: 1px solid grey;
     border-radius: 20px;
@@ -12,4 +12,10 @@
     max-height: 180px;
     height: auto;
     object-fit: contain;
+}
+
+#excerpt{
+    height: 80px;
+    overflow-y: scroll;
+    
 }

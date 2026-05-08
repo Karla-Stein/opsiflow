@@ -11,7 +11,7 @@
 <section id="my-profile" class="my-5">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-4 offset-lg-2 text-center mb-5">
+            <div class="col-10 col-md-8 col-lg-4 offset-lg-2 text-center mb-5">
                 <h2>
                     My Profile
                 </h2>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div  class="col-12 col-md-6 col-lg-5 offset-lg-2 text-center mb-5">
+            <div  class="col-10 col-md-6 col-lg-5 offset-lg-2 text-center mb-5">
                 <h2 >
                     Default Billing Details
                 </h2>
@@ -27,7 +27,7 @@
             </div>
         </div>
     <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6 offset-lg-2 text-center">
+        <div class="col-10 col-md-8 col-lg-6 offset-lg-2 text-center">
                 <form method="post" action="{% url 'my_profile' %}" id="profile-form">
                     {% csrf_token %}
                     {{ form|crispy }}                 

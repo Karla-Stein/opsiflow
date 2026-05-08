@@ -130,9 +130,9 @@ def checkout_success(request):
         messages.error(request, "Payment failed. Please try again.")
         return redirect("checkout")
 
-    if not payment_intent or not bag or not checkout_data:
-        messages.error(request, "Missing checkout data.")
-        return redirect('checkout')
+    # if not payment_intent or not bag or not checkout_data:
+    #     messages.error(request, "Missing checkout data.")
+    #     return redirect('checkout')
 
     order = Order.objects.filter(payment_id=payment_intent).first()
 
