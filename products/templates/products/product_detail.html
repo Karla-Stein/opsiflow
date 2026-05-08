@@ -35,10 +35,11 @@
       <!-- Right column -->
       <div class="col-12 col-lg-4 text-center">
         <!-- Product option -->
-        
         <p id="option-name">Your Choice:</p>
-        <p id="option-description" class="index-p">Please choose your preffered option below </p>
+        <div id="option-div">
+        <p id="option-description" class="index-p">Please choose your prefered option below </p>
         <p id="delivery-days" class="index-p d-none"></p>
+        </div>
         {% for option in product_option %}
         <div class="form-check">
           <input class="form-check-input option" type="radio" name="radioDefault" data-name="{{option.name}}"

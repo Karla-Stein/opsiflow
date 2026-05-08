@@ -164,3 +164,35 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | As a logged in user | I can update my profile | so that my profile is always accurate. |
 | As a logged in user | I want to delete my account | so that I can stay in control of my data. |
 
+
+## Features
+
+### Existing Features
+
+| Feature | Notes | Screenshot |
+| --- | --- | --- |
+| Sign Up | Authentication is handled through django-allauth, allowing users to securely create accounts in order to purchase workflow templates, access downloads and manage their purchase history. | ![screenshot](documentation/features/signup.jpeg) |
+| Sign In | Registered users can securely log in to access their purchases and profile information. | ![screenshot](documentation/features/signin.jpeg) |
+| Sign Out | Users can securely log out of their accounts to protect their purchase and profile information. | ![screenshot](documentation/features/signout.jpeg) |
+| Home Page | The landing page introduces the OpsiFlow platform and guides users towards browsing products and solutions. | ![screenshot](documentation/features/home.jpeg) |
+| Product Browsing | Users can browse all available automation templates and service offerings through a public product listing page with category filtering and sorting functionality. | ![screenshot](documentation/features/product-browsing.jpeg) |
+| Workflow Sorting | Users can sort workflow templates and automation services by criteria such as price, complexity and alphabetical order to quickly locate suitable solutions. | ![screenshot](documentation/features/sorting.jpeg) |
+| Search Functionality | A search bar allows users to quickly find products using keywords and product names. | ![screenshot](documentation/features/searchbar.jpeg) |
+| Product Categories | Products are organised into categories to improve discoverability and allow users to browse relevant automation solutions more efficiently. | ![screenshot](documentation/features/categories.jpeg) |
+| Product Detail Pages | Each product contains detailed information including workflow description, pricing, fulfilment options and delivery time expectations to help users choose the correct solution. | ![screenshot](documentation/features/product-details.jpeg) |
+| Option Switching | Users can dynamically switch between "DIY template" and “Set Up Service” fulfilment options, as well as "Starter", "Growth" or "Pro" tier options directly within the shopping bag. | ![screenshot](documentation/features/change-option-1.jpeg) ![screenshot](documentation/features/change-option-2.jpeg) |
+| Shopping Bag | Users can remove and update workflow products before checkout. | ![screenshot](documentation/features/bag-edit.jpeg) |
+| Dynamic Shopping Bag Icon | The navigation shopping bag icon dynamically updates to reflect the user’s current bag total, providing immediate feedback. | ![screenshot](documentation/features/bag-icon.jpeg) |
+| Offcanvas Navigation | An offcanvas navigation menu improves usability on smaller devices by providing an accessible mobile-first navigation experience. | ![screenshot](documentation/features/offcanvas.jpeg) |
+| Stripe Checkout | Stripe Checkout supports multiple payment methods, providing users with a secure and flexible payment experience during checkout. | ![screenshot](documentation/features/stripe.jpeg) |
+| Order Confirmation | Users receive an on-screen success page and confirmation email after successful payment completion. | ![screenshot](documentation/features/success-page.jpeg) ![screenshot](documentation/features/confirmation-email.jpeg) |
+| Digital Downloads | Customers purchasing DIY workflow templates receive secure access to downloadable automation systems and setup resources. | ![screenshot](documentation/features/history-downloads.jpeg) ![screenshot](documentation/features/success-downloads.jpeg)|
+| Email link to downloads | Customers recieve a link via email that provides access to their purchase history and download links after successfull log in. | ![screenshot](documentation/features/email-link.jpeg) |
+| Download Limitation System | Purchased downloads are protected through a restricted download system designed to reduce unauthorised sharing and distribution. | ![screenshot](documentation/features/download-limit.jpeg) |
+| Account Navigation Area | Authenticated users can access a dedicated account area for managing profile details, viewing purchases and account-related actions. | ![screenshot](documentation/features/account-nav.jpeg) |
+| Purchase History | Authenticated users can access a dedicated purchases page to review previous orders and access purchased downloads. | ![screenshot](documentation/features/purchase-history.jpeg) |
+| Profile Management | Users can save and manage default checkout information to improve future purchasing experiences. | ![screenshot](documentation/features/profile-management.jpeg) |
+| Delete Profile Confirmation Modal | A confirmation modal is displayed before deleting a user profile to help prevent accidental destructive actions. | ![screenshot](documentation/features/delete-modal.jpeg) |
+| Product Management | Superusers can create, edit and delete products, workflow options, fulfilment variations and categories through the Django admin interface. | ![screenshot](documentation/features/product-admin.jpeg) |
+| Custom 404 Page | A custom 404 page was created to maintain brand consistency and guide users back into the application if an invalid URL is accessed. | ![screenshot](documentation/features/404.jpeg) |
+

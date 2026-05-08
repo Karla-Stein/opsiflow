@@ -43,6 +43,11 @@ body {
     border-radius: 20px;
 }
 
+.toast{
+    /* margin-top: 40px; */
+    z-index: 10000;
+}
+
 /* Navbar */
 .navbar {
     background-color: var(--secondary-background);

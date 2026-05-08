@@ -33,13 +33,11 @@ img{
     overflow-y: scroll;
 }
 
-#option-description{
-    height: 150px;
-    overflow-y: scroll;
-}
-
-
-
 #choose-option{
      scroll-margin-top: 150px;
+}
+
+#option-div{
+    height: 200px;
+    overflow-y: scroll;
 }

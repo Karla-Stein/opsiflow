@@ -89,7 +89,7 @@ def change_option(request, pk):
             elif user_choice.tier == 1:
                 bag.pop(pk)
                 new_tier_choice = 2
-            else:
+            elif user_choice.tier == 2:
                 bag.pop(pk)
                 new_tier_choice = 0
 

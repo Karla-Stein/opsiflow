@@ -23,10 +23,11 @@ for (let option of options) {
         optionPk.value = option.dataset.pk;
 
         let deliveryDays = document.getElementById("delivery-days");
-         deliveryDays.innerText = `Once access is arranged, your system is set up and delivered within ${delivery} working days.`
-        if(userOption === "Set Up Service"){
-           deliveryDays.classList.remove("d-none")
-        } else if (userOption === "DIY Template"){
+         
+        if(name === "Set Up Service"){
+            deliveryDays.classList.remove("d-none")
+            deliveryDays.innerText = `Once access is arranged, your system is set up and delivered within ${delivery} working day(s).`   
+        } else if (name === "DIY Template"){
             deliveryDays.classList.add("d-none")
         };
 });
