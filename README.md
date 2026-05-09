@@ -196,3 +196,22 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | Product Management | Superusers can create, edit and delete products, workflow options, fulfilment variations and categories through the Django admin interface. | ![screenshot](documentation/features/product-admin.jpeg) |
 | Custom 404 Page | A custom 404 page was created to maintain brand consistency and guide users back into the application if an invalid URL is accessed. | ![screenshot](documentation/features/404.jpeg) |
 
+
+### Future Features
+
+- **Site Owner Dashboard**:
+    - A protected staff-only dashboard displaying recent customer orders, submitted onboarding forms, contact form submissions and workflow management section.
+- **Workflow Management Section**: 
+    - A front-end management area where categories, products and product options can be added, updated and deleted without relying solely on the Django admin panel.
+- **Onboarding Forms**:
+    - User purchasing “Set Up Service” options receive onboarding forms directly via email after their purchase.
+- **Automated Reminder Emails**: 
+    - Automatically send reminder emails to users who have purchased setup services but have not completed their onboarding forms.
+- **Newsletter System**: 
+    - A newsletter feature allowing users to subscribe to updates, workflow releases and platform announcements.
+- **Blog Section**: 
+    - A blog section focused on automation, AI workflows, operational efficiency and productivity content.
+- **Product Ratings & Reviews**: 
+    - Allow customers to leave ratings and reviews on workflow templates and services to improve social proof and user trust.
+- **Subscription-based Learning Platform**: 
+    - Subscription access to video-based educational content, workflow tutorials and a private community area.
