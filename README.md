@@ -255,3 +255,118 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | [![Make.com](https://img.shields.io/badge/Make.com-grey?logo=make&logoColor=purple)](https://www.make.com/) | Used for workflow automation planning and business process inspiration. |
 | [![Google Docs](https://img.shields.io/badge/Google%20Docs-grey?logo=googledocs&logoColor=4285F4)](https://docs.google.com/) | Text based set up guides.|
 | [![Notion](https://img.shields.io/badge/Notion-grey?logo=notion&logoColor=white)](https://www.notion.so/) | Project planning, README notes and course-related study notes throughout development. |
+
+
+## Database Design
+
+### Data Model
+
+
+## Agile Development Process
+
+### GitHub Projects
+
+### GitHub Issues
+
+### MoSCoW Prioritisation
+
+Project Epics were broken down into individual User Stories and prioritised using the MoSCoW framework. Each User Story was tracked and labelled within GitHub Issues to clearly define scope and development focus for the MVP.
+
+- **Must Have**: Core functionality required for the MVP and project submission. These features are essential for the platform to function.
+- **Should Have**: High-value features that significantly improve usability and workflow but are not strictly required for MVP completion.
+- **Could Have**: Valuable enhancements that were intentionally scoped out of the MVP due to time and complexity, but are planned for future development (e.g. visitor authentication).
+- **Won’t Have**: Features explicitly excluded from the current development iteration and outside the scope of the MVP.
+
+
+## Testing
+
+> [!NOTE]  
+> For all testing, please refer to the [TESTING.md](TESTING.md) file.
+
+
+## Deployment
+
+The live deployed application can be found deployed on [Heroku](https://opsiflow-952bb478dd9c.herokuapp.com).
+
+### Heroku Deployment
+
+This project uses [Heroku](https://www.heroku.com), a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+Deployment steps are as follows, after account setup:
+
+- Select **New** in the top-right corner of your Heroku Dashboard, and select **Create new app** from the dropdown menu.
+- Your app name must be unique, and then choose a region closest to you (EU or USA), then finally, click **Create App**.
+- From the new app **Settings**, click **Reveal Config Vars**, and set your environment variables to match your private `env.py` file.
+
+> [!IMPORTANT]  
+> This is a sample only; you would replace the values with your own if cloning/forking my repository.
+
+| Key | Value |
+| --- | --- |
+| `AWS_ACCESS_KEY_ID` | user-inserts-own-aws-access-key-id |
+| `AWS_SECRET_ACCESS_KEY` | user-inserts-own-aws-secret-access-key |
+| `DATABASE_URL` | user-inserts-own-postgres-database-url |
+| `DISABLE_COLLECTSTATIC` | 1 (*this is temporary, and can be removed for the final deployment*) |
+| `EMAIL_HOST_PASS` | user-inserts-own-gmail-api-key |
+| `EMAIL_HOST_USER` | user-inserts-own-gmail-email-address |
+| `SECRET_KEY` | any-random-secret-key |
+| `STRIPE_PUBLIC_KEY` | user-inserts-own-stripe-public-key |
+| `STRIPE_SECRET_KEY` | user-inserts-own-stripe-secret-key |
+| `STRIPE_WH_SECRET` | user-inserts-own-stripe-webhook-secret |
+| `USE_AWS` | True |
+
+Heroku needs some additional files in order to deploy properly.
+
+- [requirements.txt](requirements.txt)
+- [Procfile](Procfile)
+- [.python-version](.python-version)
+
+You can install this project's **[requirements.txt](requirements.txt)** (*where applicable*) using:
+
+- `pip3 install -r requirements.txt`
+
+If you have your own packages that have been installed, then the requirements file needs updated using:
+
+- `pip3 freeze --local > requirements.txt`
+
+The **[Procfile](Procfile)** can be created with the following command:
+
+- `echo web: gunicorn app_name.wsgi > Procfile`
+- *replace `app_name` with the name of your primary Django app name; the folder where `settings.py` is located*
+
+The **[.python-version](.python-version)** file tells Heroku the specific version of Python to use when running your application.
+
+- `3.12` (or similar)
+
+For Heroku deployment, follow these steps to connect your own GitHub repository to the newly created app:
+
+Either (*recommended*):
+
+- Select **Automatic Deployment** from the Heroku app.
+
+Or:
+
+- In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
+- Set the remote for Heroku: `heroku git:remote -a app_name` (*replace `app_name` with your app name*)
+- After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type:
+	- `git push heroku main`
+
+The project should now be connected and deployed to Heroku!
+
+### PostgreSQL
+
+This project uses a [Code Institute PostgreSQL Database](https://dbs.ci-dbs.net) for the Relational Database with Django.
+
+> [!CAUTION]
+> - PostgreSQL databases by Code Institute are only available to CI Students.
+> - You must acquire your own PostgreSQL database through some other method if you plan to clone/fork this repository.
+> - Code Institute students are allowed a maximum of 8 databases.
+> - Databases are subject to deletion after 18 months.
+
+To obtain my own Postgres Database from Code Institute, I followed these steps:
+
+- Submitted my email address to the CI PostgreSQL Database link above.
+- An email was sent to me with my new Postgres Database.
+- The Database connection string will resemble something like this:
+    - `postgres://<db_username>:<db_password>@<db_host_url>/<db_name>`
+- You can use the above URL with Django; simply paste it into your `env.py` file and Heroku Config Vars as `DATABASE_URL`.
+
