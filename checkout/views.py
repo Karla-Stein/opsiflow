@@ -8,6 +8,7 @@ from django.http import FileResponse
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 
 from .forms import OrderForm
 from bag.contexts import bag_contents
@@ -19,6 +20,7 @@ import stripe
 import json
 
 
+@login_required
 @require_POST
 def cache_checkout_data(request):
 
@@ -53,6 +55,7 @@ def cache_checkout_data(request):
         return HttpResponse(content=e, status=400)
 
 
+@login_required
 def checkout(request):
     """
     A view to collect checkout data create the payment intent.
@@ -109,6 +112,7 @@ def checkout(request):
     )
 
 
+@login_required
 def checkout_success(request):
     """
     A view to handle successful Stripe checkout, retrieve payment and
@@ -222,6 +226,7 @@ def checkout_success(request):
     )
 
 
+@login_required
 def download(request, pk):
     download = get_object_or_404(OrderLineItem, pk=pk)
 

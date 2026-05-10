@@ -23,6 +23,7 @@ def purchases(request):
     )
 
 
+@login_required
 def my_profile(request):
     """
     A view to display the user profile
@@ -45,6 +46,7 @@ def my_profile(request):
     )
 
 
+@login_required
 def delete_account(request):
     """
     View to allow user to delete their account.
