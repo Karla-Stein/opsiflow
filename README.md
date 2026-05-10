@@ -495,3 +495,48 @@ Back on the AWS Services Menu, search for and open **IAM** (Identity and Access 
 - Select any existing media images for your project to prepare them for being uploaded into the new folder.
 - Under **Manage Public Permissions**, select **Grant public read access to this object(s)**.
 - No further settings are required, so click **Upload**.
+
+### Stripe API
+
+This project uses [Stripe](https://stripe.com) to handle the ecommerce payments.
+
+Once you've created a Stripe account and logged-in, follow these series of steps to get your project connected.
+
+- From your Stripe dashboard, click to expand the "Get your test API keys".
+- You'll have two keys here:
+	- `STRIPE_PUBLIC_KEY` = Publishable Key (starts with **pk**)
+	- `STRIPE_SECRET_KEY` = Secret Key (starts with **sk**)
+
+As a backup, in case users prematurely close the purchase-order page during payment, we can include Stripe Webhooks.
+
+- From your Stripe dashboard, click **Developers**, and select **Webhooks**.
+- From there, click **Add Endpoint**.
+	- `https://opsiflow-952bb478dd9c.herokuapp.com/checkout/wh/`
+- Click **receive all events**.
+- Click **Add Endpoint** to complete the process.
+- You'll have a new key here:
+	- `STRIPE_WH_SECRET` = Signing Secret (Wehbook) Key (starts with **wh**)
+
+### Gmail API
+
+This project uses [Gmail](https://mail.google.com) to handle sending emails to users for purchase order confirmations.
+
+Once you've created a Gmail (Google) account and logged-in, follow these series of steps to get your project connected.
+
+- Click on the **Account Settings** (cog icon) in the top-right corner of Gmail.
+- Click on the **Accounts and Import** tab.
+- Within the section called "Change account settings", click on the link for **Other Google Account settings**.
+- From this new page, select **Security** on the left.
+- Select **2-Step Verification** to turn it on. (*verify your password and account*)
+- Once verified, select **Turn On** for 2FA.
+- Navigate back to the **Security** page, and you'll see a new option called **App passwords** (*search for it at the top, if not*).
+- This might prompt you once again to confirm your password and account.
+- Select **Mail** for the app type.
+- Select **Other (Custom name)** for the device type.
+    - Any custom name, such as "Django" or `opsiflow`
+- You'll be provided with a 16-character password (API key).
+    - Save this somewhere locally, as you cannot access this key again later!
+    - If your 16-character password contains *spaces*, make sure to remove them entirely.
+    - `EMAIL_HOST_PASS` = user's 16-character API key
+    - `EMAIL_HOST_USER` = user's own personal Gmail email address
+
