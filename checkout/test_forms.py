@@ -39,7 +39,7 @@ class TestOrderForm(TestCase):
             })
         self.assertFalse(
             order_form.is_valid(),
-            msg='Email format is correct')
+            msg='Email format is not correct yet form is valid')
 
     def test_first_name_field_is_invalid(self):
         """Negative test for first name fields"""
@@ -57,7 +57,7 @@ class TestOrderForm(TestCase):
             })
         self.assertFalse(
             order_form.is_valid(),
-            msg='First name is provided')
+            msg='First name is not provided yet form is valid')
 
     def test_name_field_is_invalid(self):
         """Negative test for name fields"""
@@ -75,7 +75,7 @@ class TestOrderForm(TestCase):
             })
         self.assertFalse(
             order_form.is_valid(),
-            msg='Name is provided')
+            msg='Last name is not provided yet form is valid')
 
     def test_email_field_not_provided(self):
         """Negative test for omitted email field"""
@@ -93,7 +93,7 @@ class TestOrderForm(TestCase):
             })
         self.assertFalse(
             order_form.is_valid(),
-            msg='Email is provided')
+            msg='Email not provided yet form is valid')
 
     def test_billing_1_not_provided(self):
         """Negative test for omitted billing_1 field"""
@@ -111,7 +111,7 @@ class TestOrderForm(TestCase):
             })
         self.assertFalse(
             order_form.is_valid(),
-            msg='Billing 1 is provided')
+            msg='Billing 1 not provided yet form is valid')
 
     def test_city_not_provided(self):
         """Negative test for omitted city field"""
@@ -129,7 +129,7 @@ class TestOrderForm(TestCase):
             })
         self.assertFalse(
             order_form.is_valid(),
-            msg='City is provided')
+            msg='City not provided yet form is valid')
 
     def test_country_not_provided(self):
         """Negative test for omitted country field"""
@@ -147,4 +147,4 @@ class TestOrderForm(TestCase):
             })
         self.assertFalse(
             order_form.is_valid(),
-            msg='Country is provided')
+            msg='Country not provided yet form is valid')
