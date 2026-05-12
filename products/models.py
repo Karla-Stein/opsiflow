@@ -52,7 +52,6 @@ class ProductOption(models.Model):
     tier = models.IntegerField(
         choices=TIER, null=True, blank=True)
     delivery_days = models.IntegerField(null=True, blank=True)
-    max_modules = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.name
