@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.core.exceptions import ValidationError
 from .models import Category, Product, ProductOption
 
 
@@ -78,3 +79,157 @@ class ProductModelTest(TestCase):
 
         self.assertIsNone(product.category,
                           msg='Category should be optional')
+
+
+class ProductOptionModelTest(TestCase):
+    """
+    Tests for the ProductOption model.
+    """
+
+    def test_productoption_str_returns_productoption_name(self):
+        """
+        Test that __str__ returns productoption name.
+        """
+
+        product = Product.objects.create(
+            name='Lead-to-Invoice Automation',
+            description='Capture leads and send invoices',
+            excerpt='',
+            image_url='',
+            image='',
+            )
+
+        product_option = ProductOption.objects.create(
+            product=product,
+            name="option name",
+            description="description",
+            unit_price="99.00",
+            fulfilment_choice="0",
+            download_file="",
+            tier="0",
+            delivery_days="0",
+        )
+
+        result = str(product_option)
+
+        self.assertEqual(result, 'option name',
+                         msg='String message incorrect')
+
+    def test_diy_template_requires_a_download_file(self):
+        """
+        Negative test that fulfiment choice DIY Template requires a file,
+        validation error expected.
+        """
+
+        product = Product.objects.create(
+            name='Lead-to-Invoice Automation',
+            description='Capture leads and send invoices',
+            excerpt='',
+            image_url='',
+            image='',
+            )
+
+        product_option = ProductOption(
+            product=product,
+            name="option name",
+            description="description",
+            unit_price="99.00",
+            fulfilment_choice=0,
+            download_file=None,
+            tier=None,
+            delivery_days=None,
+            )
+
+        self.assertRaises(
+            ValidationError)
+        product_option.full_clean()
+
+    def test_setup_prohibits_a_download_file(self):
+        """
+        Negative test. Test that fulfiment choice Set Up
+        service does not allow file upload,
+        validation error expected.
+        """
+
+        product = Product.objects.create(
+            name='Lead-to-Invoice Automation',
+            description='Capture leads and send invoices',
+            excerpt='',
+            image_url='',
+            image='',
+            )
+
+        product_option = ProductOption(
+            product=product,
+            name="option name",
+            description="description",
+            unit_price="99.00",
+            fulfilment_choice=1,
+            download_file=True,
+            tier=None,
+            delivery_days=None,
+            )
+
+        self.assertRaises(
+            ValidationError)
+        product_option.full_clean()
+
+    def test_setup_requires_delivery_days(self):
+        """
+        Negative test. Test that fulfiment choice Set Up
+        service requires delivery days,
+        validation error expected.
+        """
+
+        product = Product.objects.create(
+            name='Lead-to-Invoice Automation',
+            description='Capture leads and send invoices',
+            excerpt='',
+            image_url='',
+            image='',
+            )
+
+        product_option = ProductOption(
+            product=product,
+            name="option name",
+            description="description",
+            unit_price="99.00",
+            fulfilment_choice=1,
+            download_file=None,
+            tier=None,
+            delivery_days=None,
+            )
+
+        self.assertRaises(
+            ValidationError)
+        product_option.full_clean()
+
+    def test_fulfilment_choice_and_tier_cannot_coexist(self):
+        """
+        Negative test. Test that fulfiment choice and tier for custom workflows
+        can not coexist,
+        validation error expected.
+        """
+
+        product = Product.objects.create(
+            name='Lead-to-Invoice Automation',
+            description='Capture leads and send invoices',
+            excerpt='',
+            image_url='',
+            image='',
+            )
+
+        product_option = ProductOption(
+            product=product,
+            name="option name",
+            description="description",
+            unit_price="99.00",
+            fulfilment_choice=1,
+            download_file=None,
+            tier="2",
+            delivery_days="2",
+            )
+
+        self.assertRaises(
+            ValidationError)
+        product_option.full_clean()
