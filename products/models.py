@@ -40,9 +40,7 @@ TIER = ((0, "Starter"), (1, "Growth"), (2, "Pro"))
 
 class ProductOption(models.Model):
     product = models.ForeignKey('Product',
-                                on_delete=models.SET_NULL,
-                                null=True,
-                                blank=True,
+                                on_delete=models.CASCADE,
                                 related_name='options')
     name = models.CharField(max_length=254)
     description = models.TextField()
