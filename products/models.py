@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
@@ -46,7 +47,7 @@ class ProductOption(models.Model):
     description = models.TextField()
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
     fulfilment_choice = models.IntegerField(
-        choices=FULFILMENT_CHOICE, default=0)
+        choices=FULFILMENT_CHOICE, null=True, blank=True)
     download_file = models.FileField(null=True, blank=True,
                                      upload_to='downloads/')
     tier = models.IntegerField(
@@ -55,3 +56,40 @@ class ProductOption(models.Model):
 
     def __str__(self):
         return self.name
+
+    def clean(self):
+        # Raise error if fullfilment choice is DIY Template but no
+        # downloas was provided.
+        if self.fulfilment_choice == 0 and not self.download_file:
+            raise ValidationError("You must choose a file.")
+
+        # Raise error if fullfilment choice is Set Up Service but
+        # downloas was provided.
+        if self.fulfilment_choice == 1 and self.download_file:
+            raise ValidationError("You must not add a file.")
+
+        # Raise error if fullfilment choice is Set Up Service but no
+        # delivery days were provided.
+        if self.fulfilment_choice == 1 and self.delivery_days is None:
+            raise ValidationError("You must add delivery days.")
+
+        # Raise error if fullfilment choice is DIY Template but
+        # delivery days were provided.
+        if self.fulfilment_choice == 0 and self.delivery_days:
+            raise ValidationError("You must not add delivery days.")
+
+        # Raise error if custom workflow tier was chosen but no
+        # delivery days were provided.
+        if self.tier in [0, 1, 2] and self.delivery_days is None:
+            raise ValidationError("You must add delivery days.")
+
+        # Raise error if custom workflow tier was chosen but no
+        # download files were provided.
+        if self.tier in [0, 1, 2] and self.download_file:
+            raise ValidationError(
+                "You must not add download files to custom workflows.")
+
+        # Raise error if custom workflow tier and fulfiment choice was chosen.
+        if self.fulfilment_choice and self.tier in [0, 1, 2]:
+            raise ValidationError(
+                "Please choose either custom workflow or fulfilment.")
