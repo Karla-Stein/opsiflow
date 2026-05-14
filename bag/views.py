@@ -30,6 +30,15 @@ def add_to_bag(request):
 
     bag = request.session.get('bag', {})
 
+    for pk in bag.keys():
+        option_in_bag = ProductOption.objects.get(pk=pk)
+        if option_in_bag.product == selected_option.product:
+            messages.warning(request,
+                             f'{option_in_bag.product} already in your bag. '
+                             'Head to your shopping bag '
+                             'if you would like to change the option.')
+            return redirect(redirect_url)
+
     if selected_option_pk in list(bag.keys()):
         messages.warning(request, f'{selected_option} already in your bag')
     else:
