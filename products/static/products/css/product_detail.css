@@ -21,7 +21,11 @@ img{
 }
 
 .form-check-input{
-    border: 1px solid var(--primary-text-color);
+    border: 1.5px solid var(--primary-text-color);
+}
+
+.form-check-input:focus{
+    color: var(--secondary_accent);
 }
 
 .form-check{

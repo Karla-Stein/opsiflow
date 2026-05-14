@@ -3,7 +3,6 @@ let description = document.getElementsByClassName("option-description")
 
 for (let option of options) {
     option.addEventListener("click", (e) => {
-        e.preventDefault();
         userOption = e.target.innerText;
         let name = option.dataset.name;
         let description = option.dataset.description;
