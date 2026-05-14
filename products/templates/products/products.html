@@ -8,10 +8,10 @@
 {% block content %}
 <div class="container">
     <div class="row justify-content-center justify-content-lg-end">
-        <div class="col-10 offset-lg-2 my-5 text-center">
+        <div class="col-10 offset-lg-2 mt-5 text-center">
             {% if current_categories %}
             {% for category in current_categories %}
-            <h2 display="5">{{ category.friendly_name }}</h2>
+            <h2 class="display-5 my-5">{{ category.friendly_name }}</h2>
             {% if category.friendly_name == "Email Automation" %}
             <p class="index-p">Capture and organise interest in your business automatically.
                 <br>
@@ -51,6 +51,18 @@
                 structured flow from request to payment completion. Instead of chasing payments or managing billing
                 manually, you’ll have a reliable system that keeps your cash flow organised and predictable.</p>
             {% endif %}
+        </div>
+        <div class="row justify-content-center">
+            <div class="dropdown my-4 text-center offset-lg-2">
+                <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="fa-solid fa-chart-diagram"></i>
+                    Sort Workflows</button>
+                <ul id="sorting-dropdown" class="dropdown-menu border-0 shadow-sm" aria-labelledby="all-products-link">
+                    <li><a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item"><i class="fa-solid fa-dollar-sign"></i> By Lowest Price</a></li>
+                    <li><a href="{% url 'products' %}?sort=complexity&direction=asc" class="dropdown-item "><i class="fa-solid fa-screwdriver-wrench"></i> By Least Complexity</a></li>
+                    <li><a href="{% url 'products' %}?sort=name&direction=asc" class="dropdown-item "><i class="fa-solid fa-arrow-up-a-z"></i> By name A - Z</a></li>
+                    <a href="{% url 'products' %}" class="dropdown-item">All Workflows</a>
+                </ul>
+            </div>
         </div>
         {% for product in products %}
         <div class="col-8 col-md-6 col-lg-4 product-card mx-5 d-flex flex-column justify-content-center">
