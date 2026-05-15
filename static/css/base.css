@@ -95,7 +95,7 @@ body {
     background-color: var(--primary-text-color);
     color: var(--secondary-background);
     position: sticky;
-    top: 82px;
+    top: 87px;
     z-index: 1010;
     height: 22px;
     overflow: hidden;
@@ -279,10 +279,6 @@ aside .nav-link {
     svg {
         display: none;
     }
-    .discount-banner{
-        top: 75px;
-        z-index: 300000;
-    }
 }
 
 @media screen and (max-width: 350px) {
@@ -298,11 +294,5 @@ aside .nav-link {
     #signin-btn,
     #signup-btn{
         width: 60px;
-    }
-}
-
-@media screen and (min-width: 325px) and (max-width: 384px) {
-   .discount-banner{
-        top: 63px;
     }
 }
