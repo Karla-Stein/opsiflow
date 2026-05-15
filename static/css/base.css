@@ -57,9 +57,7 @@ body {
 }
 
  i.fa-solid.fa-bars{
-        position: relative;
-        top: 10px;
-      
+        margin-top: 10px;  
     }
 #brand-name {
     margin-top: 10px;
@@ -97,7 +95,7 @@ body {
     background-color: var(--primary-text-color);
     color: var(--secondary-background);
     position: sticky;
-    top: 87px;
+    top: 82px;
     z-index: 1010;
     height: 22px;
     overflow: hidden;
@@ -237,7 +235,7 @@ aside .nav-link {
     }
 }
 
-@media screen and (max-width: 338px) {
+@media screen and (max-width: 383px) {
     #brand-name {
         font-size: x-large;
     }
@@ -280,5 +278,31 @@ aside .nav-link {
 @media screen and (max-width: 991px) {
     svg {
         display: none;
+    }
+    .discount-banner{
+        top: 75px;
+        z-index: 300000;
+    }
+}
+
+@media screen and (max-width: 350px) {
+     #brand-name {
+        font-size: large;
+    }
+}
+@media screen and (max-width: 325px) {
+     #brand-name {
+       position: relative;
+       right: 10px;
+    }
+    #signin-btn,
+    #signup-btn{
+        width: 60px;
+    }
+}
+
+@media screen and (min-width: 325px) and (max-width: 384px) {
+   .discount-banner{
+        top: 63px;
     }
 }

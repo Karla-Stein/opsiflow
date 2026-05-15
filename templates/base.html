@@ -126,9 +126,9 @@
                         </small></span>
                 </div>
                 {% else %}
-                <a href="{% url 'account_login' %}" class="btn btn-outline-dark btn-sm my-2" type="submit">Sign
+                <a id="signin-btn" href="{% url 'account_login' %}" class="btn btn-outline-dark btn-sm my-2" type="submit">Sign
                     in</a>
-                <a href="{% url 'account_signup' %}" class="btn btn-outline-dark btn-sm" type="submit">Sign
+                <a id="signup-btn" href="{% url 'account_signup' %}" class="btn btn-outline-dark btn-sm" type="submit">Sign
                     up</a>
                 {% endif%}
             </div>
