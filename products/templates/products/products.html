@@ -53,15 +53,23 @@
             {% endif %}
         </div>
         <div class="row justify-content-center">
-            <div class="dropdown my-4 text-center offset-lg-2">
-                <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="fa-solid fa-chart-diagram"></i>
-                    Sort Workflows</button>
-                <ul id="sorting-dropdown" class="dropdown-menu border-0 shadow-sm" aria-labelledby="all-products-link">
-                    <li><a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item"><i class="fa-solid fa-dollar-sign"></i> By Lowest Price</a></li>
-                    <li><a href="{% url 'products' %}?sort=complexity&direction=asc" class="dropdown-item "><i class="fa-solid fa-screwdriver-wrench"></i> By Least Complexity</a></li>
-                    <li><a href="{% url 'products' %}?sort=name&direction=asc" class="dropdown-item "><i class="fa-solid fa-arrow-up-a-z"></i> By name A - Z</a></li>
-                    <a href="{% url 'products' %}" class="dropdown-item">All Workflows</a>
-                </ul>
+            <div class="my-4 text-center offset-lg-2">
+                <select id="sort-selector" class="text-center">
+                    <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...
+                    </option>
+                    <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price
+                        (low to high)</option>
+                    <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price
+                        (high to low)</option>
+                    <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name
+                        (A-Z)</option>
+                    <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name
+                        (Z-A)</option>
+                    <option value="complexity_asc" {% if current_sorting == 'complexity_asc' %}selected{% endif %}>
+                        Complexity (low to high)</option>
+                    <option value="complexity_desc" {% if current_sorting == 'complexity_desc' %}selected{% endif %}>
+                        Complexity (high to low)</option>
+                </select>        
             </div>
         </div>
         {% for product in products %}
@@ -87,5 +95,37 @@
         {% endfor %}
     </div>
 </div>
+
+{% endblock %}
+{% block postloadjs %}
+
+<script>
+    const sortSelector = document.getElementById('sort-selector');
+    sortSelector.addEventListener('change', function (e) {
+    // this is the dropdown that changed
+    const selector = e.target;
+    // turn current url into url object
+    const currentUrl = new URL(window.location);
+    // gets selected dropdown value (string)      
+    const selectedVal = selector.value;
+
+    if (selectedVal !== "reset") {
+        const sort = selectedVal.split("_")[0];
+        const direction = selectedVal.split("_")[1];
+
+        // modifies url
+        currentUrl.searchParams.set("sort", sort);
+        currentUrl.searchParams.set("direction", direction);
+
+        window.location.replace(currentUrl);
+
+    } else {
+        currentUrl.searchParams.delete("sort");
+        currentUrl.searchParams.delete("direction");
+
+        window.location.replace(currentUrl);
+    }
+});
+</script>
 
 {% endblock %}

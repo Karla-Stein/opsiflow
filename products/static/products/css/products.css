@@ -4,6 +4,8 @@
     border: 1px solid grey;
     border-radius: 20px;
     margin: 20px;
+    box-shadow:
+    0 4px 12px rgba(0,0,0,0.50);
 
 }
 
@@ -29,6 +31,12 @@
 
 #browse-cards{
     height: 200px;
+}
+
+#sort-selector{
+    border-radius: 5px;
+    box-shadow:
+    0 4px 12px rgba(0,0,0,0.50);
 }
 
 /* Media Queries */

@@ -44,6 +44,8 @@ def all_products(request):
                 direction = request.GET['direction']
                 if direction == 'asc':
                     sortkey = f'{sortkey}'
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
 
         # Filter products by category from navbar links
