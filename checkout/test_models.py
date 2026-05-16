@@ -35,9 +35,9 @@ class OrderModelTest(TestCase):
             billing_city="London",
             billing_postalcode="E99999",
             billing_country="UK",
-            order_total="100.00",
+            order_total=100.00,
             payment_id="",
-            status="0",
+            status=0,
             created_at="30/08/1961",
             )
 
@@ -71,9 +71,9 @@ class OrderModelTest(TestCase):
             billing_city="London",
             billing_postalcode="E99999",
             billing_country="UK",
-            order_total="100.00",
+            order_total=100.00,
             payment_id="",
-            status="2",
+            status=2,
             created_at="30/08/1961",
             )
 
@@ -111,7 +111,7 @@ class OrderModelTest(TestCase):
             billing_country="UK",
             order_total="100.00",
             payment_id="",
-            status="2",
+            status=2,
             created_at="30/08/1961",
             )
 
@@ -247,3 +247,198 @@ class OrderModelTest(TestCase):
 
         self.assertTrue(result,
                         msg="Order does not exist")
+
+
+class OrderLineItemModelTest(TestCase):
+    """
+    Tests for the OrderLineItem model.
+    """
+
+    def test_save_method_updates_lineitem_total(self):
+        """
+        Test that the save method updates the lineitem_total."
+        """
+        user = User.objects.create_user(
+            username='alice',
+            password='testpass123'
+            )
+
+        profile = UserProfile.objects.get(user=user)
+
+        order = Order.objects.create(
+            order_number="",
+            user_profile=profile,
+            user_first_name="alice",
+            user_last_name="lastname",
+            user_email="alice@wonderland.com",
+            user_phone="12345",
+            billing_address_1="Test Drive",
+            billing_address_2="",
+            billing_county="",
+            billing_city="London",
+            billing_postalcode="E99999",
+            billing_country="UK",
+            order_total=100.00,
+            payment_id="",
+            status=0,
+            created_at="30/08/1961",
+            )
+
+        product_1 = Product.objects.create(
+            name='Lead-to-Invoice Automation',
+            description='Capture leads and send invoices',
+            excerpt='',
+            image_url='',
+            image='',
+            )
+
+        product_option_1 = ProductOption.objects.create(
+            product=product_1,
+            name="option name",
+            description="description",
+            unit_price=99.00,
+            fulfilment_choice=0,
+            download_file="",
+            tier=None,
+            delivery_days=0,
+        )
+
+        orderline_item = OrderLineItem.objects.create(
+            item_option=product_option_1,
+            order=order,
+            quantity=1,
+            lineitem_total=0,
+            download_count=3,
+        )
+
+        result = orderline_item.lineitem_total
+
+        self.assertEqual(result, 99.00,
+                         msg='Lineitem total is not correct')
+
+    def test_orderlineitem_is_deleted_upon_order_deletion(self):
+        """
+        Test that the orderlineitem deletes if relational order is deleted."
+        """
+        user = User.objects.create_user(
+            username='alice',
+            password='testpass123'
+            )
+
+        profile = UserProfile.objects.get(user=user)
+
+        order = Order.objects.create(
+            order_number="",
+            user_profile=profile,
+            user_first_name="alice",
+            user_last_name="lastname",
+            user_email="alice@wonderland.com",
+            user_phone="12345",
+            billing_address_1="Test Drive",
+            billing_address_2="",
+            billing_county="",
+            billing_city="London",
+            billing_postalcode="E99999",
+            billing_country="UK",
+            order_total=100.00,
+            payment_id="",
+            status=0,
+            created_at="30/08/1961",
+            )
+
+        product_1 = Product.objects.create(
+            name='Lead-to-Invoice Automation',
+            description='Capture leads and send invoices',
+            excerpt='',
+            image_url='',
+            image='',
+            )
+
+        product_option_1 = ProductOption.objects.create(
+            product=product_1,
+            name="option name",
+            description="description",
+            unit_price=99.00,
+            fulfilment_choice=0,
+            download_file="",
+            tier=None,
+            delivery_days=0,
+        )
+
+        orderline_item = OrderLineItem.objects.create(
+            item_option=product_option_1,
+            order=order,
+            quantity=1,
+            lineitem_total=0,
+            download_count=3,
+        )
+
+        order.delete()
+        item = OrderLineItem.objects.filter(pk=orderline_item.pk).exists()
+
+        self.assertFalse(item,
+                         msg='Lineitem still exists')
+
+    def test_str_representation_returns_depending_order_number(self):
+        """
+        Test that the str method returns which order
+        number the lineitem belongs to."
+        """
+        user = User.objects.create_user(
+            username='alice',
+            password='testpass123'
+            )
+
+        profile = UserProfile.objects.get(user=user)
+
+        order = Order.objects.create(
+            order_number="",
+            user_profile=profile,
+            user_first_name="alice",
+            user_last_name="lastname",
+            user_email="alice@wonderland.com",
+            user_phone="12345",
+            billing_address_1="Test Drive",
+            billing_address_2="",
+            billing_county="",
+            billing_city="London",
+            billing_postalcode="E99999",
+            billing_country="UK",
+            order_total=100.00,
+            payment_id="",
+            status=0,
+            created_at="30/08/1961",
+            )
+
+        product_1 = Product.objects.create(
+            name='Lead-to-Invoice Automation',
+            description='Capture leads and send invoices',
+            excerpt='',
+            image_url='',
+            image='',
+            )
+
+        product_option_1 = ProductOption.objects.create(
+            product=product_1,
+            name="option name",
+            description="description",
+            unit_price=99.00,
+            fulfilment_choice=0,
+            download_file="",
+            tier=None,
+            delivery_days=0,
+        )
+
+        orderline_item = OrderLineItem.objects.create(
+            item_option=product_option_1,
+            order=order,
+            quantity=1,
+            lineitem_total=0,
+            download_count=3,
+        )
+
+        result = str(orderline_item)
+
+        self.assertEqual(result, f'OrderLineItem belongs to Order number: {
+            orderline_item.order.order_number}.',
+            msg='String representation returned incorrectly.')

@@ -84,3 +84,7 @@ class OrderLineItem(models.Model):
         self.lineitem_total = self.item_option.unit_price * self.quantity
         super().save(*args, **kwargs)
         self.order.update_total()
+
+    def __str__(self):
+        return f'OrderLineItem belongs to Order number: {
+            self.order.order_number}.'
