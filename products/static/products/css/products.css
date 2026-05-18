@@ -5,7 +5,7 @@
     border-radius: 20px;
     margin: 20px;
     box-shadow:
-    0 4px 12px rgba(0,0,0,0.50);
+    0 4px 12px rgba(0,0,0,0.20);
 
 }
 
@@ -36,7 +36,7 @@
 #sort-selector{
     border-radius: 5px;
     box-shadow:
-    0 4px 12px rgba(0,0,0,0.50);
+    0 4px 12px rgba(0,0,0,0.20);
 }
 
 /* Media Queries */

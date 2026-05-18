@@ -640,3 +640,54 @@ By forking the GitHub Repository, you make a copy of the original repository on 
 3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
 
 
+### Local VS Deployment
+
+There are no remaining major differences between the local version when compared to the deployed version online.
+
+
+## Credits
+
+### Content
+
+| Source | Notes |
+| --- | --- |
+| [Markdown Builder](https://markdown.2bn.dev) | Help generating Markdown files |
+| [Boutique Ado](https://codeinstitute.net) | Code Institute walkthrough project inspiration |
+| [Bootstrap](https://getbootstrap.com) | Various components / responsive front-end framework |
+| [AWS S3](https://aws.amazon.com/s3) | Cloud storage for static/media files |
+| [Whitenoise](https://whitenoise.readthedocs.io) | Static file service |
+| [Stripe](https://docs.stripe.com/payments/accept-a-payment?payment-ui=elements&api-integration=paymentintents) | Stripe payment element |
+| [Gmail API](https://developers.google.com/gmail/api/guides) | Sending payment confirmation emails |
+| [ChatGPT](https://chatgpt.com) | Help with code logic and explanations |
+| [Django Docs](https://docs.djangoproject.com/en/6.0/howto/csrf/) | CSRF protection wit AJAX |
+| [Django Docs](https://docs.djangoproject.com/en/4.2/ref/models/instances/) | Custom model validation |
+| [Django Docs](https://docs.djangoproject.com/en/6.0/topics/email/) | Sending emails |
+| [Make.com](https://www.make.com/en) | JSON blueprints - digital product |
+| [Google Docs](https://docs.google.com) | Set up instructions - digital product |
+| [Chat GPT](https://chatgpt.com) | Content for Set up instructions - digital product |
+
+### Media
+
+| Source | Notes |
+| --- | --- |
+| [Make.com](https://www.make.com/en) | Workflow screenshots used throughout the project were created and captured from my own private Make.com account. |
+| [Magnific](https://www.magnific.com/search?format=search&last_filter=query&last_value=workflows&query=workflows#uuid=75aee66e-507f-4e1e-a00d-2290a974e2c7) | Custom workflow image |
+| [Magnific](https://www.magnific.com/search?format=search&last_filter=query&last_value=placeholder&query=placeholder#uuid=4a90ddc5-70c1-4e1f-bb4f-5c9a8e1990d5) | Placeholder image |
+| [Google Fonts](https://fonts.google.com/icons?icon.query=automation) | Brand Icon |
+| [Font Awesome](https://fontawesome.com) | Icons used throughout the application |
+| [favicon.io](https://favicon.io) | Generating the favicon |
+| [Google Fonts](https://fonts.google.com/) | Typography |
+| [Coolors](https://coolors.co) | Colour palette inspiration |
+
+
+### Acknowledgements
+
+- I would like to thank my former Code Institute mentor, [Tim Nelson](https://www.github.com/TravelTimN), to introduce me to the Markdown builder.
+- I would also like to thank [Code Institute](https://codeinstitute.net) for the course content, walkthrough projects and learning materials that helped me develop my technical and problem-solving skills throughout this journey.
+- A special thank you to [Richey Malhotra](https://github.com/richey-malhotra) for the additional support and guidance he provided throughout this project. He consistently went above and beyond to help our cohort succeed, including offering valuable 1:1 support sessions outside of the standard teaching provided. His support contributed significantly to both my learning experience and confidence throughout development.
+
+
+
+
+
+
