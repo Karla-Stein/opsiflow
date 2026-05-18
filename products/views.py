@@ -81,7 +81,7 @@ def all_products(request):
 
 def product_detail(request, pk):
     """
-    A view to display product deatils and their options.
+    A view to display product details and their options.
     """
 
     queryset = Product.objects.all()
