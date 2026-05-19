@@ -261,6 +261,19 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 ### Data Model
 
+The database structure was initially planned using both Lucidchart and Google Sheets.
+
+Lucidchart was primarily used during the early planning phase to visually map relationships between models and create clear, presentation-friendly ERDs. Its visual structure helped with understanding the overall architecture and future scalability of the application.
+Google Sheets was later used for analysing relationships, adjusting fields and validating the data structure, as it provided a simpler and more flexible environment. 
+Using both tools allowed the database design to remain visually organised while also supporting practical development decisions.
+
+### Database Design Evolution
+
+| Stage | Tool | Purpose | ERD |
+| --- | --- | --- | --- | 
+| Initial Planned ERD | [![Lucidchart](https://img.shields.io/badge/Lucidchart-ERD-grey?logo=lucid&logoColor=orange)](https://lucid.app/) | Used during the planning phase to visually design the application's relational database structure and map relationships between core models. | ![screenshot](documentation/erd/erd-lucid.jpeg) |
+| Refined Development ERD | [![Google%20Sheets](https://img.shields.io/badge/Google%20Sheets-grey?logo=googlesheets&logoColor=green)](https://www.google.com/sheets/about/) | Used during active development to simplify, validate and refine model relationships and database logic throughout implementation. | ![screenshot](documentation/erd/erd-sheet.jpeg) |
+
 
 ## Agile Development Process
 
