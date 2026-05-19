@@ -164,3 +164,42 @@ class TestAllProductsView(TestCase):
              'test Product 2',
              ]
                         )
+
+
+class TestProductDetailView(TestCase):
+
+    def setUp(self):
+        self.category = Category(
+            name="Category name"
+        )
+        self.category.save()
+
+        self.product_1 = Product(
+            category=self.category,
+            name="High-Intent Lead Magnet Delivery System 1",
+            description="test description 1",
+            excerpt="Product excerpt 1",
+            image_url="",
+            image="")
+        self.product_1.save()
+
+        self.product_option_1 = ProductOption(
+            product=self.product_1,
+            name="test product option 1",
+            description="test description product option 1",
+            unit_price=100.00,
+            fulfilment_choice=1,
+            download_file=None,
+            tier=None,
+            delivery_days=2)
+        self.product_option_1.save()
+
+    def test_product_detail_page_renders(self):
+        response = self.client.get(reverse(
+            'product_detail',  args=[self.product_1.pk]))
+
+        self.assertEqual(response.status_code, 200, msg="Status code not 200")
+        self.assertTemplateUsed(response,
+                                'products/product_detail.html')
+        self.assertEqual(str(response.context['product']),
+                         "High-Intent Lead Magnet Delivery System 1")
