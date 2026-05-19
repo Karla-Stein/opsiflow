@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 def index(request):
     """
-    A view to return th eindex page
+    A view to return the index page
     """
     return render(
         request,
