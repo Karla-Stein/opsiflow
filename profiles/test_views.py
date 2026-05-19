@@ -71,7 +71,7 @@ class TestPurchasesView(TestCase):
         response = self.client.get(
                 reverse('purchases')
             )
-
+        self.assertEqual(response.status_code, 302, msg="Status code not 302")
         self.assertRedirects(
             response,
             '/accounts/login/?next=/profiles/my-purchases/'
