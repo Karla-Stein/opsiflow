@@ -5,6 +5,7 @@ from .models import Category, Product, ProductOption
 
 
 class TestAllProductsView(TestCase):
+    """Tests for all_products view"""
 
     def setUp(self):
         self.category = Category(
@@ -73,6 +74,10 @@ class TestAllProductsView(TestCase):
         self.product_option_3.save()
 
     def test_products_page_renders(self):
+        """
+        Test that page returns status code 200, name and excerpt are
+        displayed and correct template is used.
+        """
         response = self.client.get(reverse(
             'products'))
 
@@ -87,6 +92,9 @@ class TestAllProductsView(TestCase):
                                 'products/products.html')
 
     def test_sort_by_name_ascending(self):
+        """
+        Test that name sorts by ascending order.
+        """
         response = self.client.get(reverse('products'),
                                    {'sort': 'name', 'direction': 'asc'})
         self.assertEqual(response.status_code, 200)
@@ -99,6 +107,9 @@ class TestAllProductsView(TestCase):
                         )
 
     def test_sort_by_name_descending(self):
+        """
+        Test that name sorts by descending order.
+        """
         response = self.client.get(reverse('products'),
                                    {'sort': 'name', 'direction': 'desc'})
         self.assertEqual(response.status_code, 200)
@@ -112,6 +123,9 @@ class TestAllProductsView(TestCase):
                         )
 
     def test_sort_by_complexity_ascending(self):
+        """
+        Test that complexity sorts by ascending order.
+        """
         response = self.client.get(
             reverse('products'),
             {'sort': 'complexity', 'direction': 'asc'})
@@ -125,6 +139,9 @@ class TestAllProductsView(TestCase):
                         )
 
     def test_sort_by_complexity_descending(self):
+        """
+        Test that complexity sorts by descending order.
+        """
         response = self.client.get(
             reverse('products'),
             {'sort': 'complexity', 'direction': 'desc'})
@@ -138,6 +155,9 @@ class TestAllProductsView(TestCase):
                         )
 
     def test_sort_by_price_ascending(self):
+        """
+        Test that price sorts by ascending order.
+        """
         response = self.client.get(
             reverse('products'),
             {'sort': 'price', 'direction': 'asc'})
@@ -152,6 +172,9 @@ class TestAllProductsView(TestCase):
                         )
 
     def test_sort_by_price_descending(self):
+        """
+        Test that price sorts by descending order.
+        """
         response = self.client.get(
             reverse('products'),
             {'sort': 'price', 'direction': 'desc'})
@@ -167,6 +190,9 @@ class TestAllProductsView(TestCase):
 
 
 class TestProductDetailView(TestCase):
+    """
+    Tests for product_detail view.
+    """
 
     def setUp(self):
         self.category = Category(
@@ -195,6 +221,10 @@ class TestProductDetailView(TestCase):
         self.product_option_1.save()
 
     def test_product_detail_page_renders(self):
+        """
+        Test that response code is 200, correct template is used
+        and correct product was passed to the context.
+        """
         response = self.client.get(reverse(
             'product_detail',  args=[self.product_1.pk]))
 
