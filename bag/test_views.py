@@ -109,3 +109,64 @@ class TestAddToBagView(TestCase):
             response,
             '/accounts/login/?next=/bag/add-to-bag/'
         )
+
+
+class TestRemoveFromBagView(TestCase):
+    """
+    Tests for the remove from bag view.
+    """
+    def setUp(self):
+        self.user = User.objects.create_user(
+            username='Test_user',
+            password='testpw123'
+        )
+
+        self.client.login(
+            username='Test_user',
+            password='testpw123'
+        )
+
+        self.product = Product(
+            name='Test Automation',
+            description='Test description',
+            excerpt='Test excerpt',
+        )
+        self.product.save()
+
+        self.product_option = ProductOption(
+            product=self.product,
+            name='Setup Service',
+            unit_price=99.00,
+            fulfilment_choice=1,
+        )
+        self.product_option.save()
+
+    def test_product_does_not_exist_after_deletion(self):
+        """
+        Test that the product is removed from bag session
+        after deleting it from the bag.
+        """
+        response = self.client.post(
+            reverse('remove_from_bag', args=[self.product_option.pk]))
+
+        session = self.client.session
+        bag = session['bag']
+
+        self.assertEqual(response.status_code, 302, msg="Status code not 302")
+        self.assertNotIn(str(self.product_option.pk), bag)
+
+    def test_login_required_to_remove_from_bag(self):
+        """
+        Test that user is redirected to login when trying to remove
+        from bag while not logged in.
+        """
+        self.client.logout()
+
+        response = self.client.get(
+                reverse('remove_from_bag',  args=[self.product_option.pk])
+            )
+        self.assertEqual(response.status_code, 302, msg="Status code not 302")
+        self.assertRedirects(
+            response,
+            '/accounts/login/?next=/bag/remove-from-bag/1'
+        )
