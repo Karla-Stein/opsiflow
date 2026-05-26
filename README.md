@@ -693,6 +693,15 @@ There are no remaining major differences between the local version when compared
 | [Coolors](https://coolors.co) | Colour palette inspiration |
 
 
+### Testing
+| Source | Notes |
+| --- | --- |
+| [Real Python](https://realpython.com/python-mock-library/#what-is-mocking) | My introduction into mocking and the patch() decorator |
+| [Kinsacreative](https://blog.kinsacreative.com/articles/unit-testing-file-objects-django/) | Unit testing with files |
+| [Bharat Chauhan](https://bhch.github.io/posts/2018/12/django-how-to-clean-up-images-and-temporary-files-created-during-testing/) | How to add and remove temporary files |
+| [Django docs](https://docs.djangoproject.com/en/6.0/topics/testing/tools/#django.test.override_settings) | Override settings to create a temporary folder |
+
+
 ### Acknowledgements
 
 - I would like to thank my former Code Institute mentor, [Tim Nelson](https://www.github.com/TravelTimN), to introduce me to the Markdown builder.
