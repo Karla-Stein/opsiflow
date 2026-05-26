@@ -351,7 +351,9 @@ class TestDownloadView(TestCase):
             unit_price=99.00,
             fulfilment_choice=0,
             download_file=SimpleUploadedFile('file.txt', b"file_content",
-                                             content_type='json')
+                                             content_type='json',
+                                             )
+
         )
         self.product_option.save()
 
