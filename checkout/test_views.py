@@ -1,8 +1,10 @@
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.urls import reverse
 from django.contrib.auth.models import User
 from unittest.mock import patch
 from django.core.files.uploadedfile import SimpleUploadedFile
+import tempfile
+import shutil
 
 from products.models import Product, ProductOption
 from checkout.models import Order, OrderLineItem
@@ -319,10 +321,19 @@ class TestCheckoutSuccessView(TestCase):
         )
 
 
+TEMP_MEDIA_ROOT = tempfile.mkdtemp()
+
+
+@override_settings(MEDIA_ROOT=TEMP_MEDIA_ROOT)
 class TestDownloadView(TestCase):
     """
     Tests for the download view.
     """
+    @classmethod
+    def tearDownClass(cls):
+        shutil.rmtree(TEMP_MEDIA_ROOT, ignore_errors=True)
+        super().tearDownClass()
+
     def setUp(self):
 
         self.user = User.objects.create_user(
