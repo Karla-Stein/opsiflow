@@ -2,9 +2,10 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from unittest.mock import patch
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 from products.models import Product, ProductOption
-from checkout.models import Order
+from checkout.models import Order, OrderLineItem
 
 
 class TestCacheCheckoutDataView(TestCase):
@@ -315,4 +316,109 @@ class TestCheckoutSuccessView(TestCase):
         self.assertRedirects(
             response,
             '/accounts/login/?next=/checkout/success/'
+        )
+
+
+class TestDownloadView(TestCase):
+    """
+    Tests for the download view.
+    """
+    def setUp(self):
+
+        self.user = User.objects.create_user(
+            username='Test_user',
+            password='testpw123',
+            email='test@test.com'
+        )
+
+        self.client.login(
+            username='Test_user',
+            password='testpw123'
+        )
+
+        self.profile = self.user.userprofile
+
+        self.product = Product(
+            name='Test Automation',
+            description='Test description',
+            excerpt='Test excerpt',
+        )
+        self.product.save()
+
+        self.product_option = ProductOption(
+            product=self.product,
+            name='DIY Template',
+            unit_price=99.00,
+            fulfilment_choice=0,
+            download_file=SimpleUploadedFile('file.txt', b"file_content",
+                                             content_type='json')
+        )
+        self.product_option.save()
+
+        self.order = Order(
+            user_profile=self.profile,
+            order_number='12345',
+            payment_id='6758594',
+        )
+        self.order.save()
+
+        self.lineitem = OrderLineItem(
+            item_option=self.product_option,
+            order=self.order
+        )
+        self.lineitem.save()
+
+    def test_purchaser_can_dowload_file(self):
+        """
+        Test that only the owner of the file can ndownload the purchased file.
+        """
+
+        response = self.client.get(reverse('download',
+                                           args=[self.lineitem.pk]))
+
+        self.assertEqual(response.status_code, 200, msg='Status code not 200')
+
+    def test_download_prohibited_for_non_owner(self):
+        """
+        Test that non owner are rejected from downloading.
+        """
+        self.client.logout()
+
+        self.user = User.objects.create_user(
+            username='New_Test_user',
+            password='New_testpw123',
+            email='New_test@test.com'
+        )
+
+        self.client.login(
+            username='New_Test_user',
+            password='New_testpw123'
+        )
+
+        response = self.client.get(reverse('download',
+                                           args=[self.lineitem.pk]))
+
+        self.assertEqual(
+            response.status_code,
+            403,
+            msg='Status code not 403, download allowed')
+
+    def test_max_three_downloads_allowed(self):
+        """
+        Test that user is redirected to homepage after
+        attemting to download a fourth time.
+        """
+        self.client.get(reverse('download',
+                                args=[self.lineitem.pk]))
+        self.client.get(reverse('download',
+                                args=[self.lineitem.pk]))
+        self.client.get(reverse('download',
+                                args=[self.lineitem.pk]))
+        response = self.client.get(reverse('download',
+                                           args=[self.lineitem.pk]))
+
+        self.assertEqual(response.status_code, 302, msg='Status code not 302')
+        self.assertRedirects(
+            response,
+            '/'
         )
