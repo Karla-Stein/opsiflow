@@ -1,23 +1,73 @@
- Thank you for your Purchase, {{ order.user_first_name }}!
 
 
-Order: {{ order.order_number }}</p>
-Charge: {{ order.order_total }}</p>
+            Thank you for your Purchase, {{ order.user_first_name }}!
 
-{% for item in order.lineitems.all %}
-{{ item.item_option.product.name }} purchased as: {{ item.item_option.name }}</h3
-{% if item.item_option.download_file %}
-{% for items in download_links %}
-Download your template here: {{ items.url }}
-{% endfor %}
-{% else %}
-Please fill out this form.
-Once we have received all your details we aim to have your
-automation up and running in {{ item.item_option.delivery_days }}
-{% endif %}
-{% endfor %}
+            Order: {{ order.order_number }}
 
-Thank you for your custom. Please contact us for any queries
-Cheers,
-Team OpsiFlow
-{{ order.created_at }}
+            {% for item in order.lineitems.all %}
+            {% if item.item_option.name == "Set Up Service" %}
+            {{ item.item_option.product.name }} purchased as: {{ item.item_option.name }}
+      
+            Price: {{ item.item_option.unit_price }}
+            Please fill out your onboarding form.
+
+            We aim to have your order up and running in {{ item.item_option.delivery_days }}
+                {% if item.item_option.delivery_days == 1 %} day.{% else %}days.
+                {% endif %}
+      
+            {% endif %}     
+            {% endfor %}
+
+            Please note that we will send you a seperate email with your onboarding form.
+
+            {% for item in order.lineitems.all %}
+            {% if item.item_option.name == "DIY Template" %}
+            {{ item.item_option.product.name }} purchased as: {{ item.item_option.name }}
+            Price: {{ item.item_option.unit_price }}
+            {% endif %}        
+            {% endfor %}
+
+            Access your downloads here:
+            {{ my_purchases }}
+
+            
+            Your Details:
+            -------------
+             
+            Name:
+            {{ order.user_first_name }} {{ order.user_last_name }}
+
+            Email:
+            {{ order.user_email }}
+            
+            Phone:
+            {{ order.user_phone }}
+
+            Address 1:
+            {{ order.billing_address_1 }}
+
+            Address 2:
+            {{ order.billing_address_2|default:"" }}
+            
+            City:
+            {{ order.billing_city }}
+            
+            Postalcode:
+            {{ order.billing_postalcode }}
+            
+            Country:
+            {{ order.billing_country }}
+            
+            Total:
+            {{ order.order_total }}
+             
+            
+            Thank you for your custom. Please contact us for any queries.
+
+            Cheers,
+            Team OpsiFlow
+            {{ order.created_at }}
+
+            © 2026 OpsiFlow. All rights reserved. Built with
+                        Django.
+ 
