@@ -30,7 +30,6 @@ class StripeWebhookHandler:
         """
 
         intent = event.data.object
-        print(intent)
         pid = intent.id
         bag = intent.metadata.bag
         user_profile = intent.metadata.user_profile
@@ -112,7 +111,7 @@ class StripeWebhookHandler:
                     payment_id=pid,
                     status=1,
                 )
-                print("ORDER CREATED BY WEBHOOK")
+
                 for product_option_pk, quantity in (json.loads(bag)
                                                     .items()):
                     product_option = get_object_or_404(
