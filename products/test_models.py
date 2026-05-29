@@ -117,8 +117,7 @@ class ProductOptionModelTest(TestCase):
 
     def test_diy_template_requires_a_download_file(self):
         """
-        Negative test that fulfiment choice DIY Template requires a file,
-        validation error expected.
+        Negative test that fulfiment choice DIY Template requires a file.
         """
 
         product = Product.objects.create(
@@ -140,15 +139,13 @@ class ProductOptionModelTest(TestCase):
             delivery_days=None,
             )
 
-        self.assertRaises(
-            ValidationError)
-        product_option.full_clean()
+        with self.assertRaises(ValidationError):
+            product_option.full_clean()
 
     def test_setup_prohibits_a_download_file(self):
         """
         Negative test. Test that fulfiment choice Set Up
-        service does not allow file upload,
-        validation error expected.
+        service does not allow file upload.
         """
 
         product = Product.objects.create(
@@ -170,15 +167,13 @@ class ProductOptionModelTest(TestCase):
             delivery_days=None,
             )
 
-        self.assertRaises(
-            ValidationError)
-        product_option.full_clean()
+        with self.assertRaises(ValidationError):
+            product_option.full_clean()
 
     def test_setup_requires_delivery_days(self):
         """
         Negative test. Test that fulfiment choice Set Up
-        service requires delivery days,
-        validation error expected.
+        service requires delivery days.
         """
 
         product = Product.objects.create(
@@ -200,15 +195,13 @@ class ProductOptionModelTest(TestCase):
             delivery_days=None,
             )
 
-        self.assertRaises(
-            ValidationError)
-        product_option.full_clean()
+        with self.assertRaises(ValidationError):
+            product_option.full_clean()
 
     def test_fulfilment_choice_and_tier_cannot_coexist(self):
         """
         Negative test. Test that fulfiment choice and tier for custom workflows
-        can not coexist,
-        validation error expected.
+        can not coexist.
         """
 
         product = Product.objects.create(
@@ -230,6 +223,5 @@ class ProductOptionModelTest(TestCase):
             delivery_days="2",
             )
 
-        self.assertRaises(
-            ValidationError)
-        product_option.full_clean()
+        with self.assertRaises(ValidationError):
+            product_option.full_clean()
