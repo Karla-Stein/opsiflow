@@ -45,3 +45,9 @@ img{
     height: 200px;
     overflow-y: scroll;
 }
+
+/* Modal */
+
+.modal{
+    z-index: 3000 !important;
+}

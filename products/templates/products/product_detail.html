@@ -37,8 +37,8 @@
         <!-- Product option -->
         <p id="option-name">Your Choice:</p>
         <div id="option-div">
-        <p id="option-description" class="index-p">Please choose your prefered option below </p>
-        <p id="delivery-days" class="index-p d-none"></p>
+          <p id="option-description" class="index-p">Please choose your prefered option below </p>
+          <p id="delivery-days" class="index-p d-none"></p>
         </div>
         {% for option in product_option %}
         <div class="form-check">
@@ -64,12 +64,12 @@
         </form>
         {% else %}
          <a class="btn btn-primary my-3" role="button" href="{% url 'products' %}">Keep Browsing</a>
-        <button id="add-basket" class="btn btn-primary my-3" role="button">Add To Basket</button>
+        <button id="add-basket" class="btn btn-primary my-3">Add To Basket</button>
         {% endif %}
 
       </div>
     </div>
-  </div>
+</div>
 
 
     <!-- log in prompt modal -->
@@ -77,15 +77,15 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Not authenticated</h5>
+            <h3 class="modal-title">Not authenticated</h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <p>Please log in or sign up to purchase<p>
           </div>
           <div class="modal-footer">
-            <a href="{% url 'account_login' %}?next={{ request.path }}" type="button" class="btn btn-primary">Log In</a>
-            <a href="{% url 'account_signup' %}?next={{ request.path }}" type="button" class="btn btn-primary">Sign
+            <a href="{% url 'account_login' %}?next={{ request.path }}" class="btn btn-primary">Log In</a>
+            <a href="{% url 'account_signup' %}?next={{ request.path }}" class="btn btn-primary">Sign
               up</a>
           </div>
         </div>
@@ -95,5 +95,5 @@
     {% endblock %}
     {% block postloadjs %}
     {{ block.super}}
-    <script type="text/javascript" src="{% static 'products/js/product_details.js' %}"></script>
+    <script src="{% static 'products/js/product_details.js' %}"></script>
     {% endblock %}
