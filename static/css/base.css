@@ -94,9 +94,9 @@ body {
 .discount-banner {
     background-color: var(--primary-text-color);
     color: var(--secondary-background);
-    position: sticky;
+    position: fixed;
     top: 82px;
-    z-index: 1010;
+    z-index: 1020;
     height: 22px;
     overflow: hidden;
    
@@ -240,7 +240,7 @@ aside .nav-link {
         font-size: x-large;
     }
     .discount-banner{
-    top: 63px !important;
+    top: 80px !important;
 }
 }
 
@@ -263,8 +263,8 @@ aside .nav-link {
 }
 
 @media screen and (max-width: 404px) {
-    .discount-banner {
-        height: 50px;
+    .discount-banner {    
+        font-size: smaller;
     }
 
     #mobile-searchbar{
