@@ -27,6 +27,18 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | templates | [404.html](https://github.com/Karla-Stein/opsiflow/blob/main/templates/404.html) | [HTML Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fopsiflow-952bb478dd9c.herokuapp.com%2F404&checkerrorpages=yes#textarea )| ![screenshot](documentation/validation/404-html.jpeg) | 404 page does not require log-in, hence validated via URL |
 
 
+### CSS
+
+I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator) to validate all of my CSS files.
+
+| Directory | File | URL | Screenshot | Notes |
+| --- | --- | --- | --- | --- |
+| checkout | [checkout.css](https://github.com/Karla-Stein/opsiflow/blob/main/checkout/static/checkout/css/checkout.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=+https%3A%2F%2Fopsiflow.s3.amazonaws.com%2Fstatic%2Fcheckout%2Fcss%2Fcheckout.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | ![screenshot](documentation/validation/checkout-css.jpeg) | Passed with 0 errors and 0 warnings. |
+| products | [product_detail.css](https://github.com/Karla-Stein/opsiflow/blob/main/products/static/products/css/product_detail.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fopsiflow.s3.amazonaws.com%2Fstatic%2Fproducts%2Fcss%2Fproduct_detail.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | ![screenshot](documentation/validation/product-details-css.jpeg) |  Passed with 0 errors. The validator reported 4 warnings relating to CSS custom variables, which are expected and do not affect functionality. |
+| products | [products.css](https://github.com/Karla-Stein/opsiflow/blob/main/products/static/products/css/products.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=+https%3A%2F%2Fopsiflow.s3.amazonaws.com%2Fstatic%2Fproducts%2Fcss%2Fproducts.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | ![screenshot](documentation/validation/products-css.jpeg) |  Passed with 0 errors and 0 warnings. |
+| profiles | [profiles.css](https://github.com/Karla-Stein/opsiflow/blob/main/profiles/static/profiles/css/profiles.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fopsiflow.s3.amazonaws.com%2Fstatic%2Fprofiles%2Fcss%2Fprofiles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | ![screenshot](documentation/validation/profiles-css.jpeg) | Passed with 0 errors. The validator reported 1 warning relating to CSS custom variables, which are expected and do not affect functionality. |
+| static | [base.css](https://github.com/Karla-Stein/opsiflow/blob/main/static/css/base.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fopsiflow.s3.amazonaws.com%2Fstatic%2Fcss%2Fbase.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | ![screenshot](documentation/validation/base-css.jpeg) | Passed with 0 errors. The validator reported 23 warnings relating to CSS custom variables, which are expected and do not affect functionality. |
+
 
 
 
