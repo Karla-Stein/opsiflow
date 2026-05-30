@@ -9,7 +9,7 @@
 
 }
 
-#images{
+.images{
     height: 150px;
 }
 .product-card img{
@@ -19,17 +19,17 @@
     object-fit: contain;
 }
 
-#excerpt{
+.excerpt{
     height: 80px;
     overflow-y: scroll;
     
 }
 
-#see-details{
+.see-details{
     width: 100px;
 }
 
-#browse-cards{
+.browse-cards{
     height: 200px;
 }
 
