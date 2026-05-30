@@ -131,7 +131,8 @@ body {
     /* Makes it fully white and bright */
 }
 
-#searchbar {
+#searchbar,
+#searchbar-mobile {
     width: 150px;
 }
 

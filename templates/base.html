@@ -42,7 +42,7 @@
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid position-relative">
             <div class="d-flex">
-                <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-navbar" role="button" type="button"
+                <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-navbar" type="button"
                     aria-controls="offcanvas-navbar" aria-hidden="false" aria-label="Open navigation"><i class="fa-solid fa-bars"></i>
             </button>
                 <a class="navbar-brand btn" href="{% url 'home' %}" role="button" aria-label="Brand Icon">
@@ -55,7 +55,7 @@
                 </a>
 
             </div>
-            <div class="offcanvas offcanvas-start" id="offcanvas-navbar" aria-labelledby="offcanvas-navigation">
+            <div class="offcanvas offcanvas-start" id="offcanvas-navbar">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title"> Navigation</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -129,12 +129,13 @@
                         </small></span>
                 </div>
                 {% else %}
-                <a id="signin-btn" href="{% url 'account_login' %}" class="btn btn-outline-dark btn-sm my-2" type="submit">Sign
+                <a id="signin-btn" href="{% url 'account_login' %}" class="btn btn-outline-dark btn-sm my-2">Sign
                     in</a>
-                <a id="signup-btn" href="{% url 'account_signup' %}" class="btn btn-outline-dark btn-sm" type="submit">Sign
+                <a id="signup-btn" href="{% url 'account_signup' %}" class="btn btn-outline-dark btn-sm">Sign
                     up</a>
                 {% endif%}
             </div>
+        </div>
     </nav>
     <!-- Discount Banner -->
     <div class="container-fluid discount-banner">
@@ -149,9 +150,9 @@
         <div class="row">
             <div class="col-12 d-flex justify-content-center mt-2">
                 <form class="d-flex align-items-center" method="GET" action="{% url 'products' %}">
-                    <input id="searchbar" class="form-control" type="search" placeholder="Search" aria-label="Search"
+                    <input id="searchbar-mobile" class="form-control" type="search" placeholder="Search" aria-label="Search"
                         name="q">
-                    <button id="magni-glass" class="btn" type="submit" aria-label="Magnifiying glass"><i
+                    <button id="magni-glass-mobile" class="btn" type="submit" aria-label="Magnifiying glass"><i
                             class="fa-solid fa-magnifying-glass d-sm-flex"></i>
                     </button>
                 </form>
@@ -217,7 +218,7 @@
     {% endblock %}
 
     <!-- Confirm account delete modal -->
-    <div class="modal fade" id="accountDeleteModal" tabindex="-1" aria-labelledby="accountDeleteModalLabel"
+    <div class="modal fade" id="accountDeleteModal" tabindex="-1"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -227,7 +228,6 @@
                 </div>
                 <div class="modal-body">
                     <p>Are you sure you want to delete your account and associated details?</p>
-                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
