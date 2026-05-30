@@ -14,7 +14,7 @@
     <div class="col-12 col-lg-8 offset-lg-2 text-center">
       <h2 class="display-7 my-5">{{ product.name }}
       </h2>
-      <p class="text-muted"><i class="fa-solid fa-tag"></i><small> {{ product.category.friendly_name }}</small>
+      <p class="text-muted"><i class="fa-solid fa-tag"></i><small> {{ product.category.friendly_name }}</small></p>
       {% if product.image %}
       <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid mt-3">
       {% else %}
@@ -69,6 +69,7 @@
 
       </div>
     </div>
+  </div>
 </div>
 
 
@@ -81,7 +82,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p>Please log in or sign up to purchase<p>
+            <p>Please log in or sign up to purchase</p>
           </div>
           <div class="modal-footer">
             <a href="{% url 'account_login' %}?next={{ request.path }}" class="btn btn-primary">Log In</a>
