@@ -58,7 +58,7 @@ form.addEventListener('submit', async (event) => {
     if (!response.ok) {
         throw new Error('Could not save checkout data.');
     }
-    const data = await response.json();
+    await response.json();
     
     // Awaiting payment confirmation and redirect to success page
     const {error} = await stripe.confirmPayment({
