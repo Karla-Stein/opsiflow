@@ -201,22 +201,6 @@
         </div>
 
     </footer>
-    <!-- Bootstrap Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-    </script>
-
-    {% block postloadjs %}
-    <script>
-        const toasts = document.querySelectorAll('.toast');
-
-        toasts.forEach((toastElement) => {
-            const toast = new bootstrap.Toast(toastElement);
-            toast.show();
-        });
-    </script>
-    {% endblock %}
-
     <!-- Confirm account delete modal -->
     <div class="modal fade" id="accountDeleteModal" tabindex="-1"
         aria-hidden="true">
@@ -241,7 +225,20 @@
             </div>
         </div>
     </div>
+    <!-- Bootstrap Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
 
+    {% block postloadjs %}
+    <script>
+        const toasts = document.querySelectorAll('.toast');
+
+        toasts.forEach((toastElement) => {
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+        });
+    </script>
+    {% endblock %}
 </body>
-
 </html>

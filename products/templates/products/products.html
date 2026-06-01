@@ -99,7 +99,8 @@
 
 {% endblock %}
 {% block postloadjs %}
-
+{{ block.super}}
+<!-- Handles sort selector and updates URL -->
 <script>
     const sortSelector = document.getElementById('sort-selector');
     sortSelector.addEventListener('change', function (e) {

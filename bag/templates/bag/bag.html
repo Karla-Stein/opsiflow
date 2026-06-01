@@ -77,7 +77,7 @@
 {{ block.super }}
     <!-- Bootstrap tooltips -->
     <script>
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        const tooltipList = [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el))
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el));
     </script>
 {% endblock %}
