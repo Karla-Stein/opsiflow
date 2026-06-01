@@ -138,7 +138,7 @@
         </div>
     </nav>
     <!-- Discount Banner -->
-    <div class="container-fluid discount-banner">
+    <div class="container-fluid discount-banner {% if not user.is_authenticated %}logged-out{% endif %}">
         <div class="row text-center">
             <div class="col-12">
                 <p><strong>BUNDLE DEAL - GET 3 TEMPLATES FOR 15% OFF</strong></p>

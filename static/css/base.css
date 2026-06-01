@@ -95,7 +95,7 @@ body {
     background-color: var(--primary-text-color);
     color: var(--secondary-background);
     position: fixed;
-    top: 82px;
+    top: 87px;
     z-index: 1000;
     height: 22px;
     overflow: hidden;
@@ -215,6 +215,9 @@ aside .nav-link {
     .section {
     margin: 50px 0px
 }
+    .logged-out.discount-banner{
+        top: 82px;
+    }
 }
 
 @media screen and (min-width: 1210px) {
@@ -240,10 +243,8 @@ aside .nav-link {
     #brand-name {
         font-size: x-large;
     }
-    .discount-banner{
-        top: 64px;
-    }
 }
+
 
 @media screen and (min-width: 992px) {
     .search-wrapper {
@@ -283,17 +284,23 @@ aside .nav-link {
     svg {
         display: none;
     }
-    .discount-banner{
+    .logged-out.discount-banner{
         top: 76px;
     }
 
+}
+
+@media screen and (min-width: 350px) and (max-width: 383px) {
+    .logged-out.discount-banner{
+        top: 64px;
+    }
 }
 
 @media screen and (max-width: 350px) {
      #brand-name {
         font-size: large;
     }
-    .discount-banner{
+    .logged-out.discount-banner{
         top: 63px;
     }
 }
