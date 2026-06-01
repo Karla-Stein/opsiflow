@@ -95,7 +95,7 @@ body {
     background-color: var(--primary-text-color);
     color: var(--secondary-background);
     position: fixed;
-    top: 87px;
+    top: 82px;
     z-index: 1000;
     height: 22px;
     overflow: hidden;
@@ -240,6 +240,9 @@ aside .nav-link {
     #brand-name {
         font-size: x-large;
     }
+    .discount-banner{
+        top: 64px;
+    }
 }
 
 @media screen and (min-width: 992px) {
@@ -280,12 +283,18 @@ aside .nav-link {
     svg {
         display: none;
     }
+    .discount-banner{
+        top: 76px;
+    }
 
 }
 
 @media screen and (max-width: 350px) {
      #brand-name {
         font-size: large;
+    }
+    .discount-banner{
+        top: 63px;
     }
 }
 @media screen and (max-width: 325px) {
