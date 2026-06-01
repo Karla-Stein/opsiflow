@@ -151,7 +151,7 @@ class TestAllProductsView(TestCase):
             names,
             ['Booking test 3',
              'High-Intent Lead Magnet Delivery System 1',
-             'test Product 2',]
+             'test Product 2']
                         )
 
     def test_sort_by_price_ascending(self):
