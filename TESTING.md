@@ -40,5 +40,18 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 | static | [base.css](https://github.com/Karla-Stein/opsiflow/blob/main/static/css/base.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fopsiflow.s3.amazonaws.com%2Fstatic%2Fcss%2Fbase.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | ![screenshot](documentation/validation/base-css.jpeg) | Passed with 0 errors. The validator reported 23 warnings relating to CSS custom variables, which are expected and do not affect functionality. |
 
 
+### Javascript
+
+I have used the recommended [JShint Validator](https://jshint.com) to validate all of my JS files.
+
+| Directory | File | Screenshot | Notes |
+| --- | --- | --- | --- |
+| checkout | [stripe.js](https://github.com/Karla-Stein/opsiflow/blob/main/checkout/static/checkout/js/stripe.js) | ![screenshot](documentation/validation/js-checkout-stripe.jpeg) |  |
+| products | [product_details.js](https://github.com/Karla-Stein/opsiflow/blob/main/products/static/products/js/product_details.js) | ![screenshot](documentation/validation/js-product-details.jpeg) |  |
+| bag | [bag.html](https://github.com/Karla-Stein/opsiflow/blob/main/bag/templates/bag/bag.html) | ![screenshot](documentation/validation/js-bag.jpeg) | Embedded JavaScript snippet located in the postloadjs block. JSHint validation performed using ES11 and Bootstrap global configuration. |
+| products | [products.html](https://github.com/Karla-Stein/opsiflow/blob/main/products/templates/products/products.html) | ![screenshot](documentation/validation/js-products.jpeg) |  Embedded JavaScript snippet located in the postloadjs block. JSHint validation performed using ES11 configuration. |
+| templates | [base.html](https://github.com/Karla-Stein/opsiflow/blob/main/templates/base.html)| ![screenshot](documentation/validation/js-base.jpeg) |  Embedded JavaScript snippet located in the postloadjs block. JSHint validation performed using ES11 and Bootstrap global configuration. |
+
+
 
 

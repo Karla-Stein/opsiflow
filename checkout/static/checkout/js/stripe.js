@@ -1,3 +1,7 @@
+/* jshint esversion: 11 */
+/* global Stripe */
+
+
 const stripePublicKey = document.getElementById('id_stripe_public_key')
     .innerText.slice(1, -1);
 
