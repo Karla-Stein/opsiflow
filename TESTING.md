@@ -98,6 +98,27 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 |  | [manage.py](https://github.com/Karla-Stein/opsiflow/blob/main/manage.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/Karla-Stein/opsiflow/refs/heads/main/manage.py) | ![screenshot](documentation/validation/py-manage.jpeg) |  
 
 
+### Responsiveness
+
+I've tested my deployed project to check for responsiveness issues.
+
+| Page | Mobile | Tablet | Desktop | Notes |
+| --- | --- | --- | --- | --- |
+| Home | ![screenshot](documentation/responsiveness/mobile-home.jpeg) | ![screenshot](documentation/responsiveness/tablet-home.jpeg) | ![screenshot](documentation/responsiveness/desktop-home.jpeg) | Works as expected |
+| Products | ![screenshot](documentation/responsiveness/mobile-products.jpeg) | ![screenshot](documentation/responsiveness/tablet-products.jpeg) | ![screenshot](documentation/responsiveness/desktop-products.jpeg) | Works as expected |
+| Product Details | ![screenshot](documentation/responsiveness/mobile-product-detail.jpeg) | ![screenshot](documentation/responsiveness/tablet-product-detail.jpeg) | ![screenshot](documentation/responsiveness/desktop-product-detail.jpeg) | Works as expected |
+| Sign up | ![screenshot](documentation/responsiveness/mobile-signup.jpeg) | ![screenshot](documentation/responsiveness/tablet-signup.jpeg) | ![screenshot](documentation/responsiveness/desktop-signup.jpeg) | Works as expected |
+| Login | ![screenshot](documentation/responsiveness/mobile-signin.jpeg) | ![screenshot](documentation/responsiveness/tablet-signin.jpeg) | ![screenshot](documentation/responsiveness/desktop-signin.jpeg) | Works as expected |
+| Profile | ![screenshot](documentation/responsiveness/mobile-profile.png) | ![screenshot](documentation/responsiveness/tablet-profile.jpeg) | ![screenshot](documentation/responsiveness/desktop-profile.jpeg) | Works as expected |
+| Bag | ![screenshot](documentation/responsiveness/mobile-bag.jpeg) | ![screenshot](documentation/responsiveness/tablet-bag.jpeg) | ![screenshot](documentation/responsiveness/desktop-bag.jpeg) | Works as expected |
+| Checkout | ![screenshot](documentation/responsiveness/mobile-checkout.jpeg) | ![screenshot](documentation/responsiveness/tablet-checkout.jpeg) | ![screenshot](documentation/responsiveness/desktop-checkout.jpeg) | Works as expected |
+| Checkout Success | ![screenshot](documentation/responsiveness/mobile-checkout-success.jpeg) | ![screenshot](documentation/responsiveness/tablet-checkout-success.jpeg) | ![screenshot](documentation/responsiveness/desktop-checkout-success.jpeg) | Works as expected |
+| My Purchases | ![screenshot](documentation/responsiveness/mobile-purchases.jpeg) | ![screenshot](documentation/responsiveness/tablet-purchases.jpeg) | ![screenshot](documentation/responsiveness/desktop-purchases.jpeg) | Works as expected |
+| Logout | ![screenshot](documentation/responsiveness/mobile-signout.jpeg) | ![screenshot](documentation/responsiveness/tablet-signout.jpeg) | ![screenshot](documentation/responsiveness/desktop-signout.jpeg) | Works as expected |
+| 404 | ![screenshot](documentation/responsiveness/mobile-404.png) | ![screenshot](documentation/responsiveness/tablet-404.jpeg) | ![screenshot](documentation/responsiveness/desktop-404.jpeg) | Works as expected |
+
+
+
 
 
 
