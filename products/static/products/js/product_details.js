@@ -5,11 +5,11 @@ let options = document.getElementsByClassName("option");
 
 for (let option of options) {
     option.addEventListener("click", (e) => {
-        let userOption = e.target.innerText;
-        let name = userOption.dataset.name;
-        let description = userOption.dataset.description;
-        let unit_price = userOption.dataset.price;
-        let delivery = userOption.dataset.delivery;
+       
+        let name = option.dataset.name;
+        let description = option.dataset.description;
+        let unit_price = option.dataset.price;
+        let delivery = option.dataset.delivery;
 
         let optionName = document.getElementById("option-name");
         optionName.innerText = `${name}`;
@@ -21,7 +21,7 @@ for (let option of options) {
         optionPrice.innerText = `Price: $${unit_price}`;
 
         let optionPk = document.getElementById("selected-option-pk");
-        optionPk.value = userOption.dataset.pk;
+        optionPk.value = option.dataset.pk;
 
         let deliveryDays = document.getElementById("delivery-days");
          
@@ -44,12 +44,6 @@ button.addEventListener("click", (e) => {
 });
 
 
-const addToBasket = document.getElementById("add-to-basket");
-let optionPk = document.getElementById("selected-option-pk");
-addToBasket.addEventListener("click", (e) => {
-    let userOption = e.target.innerText;
-    optionPk.value = userOption.dataset.pk;
-});
 
 
 
