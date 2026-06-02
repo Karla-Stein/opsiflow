@@ -118,6 +118,27 @@ I've tested my deployed project to check for responsiveness issues.
 | 404 | ![screenshot](documentation/responsiveness/mobile-404.png) | ![screenshot](documentation/responsiveness/tablet-404.jpeg) | ![screenshot](documentation/responsiveness/desktop-404.jpeg) | Works as expected |
 
 
+## Browser Compatibility
+
+I've tested my deployed project on multiple browsers to check for compatibility issues.
+
+| Page | Chrome | Firefox | Safari | Notes |
+| --- | --- | --- | --- | --- |
+| Home | ![screenshot](documentation/browsers/chrome-home.jpeg) | ![screenshot](documentation/browsers/firefox-home.jpeg) | ![screenshot](documentation/browsers/safari-home.jpeg) | Works as expected |
+| Products | ![screenshot](documentation/browsers/chrome-products.jpeg) | ![screenshot](documentation/browsers/firefox-products.jpeg) | ![screenshot](documentation/browsers/safari-products.jpeg) | Works as expected |
+| Product Details | ![screenshot](documentation/browsers/chrome-product-details.jpeg) | ![screenshot](documentation/browsers/firefox-product-details.jpeg) | ![screenshot](documentation/browsers/safari-product-details.jpeg) | Works as expected |
+| Sign Up | ![screenshot](documentation/browsers/chrome-signup.jpeg) | ![screenshot](documentation/browsers/firefox-signup.jpeg) | ![screenshot](documentation/browsers/safari-signup.jpeg) | Works as expected |
+| Log In | ![screenshot](documentation/browsers/chrome-signin.jpeg) | ![screenshot](documentation/browsers/firefox-signin.jpeg) | ![screenshot](documentation/browsers/safari-signin.jpeg) | Works as expected |
+| Profile | ![screenshot](documentation/browsers/chrome-profile.jpeg) | ![screenshot](documentation/browsers/firefox-profile.jpeg) | ![screenshot](documentation/browsers/safari-profile.jpeg) | Works as expected |
+| Bag | ![screenshot](documentation/browsers/chrome-bag.jpeg) | ![screenshot](documentation/browsers/firefox-bag.jpeg) | ![screenshot](documentation/browsers/safari-bag.jpeg) | Works as expected |
+| Checkout | ![screenshot](documentation/browsers/chrome-checkout.jpeg) | ![screenshot](documentation/browsers/firefox-checkout.jpeg) | ![screenshot](documentation/browsers/safari-checkout.jpeg) | Works as expected |
+| Checkout Success | ![screenshot](documentation/browsers/chrome-checkout-success.jpeg) | ![screenshot](documentation/browsers/firefox-checkout-success.jpeg) | ![screenshot](documentation/browsers/safari-checkout-success.jpeg) | Works as expected |
+| Purchases| ![screenshot](documentation/browsers/chrome-purchases.jpeg) | ![screenshot](documentation/browsers/firefox-purchases.jpeg) | ![screenshot](documentation/browsers/safari-purchases.jpeg) | Works as expected |
+| Log Out | ![screenshot](documentation/browsers/chrome-signout.jpeg) | ![screenshot](documentation/browsers/firefox-signout.jpeg) | ![screenshot](documentation/browsers/safari-signout.jpeg) | Works as expected |
+| 404 | ![screenshot](documentation/browsers/chrome-404.jpeg) | ![screenshot](documentation/browsers/firefox-404.jpeg) | ![screenshot](documentation/browsers/safari-404.jpeg) | Works as expected |
+
+
+
 
 
 
