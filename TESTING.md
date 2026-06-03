@@ -138,6 +138,15 @@ I've tested my deployed project on multiple browsers to check for compatibility 
 | 404 | ![screenshot](documentation/browsers/chrome-404.jpeg) | ![screenshot](documentation/browsers/firefox-404.jpeg) | ![screenshot](documentation/browsers/safari-404.jpeg) | Works as expected |
 
 
+## Lighthouse Audit
+
+| Page | Mobile | Desktop |
+| --- | --- | --- |
+| Home | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-home.jpeg) |
+| Bag | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-bag.jpeg) |
+| Purchases | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-purchases.jpeg) |
+| Profiles | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-profile.jpeg) |
+
 
 
 

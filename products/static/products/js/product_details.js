@@ -5,11 +5,11 @@ let options = document.getElementsByClassName("option");
 
 for (let option of options) {
     option.addEventListener("click", (e) => {
-       
-        let name = option.dataset.name;
-        let description = option.dataset.description;
-        let unit_price = option.dataset.price;
-        let delivery = option.dataset.delivery;
+        let userOption = e.currentTarget;
+        let name = userOption.dataset.name;
+        let description = userOption.dataset.description;
+        let unit_price = userOption.dataset.price;
+        let delivery = userOption.dataset.delivery;
 
         let optionName = document.getElementById("option-name");
         optionName.innerText = `${name}`;
@@ -21,7 +21,7 @@ for (let option of options) {
         optionPrice.innerText = `Price: $${unit_price}`;
 
         let optionPk = document.getElementById("selected-option-pk");
-        optionPk.value = option.dataset.pk;
+        optionPk.value = userOption.dataset.pk;
 
         let deliveryDays = document.getElementById("delivery-days");
          
