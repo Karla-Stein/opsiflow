@@ -140,12 +140,22 @@ I've tested my deployed project on multiple browsers to check for compatibility 
 
 ## Lighthouse Audit
 
+I've tested my deployed project using the Lighthouse Audit tool to check for any major issues. Some warnings are outside of my control and mobile results tend to be lower than desktop.
+
 | Page | Mobile | Desktop |
 | --- | --- | --- |
-| Home | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-home.jpeg) |
-| Bag | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-bag.jpeg) |
+| Home | ![screenshot](documentation/lighthouse/mobile-home.jpeg) | ![screenshot](documentation/lighthouse/desktop-home.jpeg) |
+| Products | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-products.jpeg) |
+| Product Details | ![screenshot](documentation/lighthouse/mobile-product-detail.jpeg) | ![screenshot](documentation/lighthouse/desktop-product-detail.jpeg) |
+| Sign in | ![screenshot](documentation/lighthouse/mobile-signin.jpeg) | ![screenshot](documentation/lighthouse/desktop-signin.jpeg) |
+| Sign up | ![screenshot](documentation/lighthouse/mobile-signup.jpeg) | ![screenshot](documentation/lighthouse/desktop-signup.jpeg) |
+| Bag | ![screenshot](documentation/lighthouse/mobile-bag.jpeg) | ![screenshot](documentation/lighthouse/desktop-bag.jpeg) |
+| Checkout | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/) |
+| Checkout Success | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/) |
 | Purchases | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-purchases.jpeg) |
-| Profiles | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-profile.jpeg) |
+| Profiles | ![screenshot](documentation/lighthouse/mobile-profiles.jpeg) | ![screenshot](documentation/lighthouse/desktop-profile.jpeg) |
+| Sign out | ![screenshot](documentation/lighthouse/mobile-signout.jpeg) | ![screenshot](documentation/lighthouse/desktop-signout.jpeg) |
+| 404 | ![screenshot](documentation/lighthouse/mobile-404.jpeg) | ![screenshot](documentation/lighthouse/desktop-404.jpeg) |
 
 
 
