@@ -214,10 +214,10 @@ def checkout_success(request):
     msg.attach_alternative(html_content, "text/html")
     msg.send()
 
-    if 'bag' in request.session:
-        del request.session['bag']
-    if 'checkout_data' in request.session:
-        del request.session['checkout_data']
+    # if 'bag' in request.session:
+    #     del request.session['bag']
+    # if 'checkout_data' in request.session:
+    #     del request.session['checkout_data']
 
     return render(
         request,
