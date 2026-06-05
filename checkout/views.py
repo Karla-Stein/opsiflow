@@ -82,9 +82,9 @@ def checkout(request):
         order_form = OrderForm()
 
     bag = request.session.get('bag', {})
-    # if not bag:
-    #     messages.error(request, "Your bag is empty")
-    #     return redirect(reverse('products'))
+    if not bag:
+        messages.error(request, "Your bag is empty")
+        return redirect(reverse('products'))
 
     current_bag = bag_contents(request)
     total = current_bag['grand_total']
