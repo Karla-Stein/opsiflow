@@ -77,7 +77,8 @@
         <div class="col-8 col-md-6 col-lg-4 product-card mx-5 d-flex flex-column justify-content-center">
             <div class="text-center images">
                 {% if product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" width="400" height="150">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" width="400" height="150" 
+                    {% if forloop.first %}fetchpriority="high"{% else %} loading="lazy" decoding="async" {% endif %}>
                 {% else %}
                 <img src="{% static 'images/placeholder-image.jpg' %}" alt="Placeholder image" width="400" height="150">
                 {% endif %}
