@@ -24,7 +24,8 @@
                 <div class="col-12 col-lg-4 offset-lg-1 text-center justify-content-lg-start">
                     {% if lineitem.item_option.product.image %}
                     <img class="image-fluid ms-auto" src="{{ lineitem.item_option.product.image.url }}"
-                        alt="{{ item.product_option.product.name }}"
+                        alt="{{ item.product_option.product.name }}" width="{{ lineitem.item_option.product.image.width }}" 
+                            height="{{ lineitem.item_option.product.image.height }}"
                         {% if forloop.first %}fetchpriority="high"{% else %} loading="lazy" decoding="async" {% endif %}>
                     {% else %}
                     <img class="image-fluid ms-auto" src="{% static 'images/placeholder-image.jpg' %}"
