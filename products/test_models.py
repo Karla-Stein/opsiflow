@@ -222,15 +222,18 @@ class ProductOptionModelTest(TestCase):
             tier="2",
             delivery_days="2",
             )
-
+        
         product_option.full_clean()
 
+        product_option= ProductOption.objects.filter(pk=product_option.pk).exists()
+        self.assertIsNotNone(product_option)
 
-        def test_fulfilment_choice_download_and_tier_cannot_coexist(self):
-            """
-            Test that fulfiment choice download and tier for custom workflows
-            can not coexist.
-            """
+
+    def test_fulfilment_choice_download_and_tier_cannot_coexist(self):
+        """
+        Test that fulfiment choice download and tier for custom workflows
+        can not coexist.
+        """
 
         product = Product.objects.create(
             name='Lead-to-Invoice Automation',
@@ -250,6 +253,6 @@ class ProductOptionModelTest(TestCase):
             tier="2",
             delivery_days="2",
             )
-        
+
         with self.assertRaises(ValidationError):
             product_option.full_clean()
