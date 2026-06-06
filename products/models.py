@@ -47,7 +47,7 @@ class ProductOption(models.Model):
     description = models.TextField()
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
     fulfilment_choice = models.IntegerField(
-        choices=FULFILMENT_CHOICE, null=True, blank=True)
+        choices=FULFILMENT_CHOICE)
     download_file = models.FileField(null=True, blank=True,
                                      upload_to='downloads/')
     tier = models.IntegerField(
@@ -58,6 +58,11 @@ class ProductOption(models.Model):
         return self.name
 
     def clean(self):
+        # Raise error if custom workflow tier and fulfiment choice download was chosen.
+        if self.fulfilment_choice == 0 and self.tier in [0, 1, 2]:
+            raise ValidationError(
+                "You can not select fulfilment choice download for tiered services")
+        
         # Raise error if fullfilment choice is DIY Template but no
         # downloas was provided.
         if self.fulfilment_choice == 0 and not self.download_file:
@@ -89,7 +94,4 @@ class ProductOption(models.Model):
             raise ValidationError(
                 "You must not add download files to custom workflows.")
 
-        # Raise error if custom workflow tier and fulfiment choice was chosen.
-        if self.fulfilment_choice and self.tier in [0, 1, 2]:
-            raise ValidationError(
-                "Please choose either custom workflow or fulfilment.")
+
