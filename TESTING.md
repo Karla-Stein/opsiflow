@@ -158,6 +158,20 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | 404 | ![screenshot](documentation/lighthouse/mobile-404.jpeg) | ![screenshot](documentation/lighthouse/desktop-404.jpeg) |
 
 
+## Defensive Programming
+
+Defensive programming was manually tested with the below user acceptance testing:
+
+| Page | Expectation | Test | Result | Screenshot |
+| --- | --- | --- | --- | --- |
+| Products | Feature is expected to allow users to browse products without registration. | Opened product pages as a guest user. | Products were fully accessible without requiring registration. | ![screenshot](documentation/features/product-browsing.jpeg) |
+| | Feature is expected to sort products by price, name and complexity. | Tested sorting options for price (low-to-high/high-to-low), name (A-Z/Z-A) and complexity (low-to-high/high-to-low). | Sorting worked correctly for all options. | ![screenshot](documentation/defensive/name-a-z.jpeg) ![screenshot](documentation/defensive/name-z-z-a.jpeg) ![screenshot](documentation/defensive/complexity-high-low.jpeg) ![screenshot](documentation/defensive/complexity-low-high.jpeg) ![screenshot](documentation/defensive/price-high-low.jpeg) ![screenshot](documentation/defensive/price-low-high.jpeg)  |
+| | Feature is expected to filter products by category. | Applied category filters while browsing products. | Filters worked as expected, displaying only relevant products. | ![screenshot](documentation/defensive/category-billing.jpeg)  ![screenshot](documentation/defensive/category-custom.jpeg)  ![screenshot](documentation/defensive/category-email.jpeg)  ![screenshot](documentation/defensive/category-lead.jpeg)|
+| Product Details | Feature is expected to show detailed product information. | Clicked on individual products to view details. | Product details (description, price, image) were displayed correctly. | ![screenshot](documentation/features/product-details.jpeg) |
+| | Feature is expected to display a description and price of the selected product option . | Clicked on both options on all product detail pages to view correct rendering of descriptions and price. | All product option descriptions and prices were displayed correctly. | ![screenshot](documentation/defensive/option-selector.jpeg) |
+| Bag| Feature is expected to prohibit multiple purchases of the same product. | Tried to add both options of the same product to the bag. | Adding was prohibited and warning received. | ![screenshot](documentation/defensive/multiple-product-warning.jpeg) |
+| | Feature is expected to swap product option. | Added  product with option "Service Setup" to the bag, then clicked the change button in bag. | Product option was successfully swaped to "DIY Template" | ![screenshot](documentation/defensive/change-option.jpeg) |
+| | Feature is expected to remove item from bag. | Clicked the bin icon button in bag. | Product was succeesfully removed from bag.| ![screenshot](documentation/defensive/remove-item.jpeg) ![screenshot](documentation/defensive/remove-item-success.jpeg)|
 
 
 
