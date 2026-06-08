@@ -158,7 +158,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | As a logged in user | I want to add workflows to my bag | so that I can review before purchasing. |
 | As a logged in user | I want to update or remove items from my bag | so that I stay in control of my purchase. |
 | As a logged in user | I want to checkout securely | so that I can complete my purchase with confidence. |
-| As a logged in user | I want to choose between workflow only, workflow & setup or custom service | so that I can decide my level of support. |
+| As a logged in user | I want to choose between template only or workflow & setup. | so that I can decide my level of support. |
 | As a logged in user | I want to download my purchased workflow | so that I can use it immediately. |
 | As a logged in user | I receive a confirmation email after purchase | so that I have a backup on instructions on how to proceed. |
 | As a logged in user | I can navigate to my purchase history | so that I can view all my previous purchases in one place. |

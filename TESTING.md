@@ -202,6 +202,32 @@ Defensive programming was manually tested with the below user acceptance testing
 | 404 Error Page | Feature is expected to display a 404 error page for non-existent pages. | Navigated to an invalid URL (e.g., `/test`). | A custom 404 error page was displayed as expected. | ![screenshot](documentation/defensive/404.jpeg) |
 
 
+## User Story Testing
+
+| Target | Expectation | Outcome | Screenshot |
+| --- | --- | --- | --- |
+| As an anonymous user | I want to land on a clear homepage | so that I understand what the platform offers.| ![screenshot](documentation/features/anonym-home.jpeg) |
+| As an anonymous user | I want to browse available workflows | so that I can explore solutions before committing. |  ![screenshot](documentation/features/anonym-browse.jpeg) |
+| As an anonymous user|  I want to view workflow details | so that I understand what each automation does. |  ![screenshot](documentation/features/anonym-product-detail.jpeg) |
+| As an anonymous user| I want to create an account | so that I can use the websites features. | ![screenshot](documentation/features/signup.jpeg) |
+| As a user | I want to log in securely | so that I can view my profile and purchases. | ![screenshot](documentation/features/signin.jpeg) |
+| As a user | I can search for keywords | so that I quickly find what I am looking for.| ![screenshot](documentation/features/searchbar.jpeg) |
+| As a user | I want to sort products by price, name and complexity | so that I can quickly find products that best match my budget and requirements. | ![screenshot](documentation/features/sorting.jpeg) |
+| As a logged in user| I want to log out | so that my account remains secure. | ![screenshot](documentation/features/signout.jpeg) |
+| As a logged in user | I want to add workflows to my bag | so that I can review before purchasing. | ![screenshot](documentation/features/add-to-basket.jpeg) |
+| As a logged in user | I want to update or remove items from my bag | so that I stay in control of my purchase. | ![screenshot](documentation/features/update-remove-bag.jpeg) |
+| As a logged in user | I want to checkout securely | so that I can complete my purchase with confidence. | ![screenshot](documentation/features/stripe.jpeg) |
+| As a logged in user | I want to choose between template only or workflow & setup. | so that I can decide my level of support. | ![screenshot](documentation/features/product-option.jpeg) |
+| As a logged in user | I want to download my purchased workflow | so that I can use it immediately. | ![screenshot](documentation/features/download-success.jpeg) ![screenshot](documentation/features/download-history.jpeg) ![screenshot](documentation/features/download-email.jpeg) |
+| As a logged in user | I receive a confirmation email after purchase | so that I have a backup on instructions on how to proceed. | ![screenshot](documentation/features/confirmation-email.jpeg) |
+| As a logged in user | I can navigate to my purchase history | so that I can view all my previous purchases in one place. | ![screenshot](documentation/features/purchase-history.jpeg) |
+| As a logged in user | I can see a checkout confirmation | so that I can trust that the checkout process was successful. | ![screenshot](documentation/features/success-page.jpeg) |
+| As a logged in user | I can update my profile | so that my profile is always accurate. | ![screenshot](documentation/features/profile-management.jpeg) |
+| As a logged in user | I want to delete my account | so that I can stay in control of my data. | ![screenshot](documentation/features/delete-modal.jpeg) |
+| As a site owner | I want to limit downloads | so that my products are not distributed freely. | ![screenshot](documentation/features/download-limit.jpeg) |
+| As a site superuser | I want to create, view, update and delete products, product options and categories | so that I can keep the product catalogue accurate and up to date. | ![screenshot](documentation/features/product-admin.jpeg) |
+
+
 
 
 
