@@ -77,7 +77,7 @@ form.addEventListener('submit', async (event) => {
                 email: `${formData.get('user_email')}`,
                 address: {
                     line1: `${formData.get('billing_address_1')}`,
-                    line2: `${formData.get('billing_address_')}`,
+                    line2: `${formData.get('billing_address_2')}`,
                     city: `${formData.get('billing_city')}`,
                     state: `${formData.get('billing_county')}`,
                     country: `${formData.get('billing_country')}`,
