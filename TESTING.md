@@ -228,6 +228,47 @@ Defensive programming was manually tested with the below user acceptance testing
 | As a site superuser | I want to create, view, update and delete products, product options and categories | so that I can keep the product catalogue accurate and up to date. | ![screenshot](documentation/features/product-admin.jpeg) |
 
 
+## Python (Unit Testing)
+
+I used Django’s built-in testing framework to verify the functionality of the application. Unit tests were written to test models, forms, views and business logic throughout the project.
+To run the tests for a specific application, I used the following commands:
+
+- python3 manage.py test bag
+- python3 manage.py test checkout
+- python3 manage.py test home
+- python3 manage.py test products
+- python3 manage.py test profiles
+
+To run all tests across the project, I used:
+
+- python3 manage.py test
+
+### Coverage Testing
+
+To measure the percentage of code covered by automated tests, I used the Coverage package.
+
+Installation:
+
+- pip install coverage
+
+To generate the coverage report, I ran:
+
+- coverage run --omit="*/migrations/*,*/__init__.py" manage.py test
+- coverage report
+
+To generate a detailed HTML coverage report, I ran:
+
+- coverage html
+
+Below are the results from the full coverage report on my application that I've tested:
+
+![screenshot](documentation/automation/html-coverage.jpeg)
+
+![screenshot](documentation/automation/html-coverage-2.jpeg)
+
+
+
+
 
 
 
