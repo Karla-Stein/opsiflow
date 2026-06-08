@@ -88,10 +88,5 @@ class ProductOption(models.Model):
         if self.tier in [0, 1, 2] and self.delivery_days is None:
             raise ValidationError("You must add delivery days.")
 
-        # Raise error if custom workflow tier was chosen but no
-        # download files were provided.
-        if self.tier in [0, 1, 2] and self.download_file:
-            raise ValidationError(
-                "You must not add download files to custom workflows.")
 
 
