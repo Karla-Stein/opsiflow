@@ -199,7 +199,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | | Feature is expected to require delivery days when a ProductOption is configured as a Set Up Service. | Attempted to save a ProductOption with fulfilment choice set to "Set Up Service" without specifying delivery days. | The admin form prevented the invalid save and displayed the validation error: "You must add delivery days." | ![screenshot](documentation/defensive/admin-delivery-days-validation.jpeg) |
 | | Feature is expected to prevent delivery days from being assigned to ProductOptions configured as DIY Templates. | Attempted to save a ProductOption with fulfilment choice set to "DIY Template" while specifying delivery days. | The admin form prevented the invalid save and displayed the validation error: "You must not add delivery days." | ![screenshot](documentation/defensive/admin-diy-delivery-days-validation.jpeg) |
 | | Feature is expected to require delivery days when a custom workflow tier is selected. | Attempted to save a ProductOption with a custom workflow tier selected but without specifying delivery days. | The admin form prevented the invalid save and displayed the validation error: "You must add delivery days." | ![screenshot](documentation/defensive/admin-tier-delivery-days-validation.jpeg) |
-
+| 404 Error Page | Feature is expected to display a 404 error page for non-existent pages. | Navigated to an invalid URL (e.g., `/test`). | A custom 404 error page was displayed as expected. | ![screenshot](documentation/defensive/404.jpeg) |
 
 
 
