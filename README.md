@@ -152,6 +152,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | As an anonymous user|  I want to view workflow details | so that I understand what each automation does. |
 | As an anonymous user| I want to create an account | so that I can use the websites features. |
 | As a user | I want to log in securely | so that I can view my profile and purchases. |
+| As a user | I can search for keywords | so that I quickly find what I am looking for.| 
+| As a user | I want to sort products by price, name and complexity | so that I can quickly find products that best match my budget and requirements. |
 | As a logged in user| I want to log out | so that my account remains secure. |
 | As a logged in user | I want to add workflows to my bag | so that I can review before purchasing. |
 | As a logged in user | I want to update or remove items from my bag | so that I stay in control of my purchase. |
@@ -163,6 +165,10 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | As a logged in user | I can see a checkout confirmation | so that I can trust that the checkout process was successful. |
 | As a logged in user | I can update my profile | so that my profile is always accurate. |
 | As a logged in user | I want to delete my account | so that I can stay in control of my data. |
+| As a site owner | I want to limit downloads | so that my products are not distributed freely. |
+| As a site superuser | I want to create, view, update and delete products, product options and categories | so that I can keep the product catalogue accurate and up to date. |
+
+
 
 
 ## Features
