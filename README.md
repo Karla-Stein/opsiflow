@@ -161,6 +161,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | As a user | I want to log in securely | so that I can view my profile and purchases. |
 | As a user | I can search for keywords | so that I quickly find what I am looking for.| 
 | As a user | I want to sort products by price, name and complexity | so that I can quickly find products that best match my budget and requirements. |
+| As a user | I want to contact OpsiFlow directly through the website | so that I can ask questions about products, services or custom workflow support. |
 | As a logged in user| I want to log out | so that my account remains secure. |
 | As a logged in user | I want to add workflows to my bag | so that I can review before purchasing. |
 | As a logged in user | I want to update or remove items from my bag | so that I stay in control of my purchase. |
@@ -192,6 +193,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | Workflow Sorting | Users can sort workflow templates and automation services by criteria such as price, complexity and alphabetical order to quickly locate suitable solutions. | ![screenshot](documentation/features/sorting.jpeg) |
 | Search Functionality | A search bar allows users to quickly find products using keywords and product names. | ![screenshot](documentation/features/searchbar.jpeg) |
 | Product Categories | Products are organised into categories to improve discoverability and allow users to browse relevant automation solutions more efficiently. | ![screenshot](documentation/features/categories.jpeg) |
+| Contact Form | The contact form provides users with a direct communication channel to enquire about automation services, custom workflows and product support. | ![screenshot](documentation/features/contact-form.jpeg) |
 | Product Detail Pages | Each product contains detailed information including workflow description, pricing, fulfilment options and delivery time expectations to help users choose the correct solution. | ![screenshot](documentation/features/product-details.jpeg) |
 | Option Switching | Users can dynamically switch between "DIY template" and “Set Up Service” fulfilment options, as well as "Starter", "Growth" or "Pro" tier options directly within the shopping bag. | ![screenshot](documentation/features/change-option-1.jpeg) ![screenshot](documentation/features/change-option-2.jpeg) |
 | Shopping Bag | Users can remove and update workflow products before checkout. | ![screenshot](documentation/features/bag-edit.jpeg) |
@@ -270,6 +272,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | [![Notion](https://img.shields.io/badge/Notion-grey?logo=notion&logoColor=white)](https://www.notion.so/) | Project planning, README notes and course-related study notes throughout development. |
 | [![Squoosh](https://img.shields.io/badge/Squoosh-grey?logo=googlechrome&logoColor=white)](https://squoosh.app/) | Image compression and optimisation for improved website performance and Lighthouse scores. |
 | [![Figma](https://img.shields.io/badge/Figma-grey?logo=figma&logoColor=white)](https://www.figma.com/) | Used to visualise and present the project's colour palette. |
+| [![Resend](https://img.shields.io/badge/Resend-grey?logo=resend&logoColor=white)](https://resend.com/) | Email delivery service used for the contact form, enabling users to send enquiries directly through the website. |
 
 
 ## Database Design
@@ -736,6 +739,8 @@ There are no remaining major differences between the local version when compared
 | [Make.com](https://www.make.com/en) | JSON blueprints - digital product |
 | [Google Docs](https://docs.google.com) | Set up instructions - digital product |
 | [Chat GPT](https://chatgpt.com) | Content for Set up instructions - digital product |
+| [Resend](https://resend.com) | Contact form email delivery service |
+| [How to Use Django Forms Without Interacting With Any Model](https://gauravjaiswal.com.np/how-to-use-django-forms-without-interacting-with-any-model) | Guidance on implementing the Contact Us form using Django forms without a database model. |
 
 ### Media
 
