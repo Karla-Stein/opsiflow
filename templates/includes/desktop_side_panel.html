@@ -6,7 +6,6 @@
                      <li class="nav-item my-4">
                          <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house"></i>  Home</a>
                      </li>
-                     <!-- sort by dropdown  -->
                      <li class="nav-item my-4">
                          <a class="nav-link" href="{% url 'products' %}?category=lead_generation"><i class="fa-solid fa-people-group"></i>  Lead Generation</a>
                      </li>
@@ -23,7 +22,7 @@
                          <a class="nav-link" href="{% url 'products' %}"><i class="fa-solid fa-chart-diagram"></i>  All Workflows</a>
                      </li>
                      <li class="nav-item my-4">
-                         <a class="nav-link" href="#"><i class="fa-regular fa-handshake"></i>  Contact</a>
+                         <a class="nav-link" href="{% url 'contact' %}"><i class="fa-regular fa-handshake"></i>  Contact</a>
                      </li>
                  </ul>
              </nav>
