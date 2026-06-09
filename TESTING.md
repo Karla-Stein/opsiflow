@@ -267,6 +267,39 @@ Below are the results from the full coverage report on my application that I've 
 ![screenshot](documentation/automation/html-coverage-2.jpeg)
 
 
+## Bugs
+
+### Fixed Bugs
+
+[![GitHub issue custom search](https://img.shields.io/github/issues-search/Karla-Stein/opsiflow?query=is%3Aissue%20is%3Aclosed%20label%3Abug&label=Fixed%20Bugs&color=green)](https://www.github.com/Karla-Stein/opsiflow/issues?q=is%3Aissue+is%3Aclosed+label%3Abug)
+I've used [GitHub Issues](https://www.github.com/Karla-Stein/opsiflow/issues) to document bugs.
+All previously closed/fixed bugs can be tracked [here](https://www.github.com/Karla-Stein/opsiflow/issues?q=is%3Aissue+is%3Aclosed+label%3Abug).
+
+![screenshot](documentation/bugs/gh-issues-closed.jpeg)
+
+### Unfixed Bugs
+
+[![GitHub issue custom search](https://img.shields.io/github/issues-search/Karla-Stein/opsiflow?query=is%3Aissue%2Bis%3Aopen%2Blabel%3Abug&label=Unfixed%20Bugs&color=red)](https://www.github.com/Karla-Stein/opsiflow/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+
+Any remaining open issues can be tracked [here](https://www.github.com/Karla-Stein/opsiflow/issues?q=is%3Aissue+is%3Aopen+label%3Abug).
+
+![screenshot](documentation/bugs/gh-issues-open.jpeg)
+
+## Known Issues
+
+| Issue | Screenshot |
+| --- | --- |
+| Stripe displays a console recommendation suggesting migration from the current Payment Element integration to Stripe Checkout Sessions. The application uses Stripe's Payment Element successfully and all payment functionality operates as expected. The warning is informational only and does not indicate a fault within the application. Migrating to Checkout Sessions would require a significant architectural change and was considered outside the scope of the project. | ![screenshot](documentation/issues/stripe-api-recommendation.jpeg) |
+| Stripe displays a console warning indicating that Klarna and Revolut Pay are not activated for live mode. Both payment methods were enabled and tested successfully in Stripe test mode. The warning remained despite activation and did not affect checkout functionality or Lighthouse scores. Core card payments and the implemented checkout flow operate correctly. | ![screenshot](documentation/issues/stripe-payment-method-activation.jpeg) |
+| Stripe displays a console warning indicating that Apple Pay requires domain registration and verification before it can be enabled within the Payment Element. The project was developed and tested using Stripe test mode, where core card payment functionality operated correctly. Apple Pay was not required for the project's primary checkout functionality and domain verification was therefore considered outside the scope of the project. | ![screenshot](documentation/issues/apple-pay-domain-verification.jpeg) |
+| Chrome DevTools reports missing `id` or `name` attributes within Stripe-controlled payment elements. Inspection confirmed that Django form fields include valid attributes. The warning originates from Stripe-generated elements which cannot be directly modified. | ![screenshot](documentation/issues/stripe-form-fields.jpeg) |
+| Chrome DevTools reports a deprecated feature warning originating from a third-party script loaded by Stripe. The warning does not affect checkout functionality and cannot be addressed within the project codebase. | ![screenshot](documentation/issues/deprecated-third-party-script.jpeg) |
+| Lighthouse Best Practices scores on the checkout page are affected by third-party cookies, Stripe scripts, Google Pay integrations and hCaptcha resources required for secure payment processing and fraud prevention. | ![screenshot](documentation/issues/third-party-cookies.jpeg) |
+| Lighthouse continues to report document request latency, cache lifetime, render-blocking requests, font display, forced reflow, network dependency tree warnings and excessive preconnect suggestions. Investigation confirmed that these warnings primarily originate from hosting response times, third-party services, Stripe payment scripts, Bootstrap resources and other external dependencies rather than the project's application logic. The warnings do not affect the core functionality of the application and were therefore considered acceptable within the scope of the project. | ![screenshot](documentation/issues/lighthouse-third-party-warnings.jpeg) |
+
+> [!IMPORTANT]  
+> There are no remaining bugs that I am aware of, though, even after thorough testing, I cannot rule out the possibility.
+
 
 
 
