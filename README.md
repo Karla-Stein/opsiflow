@@ -282,6 +282,7 @@ Using both tools allowed the database design to remain visually organised while 
 | Initial Planned ERD | [![Lucidchart](https://img.shields.io/badge/Lucidchart-ERD-grey?logo=lucid&logoColor=orange)](https://lucid.app/) | Used during the planning phase to visually design the application's relational database structure and map relationships between core models. | ![screenshot](documentation/erd/erd-lucid.jpeg) |
 | Refined Development ERD | [![Google%20Sheets](https://img.shields.io/badge/Google%20Sheets-grey?logo=googlesheets&logoColor=green)](https://www.google.com/sheets/about/) | Used during active development to simplify, validate and refine model relationships and database logic throughout implementation. | ![screenshot](documentation/erd/erd-sheet.jpeg) |
 
+#### Custom Application ERD 
 
 I have used `pygraphviz` and `django-extensions` to auto-generate an ERD.
 
@@ -303,7 +304,6 @@ INSTALLED_APPS = [
 - removed `'django_extensions',` from my `INSTALLED_APPS`
 - finally, in the terminal: `pip3 uninstall django-extensions pygraphviz -y`
 
-#### Custom Application ERD 
 
 The diagram below shows the database structure for the custom models developed specifically for OpsiFlow. 
 It illustrates the relationships between all custom modles providing a clear and final overview of the current application's core data architecture.
@@ -317,7 +317,20 @@ source: [medium.com](https://medium.com/@yathomasi1/1-using-django-extensions-to
 
 ### GitHub Projects
 
+[GitHub Projects](https://www.github.com/Karla-Stein/opsiflow/projects) served as an Agile tool for this project. User stories were planned through it, then subsequently tracked on a regular basis using the Kanban project board.
+
+![screenshot](documentation/gh-projects.jpeg)
+
 ### GitHub Issues
+
+[GitHub Issues](https://www.github.com/Karla-Stein/opsiflow/issues) served as an another Agile tool. There, I managed my User Stories and tracked any issues/bugs.
+
+| Link | Screenshot |
+| --- | --- |
+| [![GitHub issues](https://img.shields.io/github/issues-search/Karla-Stein/opsiflow?query=is%3Aissue%20is%3Aopen%20-label%3Abug&label=Open%20Issues&color=yellow)](https://www.github.com/Karla-Stein/opsiflow/issues?q=is%3Aissue%20is%3Aopen%20-label%3Abug) | ![screenshot](documentation/gh-issues-open.jpeg) |
+| [![GitHub closed issues](https://img.shields.io/github/issues-search/Karla-Stein/opsiflow?query=is%3Aissue%20is%3Aclosed%20-label%3Abug&label=Closed%20Issues&color=green)](https://www.github.com/Karla-Stein/opsiflow/issues?q=is%3Aissue%20is%3Aclosed%20-label%3Abug) | ![screenshot](documentation/gh-issues-closed.jpeg) ![screenshot](documentation/gh-issues-closed2.jpeg) |
+
+
 
 ### MoSCoW Prioritisation
 
