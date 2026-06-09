@@ -1,6 +1,11 @@
-.venv
+.venv/
 env.py
+.env
 *.sqlite3
 *.pyc
-__pycache__
+*.py[cod]
+__pycache__/
 staticfiles/ 
+.coverage
+htmlcov/
+.DS_Store
