@@ -108,7 +108,7 @@ source: [opsiflow amiresponsive](https://ui.dev/amiresponsive?url=https://opsifl
 | Blue Spruce | `#0F766E` | Secondary accent colour. |
 | Stormy Teal | `#0E6C64` | Secondary hover colour. |
 
-![screenshot](documentation/colour-palette/E4066670-016E-40F8-B356-7EC2954E9FAD.jpeg)
+![screenshot](documentation/colour-palette/D6FBAFA3-DAF8-4DFB-8814-1002E0BE56B0.jpeg)
 
 This palette was chosen to communicate several important qualities:
 - Trust and stability through deep blues.
@@ -262,6 +262,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | [![Google Docs](https://img.shields.io/badge/Google%20Docs-grey?logo=googledocs&logoColor=4285F4)](https://docs.google.com/) | Text based set up guides.|
 | [![Notion](https://img.shields.io/badge/Notion-grey?logo=notion&logoColor=white)](https://www.notion.so/) | Project planning, README notes and course-related study notes throughout development. |
 | [![Squoosh](https://img.shields.io/badge/Squoosh-grey?logo=googlechrome&logoColor=white)](https://squoosh.app/) | Image compression and optimisation for improved website performance and Lighthouse scores. |
+| [![Figma](https://img.shields.io/badge/Figma-grey?logo=figma&logoColor=white)](https://www.figma.com/) | Used to visualise and present the project's colour palette. |
 
 
 ## Database Design
