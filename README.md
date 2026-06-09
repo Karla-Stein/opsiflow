@@ -261,6 +261,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | [![Make.com](https://img.shields.io/badge/Make.com-grey?logo=make&logoColor=purple)](https://www.make.com/) | Used for workflow automation planning and business process inspiration. |
 | [![Google Docs](https://img.shields.io/badge/Google%20Docs-grey?logo=googledocs&logoColor=4285F4)](https://docs.google.com/) | Text based set up guides.|
 | [![Notion](https://img.shields.io/badge/Notion-grey?logo=notion&logoColor=white)](https://www.notion.so/) | Project planning, README notes and course-related study notes throughout development. |
+| [![Squoosh](https://img.shields.io/badge/Squoosh-grey?logo=googlechrome&logoColor=white)](https://squoosh.app/) | Image compression and optimisation for improved website performance and Lighthouse scores. |
 
 
 ## Database Design
