@@ -283,6 +283,36 @@ Using both tools allowed the database design to remain visually organised while 
 | Refined Development ERD | [![Google%20Sheets](https://img.shields.io/badge/Google%20Sheets-grey?logo=googlesheets&logoColor=green)](https://www.google.com/sheets/about/) | Used during active development to simplify, validate and refine model relationships and database logic throughout implementation. | ![screenshot](documentation/erd/erd-sheet.jpeg) |
 
 
+I have used `pygraphviz` and `django-extensions` to auto-generate an ERD.
+
+The steps taken were as follows:
+- In the terminal: `brew install graphviz`
+- then: `pip3 install django-extensions pygraphviz`
+- in my `settings.py` file, I added the following to my `INSTALLED_APPS`:
+
+```python
+INSTALLED_APPS = [
+    ...
+    'django_extensions',
+    ...
+]
+```
+
+- back in the terminal: `python manage.py graph_models products checkout profiles -o erd.jpeg`
+- drag the new files into my `documentation/` folder
+- removed `'django_extensions',` from my `INSTALLED_APPS`
+- finally, in the terminal: `pip3 uninstall django-extensions pygraphviz -y`
+
+#### Custom Application ERD 
+
+The diagram below shows the database structure for the custom models developed specifically for OpsiFlow. 
+It illustrates the relationships between all custom modles providing a clear and final overview of the current application's core data architecture.
+
+![screenshot](documentation/erd/custom-erd.jpeg)
+
+source: [medium.com](https://medium.com/@yathomasi1/1-using-django-extensions-to-visualize-the-database-diagram-in-django-application-c5fa7e710e16)
+
+
 ## Agile Development Process
 
 ### GitHub Projects
