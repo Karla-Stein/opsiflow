@@ -194,6 +194,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | Search Functionality | A search bar allows users to quickly find products using keywords and product names. | ![screenshot](documentation/features/searchbar.jpeg) |
 | Product Categories | Products are organised into categories to improve discoverability and allow users to browse relevant automation solutions more efficiently. | ![screenshot](documentation/features/categories.jpeg) |
 | Contact Form | The contact form provides users with a direct communication channel to enquire about automation services, custom workflows and product support. | ![screenshot](documentation/features/contact-form.jpeg) |
+| Contact Enquiry Notifications | Contact form submissions are delivered directly to the site owner via email, ensuring customer enquiries can be reviewed and responded to promptly. | ![screenshot](documentation/features/contact-email.jpeg) |
 | Product Detail Pages | Each product contains detailed information including workflow description, pricing, fulfilment options and delivery time expectations to help users choose the correct solution. | ![screenshot](documentation/features/product-details.jpeg) |
 | Option Switching | Users can dynamically switch between "DIY template" and “Set Up Service” fulfilment options, as well as "Starter", "Growth" or "Pro" tier options directly within the shopping bag. | ![screenshot](documentation/features/change-option-1.jpeg) ![screenshot](documentation/features/change-option-2.jpeg) |
 | Shopping Bag | Users can remove and update workflow products before checkout. | ![screenshot](documentation/features/bag-edit.jpeg) |
@@ -260,7 +261,6 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 | [![MDN Web Docs](https://img.shields.io/badge/MDN%20Web%20Docs-grey?logo=mdnwebdocs&logoColor=black)](https://developer.mozilla.org/) |Tutorials/Reference Guide  |
 | [![badge](https://img.shields.io/badge/favicon.io-grey?logo=fi&logoColor=209CEE)](https://favicon.io) | Generating the favicon. |
 | [![badge](https://img.shields.io/badge/Google%20Fonts-grey?logo=google&logoColor=4285F4)](https://fonts.google.com/) | Typography and brand icon. |
-| [![badge](https://img.shields.io/badge/Google%20Fonts-grey?logo=google&logoColor=4285F4)](https://lucid.app.com/) | Typography and icon resources used throughout the application. |
 | [![YouTube](https://img.shields.io/badge/YouTube-grey?logo=youtube&logoColor=red)](https://www.youtube.com/) | Tutorials. |
 | [![Medium](https://img.shields.io/badge/Medium-grey?logo=medium&logoColor=black)](https://medium.com) | Articles. |
 | [![Lucid](https://img.shields.io/badge/Lucid-ERD-grey?logo=lucid&logoColor=orange)](https://lucid.app) | Planning the initial ERD |
