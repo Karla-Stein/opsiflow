@@ -107,6 +107,7 @@ I've tested my deployed project to check for responsiveness issues.
 | Page | Mobile | Tablet | Desktop | Notes |
 | --- | --- | --- | --- | --- |
 | Home | ![screenshot](documentation/responsiveness/mobile-home.jpeg) | ![screenshot](documentation/responsiveness/tablet-home.jpeg) | ![screenshot](documentation/responsiveness/desktop-home.jpeg) | Works as expected |
+| Contact | ![screenshot](documentation/responsiveness/mobile-contact.jpeg) | ![screenshot](documentation/responsiveness/tablet-contact.jpeg) | ![screenshot](documentation/responsiveness/desktop-contact.jpeg) | Works as expected |
 | Products | ![screenshot](documentation/responsiveness/mobile-products.jpeg) | ![screenshot](documentation/responsiveness/tablet-products.jpeg) | ![screenshot](documentation/responsiveness/desktop-products.jpeg) | Works as expected |
 | Product Details | ![screenshot](documentation/responsiveness/mobile-product-detail.jpeg) | ![screenshot](documentation/responsiveness/tablet-product-detail.jpeg) | ![screenshot](documentation/responsiveness/desktop-product-detail.jpeg) | Works as expected |
 | Sign up | ![screenshot](documentation/responsiveness/mobile-signup.jpeg) | ![screenshot](documentation/responsiveness/tablet-signup.jpeg) | ![screenshot](documentation/responsiveness/desktop-signup.jpeg) | Works as expected |
@@ -127,7 +128,8 @@ I've tested my deployed project on multiple browsers to check for compatibility 
 | Page | Chrome | Firefox | Safari | Notes |
 | --- | --- | --- | --- | --- |
 | Home | ![screenshot](documentation/browsers/chrome-home.jpeg) | ![screenshot](documentation/browsers/firefox-home.jpeg) | ![screenshot](documentation/browsers/safari-home.jpeg) | Works as expected |
-| Products | ![screenshot](documentation/browsers/chrome-products.jpeg) | ![screenshot](documentation/browsers/firefox-products.jpeg) | ![screenshot](documentation/browsers/safari-products.jpeg) | Works as expected |
+| Contact | ![screenshot](documentation/browsers/chrome-contact.jpeg) | ![screenshot](documentation/browsers/firefox-contact.jpeg) | ![screenshot](documentation/browsers/safarai-contact.jpeg) | Works as expected |
+| Products | ![screenshot](documentation/browsers/chrome-products.jpeg) | ![screenshot](documentation/browsers/firefox-home.jpeg) | ![screenshot](documentation/browsers/safari-products.jpeg) | Works as expected |
 | Product Details | ![screenshot](documentation/browsers/chrome-product-details.jpeg) | ![screenshot](documentation/browsers/firefox-product-details.jpeg) | ![screenshot](documentation/browsers/safari-product-details.jpeg) | Works as expected |
 | Sign Up | ![screenshot](documentation/browsers/chrome-signup.jpeg) | ![screenshot](documentation/browsers/firefox-signup.jpeg) | ![screenshot](documentation/browsers/safari-signup.jpeg) | Works as expected |
 | Log In | ![screenshot](documentation/browsers/chrome-signin.jpeg) | ![screenshot](documentation/browsers/firefox-signin.jpeg) | ![screenshot](documentation/browsers/safari-signin.jpeg) | Works as expected |
@@ -147,6 +149,7 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | Page | Mobile | Desktop | 
 | --- | --- | --- | 
 | Home | ![screenshot](documentation/lighthouse/mobile-home.jpeg) | ![screenshot](documentation/lighthouse/desktop-home.jpeg) |
+| Contact | ![screenshot](documentation/lighthouse/mobile-contact.jpeg) | ![screenshot](documentation/lighthouse/desktop-contact.jpeg) |
 | Products | ![screenshot](documentation/lighthouse/mobile-products.jpeg) | ![screenshot](documentation/lighthouse/desktop-products.jpeg) |
 | Product Details | ![screenshot](documentation/lighthouse/mobile-product-detail.jpeg) | ![screenshot](documentation/lighthouse/desktop-product-detail.jpeg) |
 | Sign in | ![screenshot](documentation/lighthouse/mobile-signin.jpeg) | ![screenshot](documentation/lighthouse/desktop-signin.jpeg) |
@@ -166,6 +169,10 @@ Defensive programming was manually tested with the below user acceptance testing
 
 | Page | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- | --- |
+| Contact | Name field is required. | Omitted name input, tried to submit form. | Form was not submitted and visually highlighted missing input field. | ![screenshot](documentation/defensive/contact-name.jpeg) |
+| | Email field is required. | Omitted email input and tried adding a name without the @ sign, then tried to submit. | Form was not submitted and visually highlighted missing input field. | ![screenshot](documentation/defensive/contact-email.jpeg) |
+| | Subject field is required. | Omitted subject input, tried to submit form.  | Form was not submitted and visually highlighted missing input field. | ![screenshot](documentation/defensive/contact-subject.jpeg) |
+| | Messege field is required. | Omitted message input, tried to submit form.  | Form was not submitted and visually highlighted missing input field. | ![screenshot](documentation/defensive/contact-mesage.jpeg) |
 | Products | Feature is expected to allow users to browse products without registration. | Opened product pages as a guest user. | Products were fully accessible without requiring registration. | ![screenshot](documentation/features/product-browsing.jpeg) |
 | | Feature is expected to sort products by price, name and complexity. | Tested sorting options for price (low-to-high/high-to-low), name (A-Z/Z-A) and complexity (low-to-high/high-to-low). | Sorting worked correctly for all options. | ![screenshot](documentation/defensive/name-a-z.jpeg) ![screenshot](documentation/defensive/name-z-z-a.jpeg) ![screenshot](documentation/defensive/complexity-high-low.jpeg) ![screenshot](documentation/defensive/complexity-low-high.jpeg) ![screenshot](documentation/defensive/price-high-low.jpeg) ![screenshot](documentation/defensive/price-low-high.jpeg)  |
 | | Feature is expected to filter products by category. | Applied category filters while browsing products. | Filters worked as expected, displaying only relevant products. | ![screenshot](documentation/defensive/category-billing.jpeg)  ![screenshot](documentation/defensive/category-custom.jpeg)  ![screenshot](documentation/defensive/category-email.jpeg)  ![screenshot](documentation/defensive/category-lead.jpeg)|
