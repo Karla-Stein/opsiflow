@@ -15,7 +15,7 @@ class TestIndex(TestCase):
         self.assertEqual(response.status_code, 200, msg="Status code not 200")
         self.assertTemplateUsed(response,
                                 'home/index.html')
-        
+
 
 class TestContactUs(TestCase):
     """
@@ -33,13 +33,15 @@ class TestContactUs(TestCase):
         self.assertTemplateUsed(response,
                                 'home/contact.html')
 
-    @patch('home.views.resend.Emails.send')  
+    @patch('home.views.resend.Emails.send')
     def test_contact_us_view_sends_email_to_owner(self, mock_send):
         """
-        Test that the user recievs the feedback message after the email was sent.
+        Test that the user recievs the feedback message
+        after the email was sent.
         """
 
-        # once the form has been validated then the form data are stored in cleaned_data in a key-value pair
+        # once the form has been validated then the form data are
+        # stored in cleaned_data in a key-value pair
         cleaned_data = {
             'name': 'Alice',
             'email': 'alice@email.com',
@@ -49,10 +51,11 @@ class TestContactUs(TestCase):
 
         response = self.client.post(reverse(
             'contact'), data=cleaned_data)
-        
+
         mock_send.assert_called_once()
 
-        self.assertEqual(response.status_code, 302, msg='Status code is not 302')
+        self.assertEqual(response.status_code, 302,
+                         msg='Status code is not 302')
 
         # mock_send.call_args stores the arguments that where
         # passed to resend.Emails.send().
