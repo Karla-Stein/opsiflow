@@ -199,6 +199,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | | Feature is expected to restrict purchased DIY Templates to a maximum of three downloads per order. | Attempted to download the same DIY Template three times using the download links available on the checkout success page, My Purchases page and purchase confirmation email. | Downloads were successfully permitted up to the three-download limit. Any subsequent download attempts were blocked and an appropriate warning message was displayed.| ![screenshot](documentation/defensive/download-restriction.jpeg) |
 | Profile Details | Feature is expected to allow logged-in users to update their saved personal details and reuse them during checkout. | Updated the user details form, saved the changes, then returned to the checkout form. | Updated details were saved successfully and automatically populated the checkout form. | ![screenshot](documentation/defensive/update-details-1.jpeg) ![screenshot](documentation/defensive/update-details-2.jpeg)|
 | | Feature is expected to validate the email address format when an email address is provided. | Entered an invalid email address without an '@' symbol in the optional email field and attempted to save the profile. | The form prevented submission and displayed a validation warning, informing the user that a valid email address must be entered. | ![screenshot](documentation/defensive/email-validation.jpeg) |
+| | Feature is expected to restrict access to authenticated users only. | Attempted to access the profile page while logged out. | User was redirected to the login page and access was denied.| ![screenshot](documentation/defensive/restriction-profile.jpeg) |
 | Admin | Feature is expected to allow superusers to create products, product options and categories through the Django admin panel. | Logged in as a superuser and tested creating products, product options and categories. | Superuser was able to manage all product-related records successfully through the admin interface. | ![screenshot](documentation/defensive/create-category.jpeg) ![screenshot](documentation/defensive/create-product.jpeg) ![screenshot](documentation/defensive/create-option.jpeg) |
 |  | Feature is expected to allow superusers to update products, product options and categories through the Django admin panel. | Logged in as a superuser and tested editing products, product options and categories. | Superuser was able to manage all product-related records successfully through the admin interface. | ![screenshot](documentation/defensive/update-category.jpeg) ![screenshot](documentation/defensive/update-product.jpeg) ![screenshot](documentation/defensive/update-option.jpeg) |
 |  | Feature is expected to allow superusers to delete products, product options and categories through the Django admin panel. | Logged in as a superuser and tested deleting products, product options and categories. | Superuser was able to manage all product-related records successfully through the admin interface. | ![screenshot](documentation/defensive/delete-category.jpeg) ![screenshot](documentation/defensive/delete-product.jpeg) ![screenshot](documentation/defensive/delete-option.jpeg) |
@@ -222,6 +223,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | As a user | I want to log in securely | so that I can view my profile and purchases. | ![screenshot](documentation/features/signin.jpeg) |
 | As a user | I can search for keywords | so that I quickly find what I am looking for.| ![screenshot](documentation/features/searchbar.jpeg) |
 | As a user | I want to sort products by price, name and complexity | so that I can quickly find products that best match my budget and requirements. | ![screenshot](documentation/features/sorting.jpeg) |
+| As a user | I want to contact OpsiFlow directly through the website | so that I can ask questions about products, services or custom workflow support. | ![screenshot](documentation/features/contact-form.jpeg) ![screenshot](documentation/features/contact-email.jpeg) |
 | As a logged in user| I want to log out | so that my account remains secure. | ![screenshot](documentation/features/signout.jpeg) |
 | As a logged in user | I want to add workflows to my bag | so that I can review before purchasing. | ![screenshot](documentation/features/add-to-basket.jpeg) |
 | As a logged in user | I want to update or remove items from my bag | so that I stay in control of my purchase. | ![screenshot](documentation/features/update-remove-bag.jpeg) |
@@ -237,7 +239,14 @@ Defensive programming was manually tested with the below user acceptance testing
 | As a site superuser | I want to create, view, update and delete products, product options and categories | so that I can keep the product catalogue accurate and up to date. | ![screenshot](documentation/features/product-admin.jpeg) |
 
 
-## Python (Unit Testing)
+## Automated Testing
+
+I have conducted a series of automated tests on my application.
+
+> [!NOTE]  
+> I fully acknowledge and understand that, in a real-world scenario, an extensive set of additional tests would be more comprehensive.
+
+### Python (Unit Testing)
 
 I used Django’s built-in testing framework to verify the functionality of the application. Unit tests were written to test models, forms, views and business logic throughout the project.
 To run the tests for a specific application, I used the following commands:
@@ -269,11 +278,17 @@ To generate a detailed HTML coverage report, I ran:
 
 - coverage html
 
-Below are the results from the full coverage report on my application that I've tested:
+Below are the results from the full coverage report on my application that I've tested before the Contact page implementation:
 
 ![screenshot](documentation/automation/html-coverage.jpeg)
-
 ![screenshot](documentation/automation/html-coverage-2.jpeg)
+
+
+Following implementation of the contact form feature and associated automated tests, the overall project coverage increased by 1%.
+
+The HTML coverage report was reviewed using the **"Hide Covered"** option. This filters out files that are already 100% covered and displays only files that still contain uncovered lines. This made it easier to identify where further testing could be improved.
+
+![screenshot](documentation/automation/html-coverage-filtered.jpeg)
 
 
 ## Bugs
