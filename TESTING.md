@@ -212,6 +212,24 @@ Defensive programming was manually tested with the below user acceptance testing
 | 404 Error Page | Feature is expected to display a 404 error page for non-existent pages. | Navigated to an invalid URL (e.g., `/test`). | A custom 404 error page was displayed as expected. | ![screenshot](documentation/defensive/404.jpeg) |
 
 
+## Stripe Testing 
+
+The Stripe integration was tested using Stripe test mode and test card details.
+The following functionality was verified:
+
+| Test | Result | Screenshot |
+| --- | --- | --- |
+| PaymentIntent created during checkout | Stripe creates a PaymentIntent with the correct amount | ![screenshot](documentation/stripe/payment-intent-created.jpeg) ![screenshot](documentation/stripe/payment-intent-created2.jpeg)  |
+| PaymentIntent amount calculation | Amount matches selected product options. |  ![screenshot](documentation/stripe/payment-amount.jpeg) ![screenshot](documentation/stripe/payment-amount2.jpeg) |
+| Successful card payment | Payment completes successfully |  ![screenshot](documentation/stripe/payment-success.jpeg) ![screenshot](documentation/stripe/payment-success2.jpeg) |
+| Order creation after successful payment | Order is stored in the database with status confirmed |  ![screenshot](documentation/stripe/order-creation.jpeg) ![screenshot](documentation/stripe/order-creation2.jpeg) |
+| Check card payments work | Expected charge succeeded with "card" in Stripe Event object | ![screenshot](documentation/stripe/card-payment.jpeg) |
+| Check Revolut payments work | Expected charge succeeded with "revolut_pay" in Stripe Event object | ![screenshot](documentation/stripe/revolut-payment.jpeg) |
+| Check Klarna payments work | Expected charge succeeded with "klarna" in Stripe Event object | ![screenshot](documentation/stripe/klarna-payments.jpeg) |
+| Check Amazon Pay payments work | Expected charge succeeded with "amazon_pay" in Stripe Event object | ![screenshot](documentation/stripe/amazon-payments.jpeg) |
+| Stripe webhook handling | Stripe webhook testing confirmed that `payment_intent.succeeded` events were delivered successfully to the deployed webhook endpoint. The application returned HTTP 200 and confirmed that the related order already existed in the database, demonstrating that the webhook handler correctly verifies completed payments without creating duplicate orders. | ![screenshot](documentation/stripe/webhook.jpeg) |
+
+
 ## User Story Testing
 
 | Target | Expectation | Outcome | Screenshot |
